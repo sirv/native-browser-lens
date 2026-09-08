@@ -1,0 +1,1206 @@
+{
+  "startedAt": "2026-09-08T20:06:44.841Z",
+  "requestedSeconds": 1800,
+  "samples": [
+    {
+      "elapsedSeconds": 30.054,
+      "armed": {
+        "ticks": 243,
+        "timerDelayP95": 73.19999998807907,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 2475001
+      },
+      "baseline": {
+        "ticks": 300,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 2.800000011920929,
+        "jsHeap": 2238957
+      },
+      "evidenceBytes": 195275,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 60.112,
+      "armed": {
+        "ticks": 488,
+        "timerDelayP95": 72.39999997615814,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 2880897
+      },
+      "baseline": {
+        "ticks": 601,
+        "timerDelayP95": 1,
+        "requestP95": 2.800000011920929,
+        "jsHeap": 1703378
+      },
+      "evidenceBytes": 195317,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 90.246,
+      "armed": {
+        "ticks": 739,
+        "timerDelayP95": 83,
+        "requestP95": 7.100000023841858,
+        "jsHeap": 3419733
+      },
+      "baseline": {
+        "ticks": 902,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 2.900000035762787,
+        "jsHeap": 2236466
+      },
+      "evidenceBytes": 195324,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 120.306,
+      "armed": {
+        "ticks": 980,
+        "timerDelayP95": 79.20000004768372,
+        "requestP95": 6.099999964237213,
+        "jsHeap": 3220313
+      },
+      "baseline": {
+        "ticks": 1203,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 2.800000011920929,
+        "jsHeap": 1965014
+      },
+      "evidenceBytes": 176871,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 150.369,
+      "armed": {
+        "ticks": 1231,
+        "timerDelayP95": 79.09999996423721,
+        "requestP95": 5.100000023841858,
+        "jsHeap": 3166457
+      },
+      "baseline": {
+        "ticks": 1504,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 1883554
+      },
+      "evidenceBytes": 177138,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 180.414,
+      "armed": {
+        "ticks": 1487,
+        "timerDelayP95": 76,
+        "requestP95": 4.599999964237213,
+        "jsHeap": 3178641
+      },
+      "baseline": {
+        "ticks": 1804,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2506554
+      },
+      "evidenceBytes": 177136,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 210.468,
+      "armed": {
+        "ticks": 1739,
+        "timerDelayP95": 77.29999995231628,
+        "requestP95": 4.100000023841858,
+        "jsHeap": 3080545
+      },
+      "baseline": {
+        "ticks": 2105,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1899418
+      },
+      "evidenceBytes": 177287,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 240.536,
+      "armed": {
+        "ticks": 1994,
+        "timerDelayP95": 76,
+        "requestP95": 4.100000023841858,
+        "jsHeap": 2520792
+      },
+      "baseline": {
+        "ticks": 2405,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1870086
+      },
+      "evidenceBytes": 177327,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 270.592,
+      "armed": {
+        "ticks": 2253,
+        "timerDelayP95": 74.30000001192093,
+        "requestP95": 4,
+        "jsHeap": 2645648
+      },
+      "baseline": {
+        "ticks": 2706,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1947878
+      },
+      "evidenceBytes": 177325,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 300.647,
+      "armed": {
+        "ticks": 2507,
+        "timerDelayP95": 77.19999998807907,
+        "requestP95": 3.899999976158142,
+        "jsHeap": 2814680
+      },
+      "baseline": {
+        "ticks": 3006,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.599999964237213,
+        "jsHeap": 2079214
+      },
+      "evidenceBytes": 176786,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 330.714,
+      "armed": {
+        "ticks": 2755,
+        "timerDelayP95": 78.19999998807907,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 2964832
+      },
+      "baseline": {
+        "ticks": 3307,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.5,
+        "jsHeap": 2181166
+      },
+      "evidenceBytes": 177330,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 360.8,
+      "armed": {
+        "ticks": 2997,
+        "timerDelayP95": 78.60000002384186,
+        "requestP95": 3.700000047683716,
+        "jsHeap": 3226580
+      },
+      "baseline": {
+        "ticks": 3608,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.5,
+        "jsHeap": 2025254
+      },
+      "evidenceBytes": 177329,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 390.875,
+      "armed": {
+        "ticks": 3245,
+        "timerDelayP95": 77.90000003576279,
+        "requestP95": 3.699999988079071,
+        "jsHeap": 2734468
+      },
+      "baseline": {
+        "ticks": 3909,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 2.5,
+        "jsHeap": 2159318
+      },
+      "evidenceBytes": 177317,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 420.929,
+      "armed": {
+        "ticks": 3497,
+        "timerDelayP95": 75.79999995231628,
+        "requestP95": 3.699999988079071,
+        "jsHeap": 3012932
+      },
+      "baseline": {
+        "ticks": 4209,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 2.599999964237213,
+        "jsHeap": 2341466
+      },
+      "evidenceBytes": 177334,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 450.989,
+      "armed": {
+        "ticks": 3651,
+        "timerDelayP95": 94.79999995231628,
+        "requestP95": 3.699999988079071,
+        "jsHeap": 2281324
+      },
+      "baseline": {
+        "ticks": 4510,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.599999964237213,
+        "jsHeap": 2558018
+      },
+      "evidenceBytes": 177325,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 481.074,
+      "armed": {
+        "ticks": 3792,
+        "timerDelayP95": 106.30000001192093,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 2476760
+      },
+      "baseline": {
+        "ticks": 4811,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.599999964237213,
+        "jsHeap": 1845986
+      },
+      "evidenceBytes": 177330,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 511.159,
+      "armed": {
+        "ticks": 3934,
+        "timerDelayP95": 123.89999997615814,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 2724492
+      },
+      "baseline": {
+        "ticks": 5111,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 2007842
+      },
+      "evidenceBytes": 177332,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 541.222,
+      "armed": {
+        "ticks": 4107,
+        "timerDelayP95": 131,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 3044988
+      },
+      "baseline": {
+        "ticks": 5412,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1568892
+      },
+      "evidenceBytes": 177311,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 571.286,
+      "armed": {
+        "ticks": 4350,
+        "timerDelayP95": 129.39999997615814,
+        "requestP95": 3.899999976158142,
+        "jsHeap": 2319312
+      },
+      "baseline": {
+        "ticks": 5713,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1785888
+      },
+      "evidenceBytes": 177324,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 601.34,
+      "armed": {
+        "ticks": 4594,
+        "timerDelayP95": 128.30000001192093,
+        "requestP95": 3.899999976158142,
+        "jsHeap": 2956408
+      },
+      "baseline": {
+        "ticks": 6013,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 2247932
+      },
+      "evidenceBytes": 177325,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 631.421,
+      "armed": {
+        "ticks": 4828,
+        "timerDelayP95": 125.79999995231628,
+        "requestP95": 3.900000035762787,
+        "jsHeap": 2656732
+      },
+      "baseline": {
+        "ticks": 6314,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1864260
+      },
+      "evidenceBytes": 177318,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 661.503,
+      "armed": {
+        "ticks": 5054,
+        "timerDelayP95": 123.80000001192093,
+        "requestP95": 3.900000035762787,
+        "jsHeap": 3266992
+      },
+      "baseline": {
+        "ticks": 6615,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 2345444
+      },
+      "evidenceBytes": 177324,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 691.579,
+      "armed": {
+        "ticks": 5286,
+        "timerDelayP95": 121.80000001192093,
+        "requestP95": 4,
+        "jsHeap": 2816192
+      },
+      "baseline": {
+        "ticks": 6916,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1813187
+      },
+      "evidenceBytes": 177324,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 721.66,
+      "armed": {
+        "ticks": 5531,
+        "timerDelayP95": 120.39999997615814,
+        "requestP95": 4.199999988079071,
+        "jsHeap": 2424076
+      },
+      "baseline": {
+        "ticks": 7216,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2382703
+      },
+      "evidenceBytes": 177332,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 751.731,
+      "armed": {
+        "ticks": 5769,
+        "timerDelayP95": 117,
+        "requestP95": 4.199999988079071,
+        "jsHeap": 2285952
+      },
+      "baseline": {
+        "ticks": 7517,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 1918455
+      },
+      "evidenceBytes": 177319,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 781.785,
+      "armed": {
+        "ticks": 6005,
+        "timerDelayP95": 115.30000001192093,
+        "requestP95": 4.199999988079071,
+        "jsHeap": 3081108
+      },
+      "baseline": {
+        "ticks": 7818,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 2567787
+      },
+      "evidenceBytes": 177338,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 811.876,
+      "armed": {
+        "ticks": 6252,
+        "timerDelayP95": 113.90000003576279,
+        "requestP95": 4.300000011920929,
+        "jsHeap": 3048568
+      },
+      "baseline": {
+        "ticks": 8119,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 2130855
+      },
+      "evidenceBytes": 177321,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 841.967,
+      "armed": {
+        "ticks": 6507,
+        "timerDelayP95": 111.80000001192093,
+        "requestP95": 4.300000011920929,
+        "jsHeap": 3189416
+      },
+      "baseline": {
+        "ticks": 8420,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 2016211
+      },
+      "evidenceBytes": 177317,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 872.058,
+      "armed": {
+        "ticks": 6759,
+        "timerDelayP95": 110.30000001192093,
+        "requestP95": 4.699999988079071,
+        "jsHeap": 2939412
+      },
+      "baseline": {
+        "ticks": 8720,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.600000023841858,
+        "jsHeap": 2338839
+      },
+      "evidenceBytes": 177317,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 902.152,
+      "armed": {
+        "ticks": 7001,
+        "timerDelayP95": 109,
+        "requestP95": 4.900000035762787,
+        "jsHeap": 2443392
+      },
+      "baseline": {
+        "ticks": 9021,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2453195
+      },
+      "evidenceBytes": 177319,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 932.252,
+      "armed": {
+        "ticks": 7234,
+        "timerDelayP95": 107.10000002384186,
+        "requestP95": 4.900000035762787,
+        "jsHeap": 2633544
+      },
+      "baseline": {
+        "ticks": 9322,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2451095
+      },
+      "evidenceBytes": 177320,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 962.323,
+      "armed": {
+        "ticks": 7480,
+        "timerDelayP95": 105.5,
+        "requestP95": 5.100000023841858,
+        "jsHeap": 2660832
+      },
+      "baseline": {
+        "ticks": 9623,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2607835
+      },
+      "evidenceBytes": 177323,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 992.4,
+      "armed": {
+        "ticks": 7730,
+        "timerDelayP95": 104.89999997615814,
+        "requestP95": 5.600000023841858,
+        "jsHeap": 2958976
+      },
+      "baseline": {
+        "ticks": 9924,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2767895
+      },
+      "evidenceBytes": 177332,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1022.496,
+      "armed": {
+        "ticks": 7969,
+        "timerDelayP95": 104.29999995231628,
+        "requestP95": 5.899999976158142,
+        "jsHeap": 2362500
+      },
+      "baseline": {
+        "ticks": 10225,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 1709247
+      },
+      "evidenceBytes": 177323,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1052.566,
+      "armed": {
+        "ticks": 8204,
+        "timerDelayP95": 103.10000002384186,
+        "requestP95": 5.600000023841858,
+        "jsHeap": 2900368
+      },
+      "baseline": {
+        "ticks": 10526,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 1956447
+      },
+      "evidenceBytes": 177318,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1082.742,
+      "armed": {
+        "ticks": 8443,
+        "timerDelayP95": 102.60000002384186,
+        "requestP95": 5.800000011920929,
+        "jsHeap": 2617044
+      },
+      "baseline": {
+        "ticks": 10827,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2175135
+      },
+      "evidenceBytes": 177321,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1112.831,
+      "armed": {
+        "ticks": 8695,
+        "timerDelayP95": 102.10000002384186,
+        "requestP95": 5.700000047683716,
+        "jsHeap": 3114032
+      },
+      "baseline": {
+        "ticks": 11128,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2652831
+      },
+      "evidenceBytes": 177330,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1142.896,
+      "armed": {
+        "ticks": 8950,
+        "timerDelayP95": 101.69999998807907,
+        "requestP95": 5.799999952316284,
+        "jsHeap": 2968088
+      },
+      "baseline": {
+        "ticks": 11429,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2163691
+      },
+      "evidenceBytes": 177332,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1172.984,
+      "armed": {
+        "ticks": 9199,
+        "timerDelayP95": 101.29999995231628,
+        "requestP95": 5.5,
+        "jsHeap": 3756064
+      },
+      "baseline": {
+        "ticks": 11730,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2423431
+      },
+      "evidenceBytes": 177319,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1203.08,
+      "armed": {
+        "ticks": 9441,
+        "timerDelayP95": 100.89999997615814,
+        "requestP95": 5.400000035762787,
+        "jsHeap": 2821840
+      },
+      "baseline": {
+        "ticks": 12031,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 1990323
+      },
+      "evidenceBytes": 177329,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1233.174,
+      "armed": {
+        "ticks": 9689,
+        "timerDelayP95": 100.5,
+        "requestP95": 5.400000035762787,
+        "jsHeap": 2856380
+      },
+      "baseline": {
+        "ticks": 12332,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.699999988079071,
+        "jsHeap": 2564535
+      },
+      "evidenceBytes": 177330,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1263.275,
+      "armed": {
+        "ticks": 9938,
+        "timerDelayP95": 100.39999997615814,
+        "requestP95": 5.399999976158142,
+        "jsHeap": 2978352
+      },
+      "baseline": {
+        "ticks": 12633,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 2214863
+      },
+      "evidenceBytes": 176791,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1293.374,
+      "armed": {
+        "ticks": 10181,
+        "timerDelayP95": 100.20000004768372,
+        "requestP95": 5.300000011920929,
+        "jsHeap": 3497476
+      },
+      "baseline": {
+        "ticks": 12934,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 2683967
+      },
+      "evidenceBytes": 177590,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1323.429,
+      "armed": {
+        "ticks": 10420,
+        "timerDelayP95": 100,
+        "requestP95": 5.199999988079071,
+        "jsHeap": 3837052
+      },
+      "baseline": {
+        "ticks": 13234,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 2684159
+      },
+      "evidenceBytes": 177585,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1353.488,
+      "armed": {
+        "ticks": 10658,
+        "timerDelayP95": 99.69999998807907,
+        "requestP95": 5.100000023841858,
+        "jsHeap": 2715136
+      },
+      "baseline": {
+        "ticks": 13535,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 2227675
+      },
+      "evidenceBytes": 177587,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1383.557,
+      "armed": {
+        "ticks": 10888,
+        "timerDelayP95": 99.60000002384186,
+        "requestP95": 5.099999964237213,
+        "jsHeap": 3940864
+      },
+      "baseline": {
+        "ticks": 13835,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 1787579
+      },
+      "evidenceBytes": 177591,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1413.617,
+      "armed": {
+        "ticks": 11129,
+        "timerDelayP95": 99.5,
+        "requestP95": 5,
+        "jsHeap": 3457112
+      },
+      "baseline": {
+        "ticks": 14136,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 2180123
+      },
+      "evidenceBytes": 177578,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1443.709,
+      "armed": {
+        "ticks": 11373,
+        "timerDelayP95": 99.39999997615814,
+        "requestP95": 5,
+        "jsHeap": 3956196
+      },
+      "baseline": {
+        "ticks": 14437,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.800000011920929,
+        "jsHeap": 2449979
+      },
+      "evidenceBytes": 177584,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1473.785,
+      "armed": {
+        "ticks": 11619,
+        "timerDelayP95": 99.19999998807907,
+        "requestP95": 5,
+        "jsHeap": 3278056
+      },
+      "baseline": {
+        "ticks": 14738,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 2354743
+      },
+      "evidenceBytes": 177574,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1503.869,
+      "armed": {
+        "ticks": 11857,
+        "timerDelayP95": 99,
+        "requestP95": 4.800000011920929,
+        "jsHeap": 3834244
+      },
+      "baseline": {
+        "ticks": 15039,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.799999952316284,
+        "jsHeap": 2283267
+      },
+      "evidenceBytes": 177587,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1533.959,
+      "armed": {
+        "ticks": 12099,
+        "timerDelayP95": 98.80000001192093,
+        "requestP95": 4.800000011920929,
+        "jsHeap": 3661404
+      },
+      "baseline": {
+        "ticks": 15339,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.800000011920929,
+        "jsHeap": 2976891
+      },
+      "evidenceBytes": 177587,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1564.051,
+      "armed": {
+        "ticks": 12346,
+        "timerDelayP95": 98.59999996423721,
+        "requestP95": 4.799999952316284,
+        "jsHeap": 5208616
+      },
+      "baseline": {
+        "ticks": 15640,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.899999976158142,
+        "jsHeap": 2840463
+      },
+      "evidenceBytes": 177039,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1594.127,
+      "armed": {
+        "ticks": 12590,
+        "timerDelayP95": 98.40000003576279,
+        "requestP95": 4.799999952316284,
+        "jsHeap": 2744812
+      },
+      "baseline": {
+        "ticks": 15941,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.899999976158142,
+        "jsHeap": 3840227
+      },
+      "evidenceBytes": 177580,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1624.223,
+      "armed": {
+        "ticks": 12823,
+        "timerDelayP95": 98.30000001192093,
+        "requestP95": 4.699999988079071,
+        "jsHeap": 3781424
+      },
+      "baseline": {
+        "ticks": 16242,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.899999976158142,
+        "jsHeap": 4051019
+      },
+      "evidenceBytes": 177580,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1654.315,
+      "armed": {
+        "ticks": 13048,
+        "timerDelayP95": 98.19999998807907,
+        "requestP95": 4.699999988079071,
+        "jsHeap": 4802772
+      },
+      "baseline": {
+        "ticks": 16543,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.899999976158142,
+        "jsHeap": 2598931
+      },
+      "evidenceBytes": 177047,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1684.408,
+      "armed": {
+        "ticks": 13280,
+        "timerDelayP95": 98.19999998807907,
+        "requestP95": 4.699999988079071,
+        "jsHeap": 4316776
+      },
+      "baseline": {
+        "ticks": 16844,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.900000035762787,
+        "jsHeap": 2803067
+      },
+      "evidenceBytes": 177593,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1714.489,
+      "armed": {
+        "ticks": 13512,
+        "timerDelayP95": 98.09999996423721,
+        "requestP95": 4.699999988079071,
+        "jsHeap": 2947312
+      },
+      "baseline": {
+        "ticks": 17145,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.900000035762787,
+        "jsHeap": 3035287
+      },
+      "evidenceBytes": 177571,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1744.602,
+      "armed": {
+        "ticks": 13760,
+        "timerDelayP95": 97.80000001192093,
+        "requestP95": 4.699999988079071,
+        "jsHeap": 3914348
+      },
+      "baseline": {
+        "ticks": 17446,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.900000035762787,
+        "jsHeap": 3268115
+      },
+      "evidenceBytes": 177587,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1774.701,
+      "armed": {
+        "ticks": 14013,
+        "timerDelayP95": 97.60000002384186,
+        "requestP95": 4.800000011920929,
+        "jsHeap": 5135320
+      },
+      "baseline": {
+        "ticks": 17747,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.900000035762787,
+        "jsHeap": 3471667
+      },
+      "evidenceBytes": 177590,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 1800.087,
+      "armed": {
+        "ticks": 14223,
+        "timerDelayP95": 97.30000001192093,
+        "requestP95": 4.799999952316284,
+        "jsHeap": 4125072
+      },
+      "baseline": {
+        "ticks": 18001,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 2.900000035762787,
+        "jsHeap": 2924011
+      },
+      "evidenceBytes": 177583,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    }
+  ]
+}

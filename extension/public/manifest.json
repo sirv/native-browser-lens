@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Native Browser Lens",
+  "description": "Local browser evidence for the Native Browser Lens Mac notebook.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "125",
+  "permissions": [
+    "debugger",
+    "nativeMessaging",
+    "storage",
+    "scripting",
+    "tabs",
+    "webNavigation",
+    "activeTab",
+    "alarms"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "devtools_page": "devtools.html",
+  "options_page": "options.html",
+  "action": {
+    "default_title": "Native Browser Lens — capture observation"
+  },
+  "commands": {
+    "capture-observation": {
+      "suggested_key": {
+        "default": "Alt+Shift+L",
+        "mac": "MacCtrl+Shift+L"
+      },
+      "description": "Capture an observation before opening the notebook"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'none'"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1bDXpFzylSerJJvEMF+Z2SMnCvchVSkVQxoHSdPyZ80F+xAS0ndEOVvsbnS3metgpnUU5eVnJQSSKj3oUkD0gK4Ri7nIT8D5Xo6YHUSfec8QHGQTqUGuwhSX8Kp67sAAyW3+boyhBZ11dehdLv4WWD1YemsXXlQi89P8n8nbtiIhRU6QCOohiuEbHDLtVCse2IHQUrcxoM2j1+7phEG1qKGD1EI64tL8Pp9q2n5upDIX2FR0KkNduo9qGBBZf1Vy07C8se+wtXs2Nl9JPKV6Ie5nFBeUtYuZd/7h/cg/EiG5flEV5a9fkfI/t34QxqUGxuIlMdHkpbZEY8FeS8nZqQIDAQAB"
+}

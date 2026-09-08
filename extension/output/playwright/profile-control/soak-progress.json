@@ -1,0 +1,114 @@
+{
+  "startedAt": "2026-09-08T20:23:21.355Z",
+  "requestedSeconds": 90,
+  "samples": [
+    {
+      "resources": {
+        "armed": {
+          "cpuSeconds": 4.6919450000000005,
+          "rssKiB": 1142368,
+          "processCount": 9
+        },
+        "baseline": {
+          "cpuSeconds": 1.9115199999999999,
+          "rssKiB": 817968,
+          "processCount": 7
+        }
+      },
+      "elapsedSeconds": 30.101,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 301,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 3.600000023841858,
+        "jsHeap": 3163896
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 301,
+        "timerDelayP95": 0.800000011920929,
+        "requestP95": 3.100000023841858,
+        "jsHeap": 1250416
+      },
+      "evidenceBytes": 194464,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "resources": {
+        "armed": {
+          "cpuSeconds": 6.468513000000001,
+          "rssKiB": 1135120,
+          "processCount": 9
+        },
+        "baseline": {
+          "cpuSeconds": 2.54357,
+          "rssKiB": 780032,
+          "processCount": 7
+        }
+      },
+      "elapsedSeconds": 60.203,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 249,
+        "timerDelayP95": 51.80000001192093,
+        "requestP95": 4.799999952316284,
+        "jsHeap": 3718046
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 602,
+        "timerDelayP95": 0.8999999761581421,
+        "requestP95": 2.899999976158142,
+        "jsHeap": 1726271
+      },
+      "evidenceBytes": 194462,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "resources": {
+        "armed": {
+          "cpuSeconds": 8.421379,
+          "rssKiB": 1064624,
+          "processCount": 9
+        },
+        "baseline": {
+          "cpuSeconds": 3.161689,
+          "rssKiB": 776928,
+          "processCount": 7
+        }
+      },
+      "elapsedSeconds": 90.102,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 299,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 3.199999988079071,
+        "jsHeap": 3439752
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 901,
+        "timerDelayP95": 0.9000000357627869,
+        "requestP95": 3,
+        "jsHeap": 2241903
+      },
+      "evidenceBytes": 194472,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    }
+  ]
+}

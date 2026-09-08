@@ -1,0 +1,66 @@
+{
+  "productionCollectorSHA256": "fa1fe0af471a0e417ba4fb492aebedb9ebebc856b3d17ec22930ab190b448fd0",
+  "nativeHostSHA256": "e4e955fae7e5c65699dadc3705214ac9b92be94a2b20d06f02a49134fefa8db4",
+  "devtoolsVerified": true,
+  "focusedWindowVerified": true,
+  "at": "2026-09-08T20:30:01.642Z",
+  "browser": "151.0.7922.34",
+  "fixtureOrigin": "http://127.0.0.1:50368",
+  "extensionId": "mfpclfngcgiahifebjbjlgagmlflcjpg",
+  "nativeHost": "/Users/veniaminkrachun/git/native-browser-lens/.build/out/Products/Release/lens-host",
+  "assertions": [
+    "two-project two-window isolation",
+    "focused-window active status",
+    "capture-time reflow revalidation",
+    "replacement node receives fresh spatial identity",
+    "MAIN-world diagnostic adapter",
+    "debugger network and 503 response",
+    "console exception with stack",
+    "sanitized same-origin body",
+    "sanitized storage",
+    "source stamp and viewport",
+    "durable extension capture-started before artifacts",
+    "real PNG capture via chunked native host",
+    "filesystem-watched native command roundtrip and client identity",
+    "navigation replacement",
+    "pause and resume"
+  ],
+  "captureEvents": 23,
+  "imageBytes": 59528,
+  "gaps": [
+    {
+      "reason": "Evidence starts when this tab is armed; earlier requests are unavailable",
+      "startedAt": 1788899393704,
+      "channel": "history"
+    },
+    {
+      "reason": "Database names and versions only; records are not read without a project adapter",
+      "startedAt": 1788899395803,
+      "channel": "indexedDB"
+    },
+    {
+      "reason": "Cache names only; cache bodies and keys are not enumerated",
+      "startedAt": 1788899395803,
+      "channel": "cacheStorage"
+    },
+    {
+      "reason": "Cookie values intentionally excluded; cookie state is not extracted",
+      "startedAt": 1788899395803,
+      "channel": "cookies"
+    },
+    {
+      "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured",
+      "startedAt": 1788899395993,
+      "channel": "frames"
+    },
+    {
+      "reason": "Diagnostic adapter identifies an unsealed working tree; commit label is not exact deployed source proof",
+      "startedAt": 1788899395993,
+      "channel": "source-build"
+    }
+  ],
+  "defaultsNotVerified": [
+    "default Chrome profile consent",
+    "native ScreenCaptureKit"
+  ]
+}

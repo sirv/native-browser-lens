@@ -1,0 +1,926 @@
+{
+  "context": {
+    "documentId": "11B769DD718D6FAB89FA255BB351419F",
+    "spatialBinding": "unresolved",
+    "spatialCoverage": {
+      "candidates": 2,
+      "scanned": 2,
+      "truncated": false,
+      "bytes": 459
+    },
+    "gaps": [
+      {
+        "channel": "indexedDB",
+        "reason": "Database names and versions only; records are not read without a project adapter"
+      },
+      {
+        "reason": "Cache names only; cache bodies and keys are not enumerated",
+        "channel": "cacheStorage"
+      },
+      {
+        "channel": "cookies",
+        "reason": "Cookie values intentionally excluded; cookie state is not extracted"
+      }
+    ],
+    "viewport": {
+      "scrollY": 0,
+      "height": 900,
+      "width": 1200,
+      "scrollX": 0,
+      "devicePixelRatio": 1,
+      "visualScale": 1
+    },
+    "storage": {
+      "indexedDB": [],
+      "sessionStorage": {
+        "entries": {
+          "session_id": "[REDACTED]",
+          "filter": "recent"
+        },
+        "omittedKeys": 0,
+        "totalKeys": 2
+      },
+      "cacheStorage": [],
+      "localStorage": {
+        "entries": {
+          "access_token": "[REDACTED]",
+          "view": {
+            "selected": "assets",
+            "token": "[REDACTED]"
+          },
+          "frameState": "ready"
+        },
+        "totalKeys": 3,
+        "omittedKeys": 0
+      }
+    },
+    "frames": [
+      {
+        "title": "Same-origin frame",
+        "src": "http://127.0.0.1:50368/frame"
+      }
+    ],
+    "childFrames": [
+      {
+        "context": {
+          "gaps": [
+            {
+              "reason": "Database names and versions only; records are not read without a project adapter",
+              "channel": "indexedDB"
+            },
+            {
+              "reason": "Cache names only; cache bodies and keys are not enumerated",
+              "channel": "cacheStorage"
+            },
+            {
+              "reason": "No explicit project diagnostic adapter available",
+              "channel": "application-cache"
+            },
+            {
+              "reason": "Cookie values intentionally excluded; cookie state is not extracted",
+              "channel": "cookies"
+            }
+          ],
+          "viewport": {
+            "devicePixelRatio": 1,
+            "width": 300,
+            "height": 150,
+            "scrollY": 0,
+            "scrollX": 0,
+            "visualScale": 1
+          },
+          "storage": {
+            "sessionStorage": {
+              "entries": {
+                "session_id": "[REDACTED]",
+                "filter": "recent"
+              },
+              "totalKeys": 2,
+              "omittedKeys": 0
+            },
+            "cacheStorage": [],
+            "indexedDB": [],
+            "localStorage": {
+              "entries": {
+                "frameState": "ready",
+                "view": {
+                  "token": "[REDACTED]",
+                  "selected": "assets"
+                },
+                "access_token": "[REDACTED]"
+              },
+              "totalKeys": 3,
+              "omittedKeys": 0
+            }
+          },
+          "url": "http://127.0.0.1:50368/frame",
+          "frames": [],
+          "title": ""
+        },
+        "frameId": 7,
+        "documentId": "24709178888D431FD2EE1B07A7BBD575"
+      }
+    ],
+    "sourceBuildVerified": false,
+    "application": {
+      "queryCache": {
+        "omitted": 0,
+        "total": 1,
+        "queries": [
+          {
+            "status": "success",
+            "family": "assets",
+            "fetchStatus": "idle",
+            "isInvalidated": false
+          }
+        ]
+      },
+      "session": {
+        "organizationSelected": true,
+        "status": "authenticated",
+        "sirvConnected": true
+      },
+      "build": {
+        "sourceState": "working-tree",
+        "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "environment": "development"
+      },
+      "version": 1,
+      "featureFlags": {
+        "fixture": true
+      }
+    },
+    "title": "Lens fixture /new-document",
+    "coordinateSpace": "browser-viewport",
+    "url": "http://127.0.0.1:50368/new-document",
+    "capturedAt": 1788899399309,
+    "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "elements": [],
+    "captureId": "aca6b54a-8ae8-45a4-b7e1-189f90994ed0"
+  },
+  "screenshotOmission": "Native window capture required: Either the '<all_urls>' or 'activeTab' permission is required.",
+  "observationId": "c9842024-2e55-4ee4-bd89-075ca9e446c7",
+  "captureId": "aca6b54a-8ae8-45a4-b7e1-189f90994ed0",
+  "identity": {
+    "clientId": "018421D9-CE60-47E3-8501-CE8E08B9DC6D",
+    "url": "http://127.0.0.1:50368/new-document",
+    "tabId": 227776350,
+    "windowId": 227776347,
+    "capturedAt": 1788899399309,
+    "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "title": "Lens fixture /new-document",
+    "documentId": "11B769DD718D6FAB89FA255BB351419F",
+    "projectId": "fixture-a"
+  },
+  "gaps": [
+    {
+      "reason": "Evidence starts when this tab is armed; earlier requests are unavailable",
+      "startedAt": 1788899397247,
+      "channel": "history"
+    },
+    {
+      "reason": "DevTools mode lacks complete console, exception, worker, and cache-provenance coverage",
+      "startedAt": 1788899397621,
+      "channel": "devtools"
+    },
+    {
+      "reason": "Database names and versions only; records are not read without a project adapter",
+      "startedAt": 1788899399309,
+      "channel": "indexedDB"
+    },
+    {
+      "reason": "Cache names only; cache bodies and keys are not enumerated",
+      "startedAt": 1788899399309,
+      "channel": "cacheStorage"
+    },
+    {
+      "reason": "Cookie values intentionally excluded; cookie state is not extracted",
+      "startedAt": 1788899399309,
+      "channel": "cookies"
+    },
+    {
+      "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured",
+      "startedAt": 1788899399316,
+      "channel": "frames"
+    },
+    {
+      "reason": "Diagnostic adapter identifies an unsealed working tree; commit label is not exact deployed source proof",
+      "startedAt": 1788899399317,
+      "channel": "source-build"
+    },
+    {
+      "reason": "Browser screenshot unavailable; DOM references are not bound to a later native image",
+      "startedAt": 1788899399317,
+      "channel": "spatial-binding"
+    }
+  ],
+  "events": [
+    {
+      "timestamp": 1788899396773,
+      "tabId": 227776350,
+      "id": "7a36c636-2ee7-4ceb-9a3d-2fa59edfb9b0",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": true,
+            "frameId": "00A459CB2581654AF211C807CBDEDF17",
+            "type": "default"
+          },
+          "id": 9,
+          "origin": "http://127.0.0.1:50368/",
+          "name": ""
+        }
+      },
+      "projectId": "fixture-a",
+      "documentId": "11B769DD718D6FAB89FA255BB351419F"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "e90107b8-128f-4312-8742-53ad3373220e",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "frameId": "00A459CB2581654AF211C807CBDEDF17",
+            "type": "isolated"
+          },
+          "id": 10,
+          "origin": "http://127.0.0.1:50368/",
+          "name": "__playwright_utility_world_page@a325f1645bdfd9df42a001607d6f9902"
+        }
+      },
+      "timestamp": 1788899396773,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "a5d93aaf-f826-4752-bd65-2aa71b899899",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "frameId": "00A459CB2581654AF211C807CBDEDF17",
+            "type": "isolated"
+          },
+          "id": 11,
+          "origin": "chrome-extension://mfpclfngcgiahifebjbjlgagmlflcjpg",
+          "name": "Native Browser Lens"
+        }
+      },
+      "timestamp": 1788899396773,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "55ea2554-4a72-4869-abd8-7c033ab73efb",
+      "kind": "request",
+      "data": {
+        "url": "http://127.0.0.1:50368/frame",
+        "initiator": {
+          "type": "parser",
+          "columnNumber": 767,
+          "lineNumber": 0,
+          "url": "http://127.0.0.1:50368/new-document"
+        },
+        "requestId": "3B5F223E4E9040C8CB2D3162586D9A6F",
+        "frameId": "8E7F83A55966B7BB45F7C8052F406082",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"macOS\"",
+          "Referer": "http://127.0.0.1:50368/new-document",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+          "Upgrade-Insecure-Requests": "1"
+        },
+        "sessionId": "[REDACTED]",
+        "resourceType": "Document"
+      },
+      "timestamp": 1788899396774,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "4179f521-0b64-406a-82b1-22e71a16bddb",
+      "kind": "response",
+      "data": {
+        "statusText": "OK",
+        "timing": {
+          "pushStart": 0,
+          "sslStart": -1,
+          "dnsStart": -1,
+          "pushEnd": 0,
+          "proxyEnd": -1,
+          "sendEnd": 0.135,
+          "workerReady": -1,
+          "dnsEnd": -1,
+          "workerRespondWithSettled": -1,
+          "connectEnd": -1,
+          "receiveHeadersStart": 0.629,
+          "receiveHeadersEnd": 0.654,
+          "sslEnd": -1,
+          "workerFetchStart": -1,
+          "workerStart": -1,
+          "sendStart": 0.104,
+          "requestTime": 374451.388802,
+          "connectStart": -1,
+          "proxyStart": -1
+        },
+        "protocol": "http/1.1",
+        "mimeType": "text/html",
+        "requestId": "3B5F223E4E9040C8CB2D3162586D9A6F",
+        "headers": {
+          "content-type": "text/html",
+          "Connection": "keep-alive",
+          "Keep-Alive": "timeout=5",
+          "Transfer-Encoding": "chunked",
+          "Date": "Tue, 08 Sep 2026 20:29:56 GMT"
+        },
+        "sessionId": "[REDACTED]",
+        "fromPrefetchCache": false,
+        "url": "http://127.0.0.1:50368/frame",
+        "status": 200,
+        "frameId": "8E7F83A55966B7BB45F7C8052F406082",
+        "fromServiceWorker": false,
+        "fromDiskCache": false,
+        "remoteIPAddress": "127.0.0.1"
+      },
+      "timestamp": 1788899396790,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "1cff1959-cdf7-45a9-9ef5-96c851d27322",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": true,
+            "type": "default",
+            "frameId": "8E7F83A55966B7BB45F7C8052F406082"
+          },
+          "id": 12,
+          "origin": "http://127.0.0.1:50368/",
+          "name": ""
+        }
+      },
+      "timestamp": 1788899396797,
+      "projectId": "fixture-a"
+    },
+    {
+      "timestamp": 1788899396797,
+      "tabId": 227776350,
+      "id": "041b4f51-d290-42a4-8191-4e40f56fa4da",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "type": "isolated",
+            "frameId": "8E7F83A55966B7BB45F7C8052F406082"
+          },
+          "id": 13,
+          "origin": "http://127.0.0.1:50368/",
+          "name": "__playwright_utility_world_page@a325f1645bdfd9df42a001607d6f9902"
+        }
+      },
+      "projectId": "fixture-a",
+      "documentId": "11B769DD718D6FAB89FA255BB351419F"
+    },
+    {
+      "timestamp": 1788899396797,
+      "tabId": 227776350,
+      "id": "ea33bdd2-3fe7-4418-90af-94ec285a45ac",
+      "kind": "console",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "args": [
+          {
+            "value": "fixture-child-frame",
+            "type": "string"
+          }
+        ],
+        "stackTrace": {
+          "callFrames": [
+            {
+              "lineNumber": 0,
+              "columnNumber": 127,
+              "functionName": "",
+              "url": "http://127.0.0.1:50368/frame",
+              "scriptId": "7"
+            }
+          ]
+        },
+        "type": "log"
+      },
+      "projectId": "fixture-a",
+      "documentId": "11B769DD718D6FAB89FA255BB351419F"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "5310ae3a-e375-45c5-95cf-159cb620b584",
+      "kind": "response-body",
+      "data": {
+        "requestId": "3B5F223E4E9040C8CB2D3162586D9A6F",
+        "omission": "Binary or document body excluded; metadata retained"
+      },
+      "timestamp": 1788899396797,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "dcef70ce-b0e3-44b6-bc10-bb0115ad2b86",
+      "kind": "request",
+      "data": {
+        "url": "http://127.0.0.1:50368/favicon.ico",
+        "initiator": {
+          "type": "other"
+        },
+        "requestId": "59498.10",
+        "frameId": "00A459CB2581654AF211C807CBDEDF17",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+          "Referer": "http://127.0.0.1:50368/new-document",
+          "sec-ch-ua-platform": "\"macOS\"",
+          "sec-ch-ua-mobile": "?0"
+        },
+        "sessionId": "[REDACTED]",
+        "resourceType": "Other"
+      },
+      "timestamp": 1788899396801,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "54e5af56-aaba-4538-b5ad-2c5cef190fe2",
+      "kind": "response",
+      "data": {
+        "statusText": "OK",
+        "timing": {
+          "dnsStart": -1,
+          "sslStart": -1,
+          "dnsEnd": -1,
+          "workerReady": -1,
+          "proxyEnd": -1,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "sendEnd": 0.115,
+          "workerRespondWithSettled": -1,
+          "receiveHeadersEnd": 0.306,
+          "receiveHeadersStart": 0.283,
+          "connectEnd": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "requestTime": 374451.414096,
+          "sendStart": 0.083,
+          "workerFetchStart": -1,
+          "connectStart": -1,
+          "proxyStart": -1
+        },
+        "protocol": "http/1.1",
+        "mimeType": "text/html",
+        "requestId": "59498.10",
+        "headers": {
+          "content-type": "text/html",
+          "Connection": "keep-alive",
+          "Transfer-Encoding": "chunked",
+          "Keep-Alive": "timeout=5",
+          "Date": "Tue, 08 Sep 2026 20:29:56 GMT"
+        },
+        "sessionId": "[REDACTED]",
+        "fromPrefetchCache": false,
+        "url": "http://127.0.0.1:50368/favicon.ico",
+        "frameId": "00A459CB2581654AF211C807CBDEDF17",
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "status": 200,
+        "remoteIPAddress": "127.0.0.1"
+      },
+      "timestamp": 1788899396801,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "f5d2a308-8f6b-48ac-a564-77c1ca70f731",
+      "kind": "response-body",
+      "data": {
+        "requestId": "59498.10",
+        "omission": "Binary or document body excluded; metadata retained"
+      },
+      "timestamp": 1788899396801,
+      "projectId": "fixture-a"
+    },
+    {
+      "timestamp": 1788899396801,
+      "tabId": 227776350,
+      "id": "14716c56-294b-47f9-b14d-4bc30337291d",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "type": "isolated",
+            "frameId": "8E7F83A55966B7BB45F7C8052F406082"
+          },
+          "id": 14,
+          "origin": "chrome-extension://mfpclfngcgiahifebjbjlgagmlflcjpg",
+          "name": "Native Browser Lens"
+        }
+      },
+      "projectId": "fixture-a",
+      "documentId": "11B769DD718D6FAB89FA255BB351419F"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "48a88948-03e1-40a4-b3b8-485fc896d38c",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "frameId": "8E7F83A55966B7BB45F7C8052F406082",
+            "type": "isolated"
+          },
+          "id": 14,
+          "origin": "chrome-extension://mfpclfngcgiahifebjbjlgagmlflcjpg",
+          "name": "Native Browser Lens"
+        }
+      },
+      "timestamp": 1788899397245,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "6e00370f-eef4-4288-8404-099092e46139",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "type": "isolated",
+            "frameId": "8E7F83A55966B7BB45F7C8052F406082"
+          },
+          "id": 13,
+          "origin": "http://127.0.0.1:50368/",
+          "name": "__playwright_utility_world_page@a325f1645bdfd9df42a001607d6f9902"
+        }
+      },
+      "timestamp": 1788899397246,
+      "projectId": "fixture-a"
+    },
+    {
+      "projectId": "fixture-a",
+      "tabId": 227776350,
+      "id": "f1fbdae4-0220-46d9-b08c-96c46fcbc2ca",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": true,
+            "type": "default",
+            "frameId": "8E7F83A55966B7BB45F7C8052F406082"
+          },
+          "id": 12,
+          "origin": "http://127.0.0.1:50368/",
+          "name": ""
+        }
+      },
+      "timestamp": 1788899397246,
+      "documentId": "11B769DD718D6FAB89FA255BB351419F"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "524ecd4d-fa7f-407f-a9af-e76ab62a0011",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "frameId": "00A459CB2581654AF211C807CBDEDF17",
+            "type": "isolated"
+          },
+          "id": 11,
+          "origin": "chrome-extension://mfpclfngcgiahifebjbjlgagmlflcjpg",
+          "name": "Native Browser Lens"
+        }
+      },
+      "timestamp": 1788899397246,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "d8da79af-2fe4-4920-9d15-3549e9bdd65f",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "type": "isolated",
+            "frameId": "00A459CB2581654AF211C807CBDEDF17"
+          },
+          "id": 10,
+          "origin": "http://127.0.0.1:50368/",
+          "name": "__playwright_utility_world_page@a325f1645bdfd9df42a001607d6f9902"
+        }
+      },
+      "timestamp": 1788899397246,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "6e45680a-df59-404f-8212-4b24ded989b3",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": true,
+            "type": "default",
+            "frameId": "00A459CB2581654AF211C807CBDEDF17"
+          },
+          "id": 9,
+          "origin": "http://127.0.0.1:50368/",
+          "name": ""
+        }
+      },
+      "timestamp": 1788899397246,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "c8a22cf3-ea05-43b5-976c-8c9570b0bf50",
+      "kind": "console",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "args": [
+          {
+            "value": "fixture-child-frame",
+            "type": "string"
+          }
+        ],
+        "stackTrace": {
+          "callFrames": [
+            {
+              "functionName": "",
+              "columnNumber": 127,
+              "scriptId": "7",
+              "url": "http://127.0.0.1:50368/frame",
+              "lineNumber": 0
+            }
+          ]
+        },
+        "type": "log"
+      },
+      "timestamp": 1788899397246,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "681b21df-582e-4ab1-834b-7903fb9f5f8e",
+      "kind": "response",
+      "data": {
+        "statusText": "OK",
+        "timing": {
+          "sslStart": -1,
+          "dnsStart": -1,
+          "pushEnd": 0,
+          "workerReady": -1,
+          "proxyEnd": -1,
+          "sendEnd": 0.026,
+          "pushStart": 0,
+          "dnsEnd": -1,
+          "connectEnd": -1,
+          "receiveHeadersEnd": 0.392,
+          "receiveHeadersStart": 0.214,
+          "workerRespondWithSettled": -1,
+          "sslEnd": -1,
+          "workerFetchStart": -1,
+          "requestTime": 374452.069799,
+          "sendStart": 0.026,
+          "workerStart": -1,
+          "connectStart": -1,
+          "proxyStart": -1
+        },
+        "protocol": "http/1.1",
+        "mimeType": "text/html",
+        "requestId": "59498.11",
+        "headers": {
+          "Date": "Tue, 08 Sep 2026 20:29:56 GMT",
+          "content-type": "text/html"
+        },
+        "sessionId": "[REDACTED]",
+        "fromPrefetchCache": false,
+        "url": "http://127.0.0.1:50368/new-document",
+        "frameId": "00A459CB2581654AF211C807CBDEDF17",
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "status": 200,
+        "remoteIPAddress": "127.0.0.1"
+      },
+      "timestamp": 1788899397464,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "86989068-ad72-4da5-b161-a6317c0330a3",
+      "kind": "network-failure",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "requestId": "59498.12",
+        "canceled": false,
+        "errorText": "net::ERR_CACHE_MISS"
+      },
+      "timestamp": 1788899397464,
+      "projectId": "fixture-a"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "48545e46-2a2a-4307-a42e-786be0857e46",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "type": "isolated",
+            "frameId": "00A459CB2581654AF211C807CBDEDF17"
+          },
+          "id": 15,
+          "origin": "http://127.0.0.1:50368/",
+          "name": "DevTools Performance Metrics"
+        }
+      },
+      "timestamp": 1788899397619,
+      "projectId": "fixture-a"
+    },
+    {
+      "projectId": "fixture-a",
+      "tabId": 227776350,
+      "id": "6071223d-3ded-442d-a8a5-a515b98be649",
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "auxData": {
+            "isDefault": false,
+            "frameId": "8E7F83A55966B7BB45F7C8052F406082",
+            "type": "isolated"
+          },
+          "id": 16,
+          "origin": "http://127.0.0.1:50368/",
+          "name": "DevTools Performance Metrics"
+        }
+      },
+      "timestamp": 1788899397619,
+      "documentId": "11B769DD718D6FAB89FA255BB351419F"
+    },
+    {
+      "documentId": "11B769DD718D6FAB89FA255BB351419F",
+      "tabId": 227776350,
+      "id": "38d090ef-2361-4133-8719-b737aa146068",
+      "kind": "devtools-network",
+      "data": {
+        "requestHeaders": [
+          {
+            "value": "*/*",
+            "name": "Accept"
+          },
+          {
+            "value": "gzip, deflate, br, zstd",
+            "name": "Accept-Encoding"
+          },
+          {
+            "value": "en-US,en;q=0.9",
+            "name": "Accept-Language"
+          },
+          {
+            "value": "keep-alive",
+            "name": "Connection"
+          },
+          {
+            "value": "127.0.0.1:50368",
+            "name": "Host"
+          },
+          {
+            "value": "http://127.0.0.1:50368/new-document",
+            "name": "Referer"
+          },
+          {
+            "value": "empty",
+            "name": "Sec-Fetch-Dest"
+          },
+          {
+            "value": "cors",
+            "name": "Sec-Fetch-Mode"
+          },
+          {
+            "value": "same-origin",
+            "name": "Sec-Fetch-Site"
+          },
+          {
+            "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+            "name": "User-Agent"
+          },
+          {
+            "value": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+            "name": "sec-ch-ua"
+          },
+          {
+            "value": "?0",
+            "name": "sec-ch-ua-mobile"
+          },
+          {
+            "value": "\"macOS\"",
+            "name": "sec-ch-ua-platform"
+          }
+        ],
+        "responseHeaders": [
+          {
+            "value": "keep-alive",
+            "name": "Connection"
+          },
+          {
+            "value": "Tue, 08 Sep 2026 20:29:57 GMT",
+            "name": "Date"
+          },
+          {
+            "value": "timeout=5",
+            "name": "Keep-Alive"
+          },
+          {
+            "value": "chunked",
+            "name": "Transfer-Encoding"
+          },
+          {
+            "value": "application/json",
+            "name": "content-type"
+          },
+          {
+            "value": "fixture-request-id",
+            "name": "x-request-id"
+          }
+        ],
+        "url": "http://127.0.0.1:50368/api/ok?devtools-proof=1",
+        "mimeType": "application/json",
+        "startedDateTime": "2026-09-08T20:29:57.705Z",
+        "method": "GET",
+        "status": 200,
+        "body": "{\"result\":\"fixture-ok-result\",\"token\":\"[REDACTED]\"}",
+        "durationMs": 0.6780000403523445,
+        "source": "devtools-network",
+        "format": "json",
+        "timings": {
+          "send": 0.031,
+          "wait": 0.2739999809265137,
+          "receive": 0.10900001507252455,
+          "_workerStart": -1,
+          "dns": -1,
+          "_workerReady": -1,
+          "ssl": -1,
+          "_workerRespondWithSettled": -1,
+          "_blocked_queueing": 0.1740000443533063,
+          "blocked": 0.26400004435330626,
+          "connect": -1,
+          "_workerFetchStart": -1
+        }
+      },
+      "timestamp": 1788899397761,
+      "projectId": "fixture-a"
+    }
+  ],
+  "clientId": "018421D9-CE60-47E3-8501-CE8E08B9DC6D"
+}

@@ -1,0 +1,57 @@
+{
+  "devtoolsVerified": true,
+  "at": "2026-09-08T20:08:32.585Z",
+  "browser": "151.0.7922.34",
+  "fixtureOrigin": "http://127.0.0.1:61790",
+  "extensionId": "cklnchbofldjhepilemaancdpihkjclb",
+  "nativeHost": "isolated real Native Messaging fixture receiver",
+  "assertions": [
+    "two-project tab isolation",
+    "debugger network and 503 response",
+    "console exception with stack",
+    "sanitized same-origin body",
+    "sanitized storage",
+    "source stamp and viewport",
+    "real PNG capture via chunked native host",
+    "navigation replacement",
+    "pause and resume"
+  ],
+  "captureEvents": 23,
+  "imageBytes": 24546,
+  "gaps": [
+    {
+      "channel": "history",
+      "reason": "Evidence starts when this tab is armed; earlier requests are unavailable",
+      "startedAt": 1788898105950
+    },
+    {
+      "channel": "indexedDB",
+      "reason": "Database names and versions only; records are not read without a project adapter",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "cacheStorage",
+      "reason": "Cache names only; cache bodies and keys are not enumerated",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "application-cache",
+      "reason": "No explicit project diagnostic adapter available",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "cookies",
+      "reason": "Cookie values intentionally excluded; cookie state is not extracted",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "frames",
+      "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured",
+      "startedAt": 1788898108079
+    }
+  ],
+  "defaultsNotVerified": [
+    "default Chrome profile consent",
+    "native ScreenCaptureKit"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "startedAt": "2026-09-08T20:19:22.408Z",
+  "requestedSeconds": 120,
+  "samples": [
+    {
+      "elapsedSeconds": 30.054,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 301,
+        "timerDelayP95": 1,
+        "requestP95": 4.599999964237213,
+        "jsHeap": 2543579
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 300,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 4.299999952316284,
+        "jsHeap": 2241298
+      },
+      "evidenceBytes": 195627,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 60.116,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 602,
+        "timerDelayP95": 1,
+        "requestP95": 4.199999988079071,
+        "jsHeap": 3078495
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 601,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 4.299999952316284,
+        "jsHeap": 2221723
+      },
+      "evidenceBytes": 195659,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 90.519,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 906,
+        "timerDelayP95": 1,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 3460971
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 905,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 4.199999988079071,
+        "jsHeap": 2781811
+      },
+      "evidenceBytes": 195641,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "elapsedSeconds": 120.084,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 1201,
+        "timerDelayP95": 1,
+        "requestP95": 3.699999988079071,
+        "jsHeap": 3176895
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 1201,
+        "timerDelayP95": 1.0999999642372131,
+        "requestP95": 3.800000011920929,
+        "jsHeap": 1955303
+      },
+      "evidenceBytes": 182317,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    }
+  ]
+}

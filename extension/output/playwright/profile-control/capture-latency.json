@@ -1,0 +1,108 @@
+{
+  "nativeHost": "/Users/veniaminkrachun/git/native-browser-lens/.build/out/Products/Release/lens-host",
+  "samples": [
+    {
+      "milliseconds": 228.9860410000001,
+      "events": 23,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 223.90962500000023,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 221.43074999999953,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 224.04916700000012,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 230.82800000000043,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 237.91504199999963,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 226.05566700000054,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 225.21445799999947,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 221.7602910000005,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 229.755083,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 221.8169170000001,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 225.46962499999972,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 220.48212499999863,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 221.55704200000037,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 230.86645800000042,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 287.8822079999991,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 346.7334580000006,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 230.15625,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 243.1840000000011,
+      "events": 36,
+      "screenshotOmission": null
+    },
+    {
+      "milliseconds": 378.39616699999897,
+      "events": 36,
+      "screenshotOmission": null
+    }
+  ],
+  "p50": 228.9860410000001,
+  "p95": 378.39616699999897,
+  "definition": "Browser capture request to real native host persisted capture; includes PNG acquisition, DOM/storage/source probes and framed PNG parts. Excludes native ScreenCaptureKit and notebook rendering."
+}

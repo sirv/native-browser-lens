@@ -1,0 +1,883 @@
+{
+  "observationId": "7a5de587-b23a-4344-a557-a5eae303e645",
+  "captureId": "edfc349e-430b-4fc8-91a9-f0c53b7f7dca",
+  "identity": {
+    "projectId": "fixture-a",
+    "tabId": 1816772910,
+    "windowId": 1816772907,
+    "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+    "url": "http://127.0.0.1:61790/a",
+    "title": "Lens fixture /a",
+    "capturedAt": 1788898108046,
+    "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "events": [
+    {
+      "id": "f090868c-1d86-4c74-86ae-6de0612890b1",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898105944,
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "id": 8,
+          "origin": "chrome-extension://cklnchbofldjhepilemaancdpihkjclb",
+          "name": "Native Browser Lens",
+          "auxData": {
+            "frameId": "E23580C56388518097412FA86F056D2C",
+            "isDefault": false,
+            "type": "isolated"
+          }
+        }
+      }
+    },
+    {
+      "id": "4796213d-1bd1-4c93-a00c-87c5f66dc5df",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898105944,
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "id": 7,
+          "origin": "chrome-extension://cklnchbofldjhepilemaancdpihkjclb",
+          "name": "Native Browser Lens",
+          "auxData": {
+            "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+            "isDefault": false,
+            "type": "isolated"
+          }
+        }
+      }
+    },
+    {
+      "id": "48fa23b7-fddd-4881-ac4c-933d7279a73f",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898105944,
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "id": 6,
+          "origin": "http://127.0.0.1:61790/",
+          "name": "__playwright_utility_world_page@1b36571c82670ded10b51e5ed0bac274",
+          "auxData": {
+            "frameId": "E23580C56388518097412FA86F056D2C",
+            "isDefault": false,
+            "type": "isolated"
+          }
+        }
+      }
+    },
+    {
+      "id": "203dfcda-fbd4-4f5e-a05e-acaa5c11af1e",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898105944,
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "id": 5,
+          "origin": "http://127.0.0.1:61790/",
+          "name": "",
+          "auxData": {
+            "frameId": "E23580C56388518097412FA86F056D2C",
+            "isDefault": true,
+            "type": "default"
+          }
+        }
+      }
+    },
+    {
+      "id": "a7fce150-53a2-4514-9d03-b11893da4630",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898105944,
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "id": 4,
+          "origin": "http://127.0.0.1:61790/",
+          "name": "__playwright_utility_world_page@1b36571c82670ded10b51e5ed0bac274",
+          "auxData": {
+            "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+            "isDefault": false,
+            "type": "isolated"
+          }
+        }
+      }
+    },
+    {
+      "id": "77ca1ff2-9fe2-4b83-95dc-0a83ed405e36",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898105945,
+      "kind": "frame",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "executionContext": {
+          "id": 3,
+          "origin": "http://127.0.0.1:61790/",
+          "name": "",
+          "auxData": {
+            "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+            "isDefault": true,
+            "type": "default"
+          }
+        }
+      }
+    },
+    {
+      "id": "03b25411-6741-415b-be74-6aafab993620",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898105945,
+      "kind": "console",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "type": "log",
+        "args": [
+          {
+            "type": "string",
+            "value": "fixture-child-frame"
+          }
+        ],
+        "stackTrace": {
+          "callFrames": [
+            {
+              "columnNumber": 127,
+              "functionName": "",
+              "lineNumber": 0,
+              "scriptId": "7",
+              "url": "http://127.0.0.1:61790/frame"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "95c12917-8c3c-433e-9428-d02c5a3048c4",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106184,
+      "kind": "action",
+      "data": {
+        "element": {
+          "tag": "button",
+          "role": null,
+          "label": "Reproduce defect",
+          "selector": "#reproduce",
+          "source": "src/Fixture.tsx:12:3",
+          "bounds": {
+            "x": 58,
+            "y": 188.21875,
+            "width": 187.625,
+            "height": 53
+          },
+          "point": {
+            "x": 151.80999755859375,
+            "y": 214.7100067138672
+          },
+          "viewport": {
+            "width": 1200,
+            "height": 900,
+            "devicePixelRatio": 1
+          },
+          "observedAt": 1788898106181
+        },
+        "frameId": 0,
+        "frameDocumentId": "F0EC902A2ADDA032C01B96B16E32B653"
+      }
+    },
+    {
+      "id": "a411d589-2dd9-432a-9f5e-dde38555acf2",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106184,
+      "kind": "console",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "type": "error",
+        "args": [
+          {
+            "type": "string",
+            "value": "fixture-console-error"
+          }
+        ],
+        "stackTrace": {
+          "callFrames": [
+            {
+              "columnNumber": 183,
+              "functionName": "",
+              "lineNumber": 5,
+              "scriptId": "6",
+              "url": "http://127.0.0.1:61790/a"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "aea7fcd4-1b55-4305-b037-0b7179a4171f",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106184,
+      "kind": "request",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+        "requestId": "41598.4",
+        "method": "GET",
+        "url": "http://127.0.0.1:61790/api/fail",
+        "headers": {
+          "Referer": "http://127.0.0.1:61790/a",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+          "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"macOS\""
+        },
+        "initiator": {
+          "stack": {
+            "callFrames": [
+              {
+                "columnNumber": 220,
+                "functionName": "",
+                "lineNumber": 5,
+                "scriptId": "6",
+                "url": "http://127.0.0.1:61790/a"
+              }
+            ]
+          },
+          "type": "script"
+        },
+        "resourceType": "Fetch"
+      }
+    },
+    {
+      "id": "8f7d275c-1e1b-4270-98eb-e353f231fb15",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106209,
+      "kind": "response",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+        "requestId": "41598.4",
+        "url": "http://127.0.0.1:61790/api/fail",
+        "status": 503,
+        "statusText": "Service Unavailable",
+        "mimeType": "application/json",
+        "headers": {
+          "Connection": "keep-alive",
+          "Date": "Tue, 08 Sep 2026 20:08:26 GMT",
+          "Keep-Alive": "timeout=5",
+          "Transfer-Encoding": "chunked",
+          "content-type": "application/json"
+        },
+        "protocol": "http/1.1",
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "timing": {
+          "connectEnd": -1,
+          "connectStart": -1,
+          "dnsEnd": -1,
+          "dnsStart": -1,
+          "proxyEnd": -1,
+          "proxyStart": -1,
+          "pushEnd": 0,
+          "pushStart": 0,
+          "receiveHeadersEnd": 0.781,
+          "receiveHeadersStart": 0.749,
+          "requestTime": 373160.802496,
+          "sendEnd": 0.264,
+          "sendStart": 0.118,
+          "sslEnd": -1,
+          "sslStart": -1,
+          "workerFetchStart": -1,
+          "workerReady": -1,
+          "workerRespondWithSettled": -1,
+          "workerStart": -1
+        },
+        "remoteIPAddress": "127.0.0.1"
+      }
+    },
+    {
+      "id": "6c0c0a6c-e47e-4a1d-8983-38c687fa23c0",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106209,
+      "kind": "console",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "entry": {
+          "level": "error",
+          "networkRequestId": "41598.4",
+          "source": "network",
+          "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+          "timestamp": 1788898106208.716,
+          "url": "http://127.0.0.1:61790/api/fail"
+        }
+      }
+    },
+    {
+      "id": "cc8a1338-b915-4724-ae72-8f705dd87f3f",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106209,
+      "kind": "request",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+        "requestId": "41598.5",
+        "method": "GET",
+        "url": "http://127.0.0.1:61790/api/cache",
+        "headers": {
+          "Referer": "http://127.0.0.1:61790/a",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+          "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"macOS\""
+        },
+        "initiator": {
+          "stack": {
+            "callFrames": [
+              {
+                "columnNumber": 245,
+                "functionName": "",
+                "lineNumber": 5,
+                "scriptId": "6",
+                "url": "http://127.0.0.1:61790/a"
+              }
+            ]
+          },
+          "type": "script"
+        },
+        "resourceType": "Fetch"
+      }
+    },
+    {
+      "id": "953e7cf9-69f0-4739-9226-d6707bbd3737",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106211,
+      "kind": "response",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+        "requestId": "41598.5",
+        "url": "http://127.0.0.1:61790/api/cache",
+        "status": 200,
+        "statusText": "OK",
+        "mimeType": "application/json",
+        "headers": {
+          "Connection": "keep-alive",
+          "Date": "Tue, 08 Sep 2026 20:08:26 GMT",
+          "Keep-Alive": "timeout=5",
+          "Transfer-Encoding": "chunked",
+          "cache-control": "public, max-age=3600",
+          "content-type": "application/json",
+          "etag": "fixture-v1",
+          "x-request-id": "fixture-request-id"
+        },
+        "protocol": "http/1.1",
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "timing": {
+          "connectEnd": -1,
+          "connectStart": -1,
+          "dnsEnd": -1,
+          "dnsStart": -1,
+          "proxyEnd": -1,
+          "proxyStart": -1,
+          "pushEnd": 0,
+          "pushStart": 0,
+          "receiveHeadersEnd": 0.977,
+          "receiveHeadersStart": 0.904,
+          "requestTime": 373160.829744,
+          "sendEnd": 0.237,
+          "sendStart": 0.193,
+          "sslEnd": -1,
+          "sslStart": -1,
+          "workerFetchStart": -1,
+          "workerReady": -1,
+          "workerRespondWithSettled": -1,
+          "workerStart": -1
+        },
+        "remoteIPAddress": "127.0.0.1"
+      }
+    },
+    {
+      "id": "f71bcd8b-7830-4252-be9a-d315dc020e2b",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106211,
+      "kind": "request",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+        "requestId": "41598.6",
+        "method": "GET",
+        "url": "http://127.0.0.1:61790/api/cache",
+        "headers": {
+          "Referer": "http://127.0.0.1:61790/a",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+          "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"macOS\""
+        },
+        "initiator": {
+          "stack": {
+            "callFrames": [
+              {
+                "columnNumber": 271,
+                "functionName": "",
+                "lineNumber": 5,
+                "scriptId": "6",
+                "url": "http://127.0.0.1:61790/a"
+              }
+            ]
+          },
+          "type": "script"
+        },
+        "resourceType": "Fetch"
+      }
+    },
+    {
+      "id": "0cbc373e-93d2-4a56-8853-b936bf8fc562",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106211,
+      "kind": "response",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+        "requestId": "41598.6",
+        "url": "http://127.0.0.1:61790/api/cache",
+        "status": 200,
+        "statusText": "OK",
+        "mimeType": "application/json",
+        "headers": {
+          "Date": "Tue, 08 Sep 2026 20:08:26 GMT",
+          "cache-control": "public, max-age=3600",
+          "content-type": "application/json",
+          "etag": "fixture-v1",
+          "x-request-id": "fixture-request-id"
+        },
+        "protocol": "http/1.1",
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "timing": {
+          "connectEnd": -1,
+          "connectStart": -1,
+          "dnsEnd": -1,
+          "dnsStart": -1,
+          "proxyEnd": -1,
+          "proxyStart": -1,
+          "pushEnd": 0,
+          "pushStart": 0,
+          "receiveHeadersEnd": 0.389,
+          "receiveHeadersStart": 0.363,
+          "requestTime": 373160.831291,
+          "sendEnd": 0.031,
+          "sendStart": 0.031,
+          "sslEnd": -1,
+          "sslStart": -1,
+          "workerFetchStart": -1,
+          "workerReady": -1,
+          "workerRespondWithSettled": -1,
+          "workerStart": -1
+        },
+        "remoteIPAddress": "127.0.0.1"
+      }
+    },
+    {
+      "id": "54c6994a-5ea8-4411-8085-21eb1152948e",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106212,
+      "kind": "request",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "frameId": "7E8C2ED8EB8CE672CE62339524AF9D26",
+        "requestId": "41598.7",
+        "method": "GET",
+        "url": "http://127.0.0.1:1/unreachable",
+        "headers": {
+          "Referer": "http://127.0.0.1:61790/",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+          "sec-ch-ua": "\"Chromium\";v=\"151\", \"Not=A?Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"macOS\""
+        },
+        "initiator": {
+          "stack": {
+            "callFrames": [
+              {
+                "columnNumber": 291,
+                "functionName": "",
+                "lineNumber": 5,
+                "scriptId": "6",
+                "url": "http://127.0.0.1:61790/a"
+              }
+            ]
+          },
+          "type": "script"
+        },
+        "resourceType": "Fetch"
+      }
+    },
+    {
+      "id": "ca1ff426-9a73-481d-b02b-9787dc9e298c",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106212,
+      "kind": "exception",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "details": {
+          "columnNumber": 367,
+          "exception": {
+            "className": "Error",
+            "description": "Error: fixture-exception\n    at http://127.0.0.1:61790/a:6:368",
+            "objectId": "491196761956728387.3.1",
+            "preview": {
+              "description": "Error: fixture-exception\n    at http://127.0.0.1:61790/a:6:368",
+              "overflow": false,
+              "properties": [
+                {
+                  "name": "stack",
+                  "type": "string",
+                  "value": "Error: fixture-exception\n    at http://127.0.0.1:61790/a:6:368"
+                },
+                {
+                  "name": "message",
+                  "type": "string",
+                  "value": "fixture-exception"
+                }
+              ],
+              "subtype": "error",
+              "type": "object"
+            },
+            "subtype": "error",
+            "type": "object"
+          },
+          "exceptionId": 1,
+          "executionContextId": 3,
+          "lineNumber": 5,
+          "scriptId": "6",
+          "stackTrace": {
+            "callFrames": [
+              {
+                "columnNumber": 367,
+                "functionName": "",
+                "lineNumber": 5,
+                "scriptId": "6",
+                "url": "http://127.0.0.1:61790/a"
+              }
+            ]
+          },
+          "text": "Uncaught",
+          "url": "http://127.0.0.1:61790/a"
+        }
+      }
+    },
+    {
+      "id": "c653ac1f-d080-4e68-a269-5531f46ec4ba",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106212,
+      "kind": "network-failure",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "requestId": "41598.7",
+        "errorText": "net::ERR_UNSAFE_PORT",
+        "canceled": false
+      }
+    },
+    {
+      "id": "5df51cc8-25fd-474f-acf4-1dd0bf2f18f0",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106212,
+      "kind": "console",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "entry": {
+          "level": "error",
+          "networkRequestId": "41598.7",
+          "source": "network",
+          "text": "Failed to load resource: net::ERR_UNSAFE_PORT",
+          "timestamp": 1788898106212.14,
+          "url": "http://127.0.0.1:1/unreachable"
+        }
+      }
+    },
+    {
+      "id": "319a3b2c-9a2d-47cb-bbab-125b40819c09",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106260,
+      "kind": "response-body",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "requestId": "41598.4",
+        "body": "{\"error\":\"fixture unavailable\",\"token\":\"[REDACTED]\"}",
+        "format": "json"
+      }
+    },
+    {
+      "id": "d1150995-009a-4082-b12f-c0abd4059af4",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106262,
+      "kind": "response-body",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "requestId": "41598.5",
+        "body": "{\"result\":\"fixture-cached-result\",\"secret\":\"[REDACTED]\"}",
+        "format": "json"
+      }
+    },
+    {
+      "id": "a500d278-4385-47ff-9624-08e605d52b4a",
+      "projectId": "fixture-a",
+      "tabId": 1816772910,
+      "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+      "timestamp": 1788898106262,
+      "kind": "response-body",
+      "data": {
+        "sessionId": "[REDACTED]",
+        "requestId": "41598.6",
+        "body": "{\"result\":\"fixture-cached-result\",\"secret\":\"[REDACTED]\"}",
+        "format": "json"
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "channel": "history",
+      "reason": "Evidence starts when this tab is armed; earlier requests are unavailable",
+      "startedAt": 1788898105950
+    },
+    {
+      "channel": "indexedDB",
+      "reason": "Database names and versions only; records are not read without a project adapter",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "cacheStorage",
+      "reason": "Cache names only; cache bodies and keys are not enumerated",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "application-cache",
+      "reason": "No explicit project diagnostic adapter available",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "cookies",
+      "reason": "Cookie values intentionally excluded; cookie state is not extracted",
+      "startedAt": 1788898108046
+    },
+    {
+      "channel": "frames",
+      "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured",
+      "startedAt": 1788898108079
+    }
+  ],
+  "context": {
+    "captureId": "edfc349e-430b-4fc8-91a9-f0c53b7f7dca",
+    "documentId": "F0EC902A2ADDA032C01B96B16E32B653",
+    "coordinateSpace": "browser-viewport",
+    "capturedAt": 1788898108046,
+    "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "elements": [
+      {
+        "bounds": {
+          "height": 53,
+          "width": 187.625,
+          "x": 58,
+          "y": 188.21875
+        },
+        "label": "Reproduce defect",
+        "observedAt": 1788898106181,
+        "point": {
+          "x": 151.80999755859375,
+          "y": 214.7100067138672
+        },
+        "role": null,
+        "selector": "#reproduce",
+        "source": "src/Fixture.tsx:12:3",
+        "tag": "button",
+        "viewport": {
+          "devicePixelRatio": 1,
+          "height": 900,
+          "width": 1200
+        }
+      }
+    ],
+    "frames": [
+      {
+        "src": "http://127.0.0.1:61790/frame",
+        "title": "Same-origin frame"
+      }
+    ],
+    "gaps": [
+      {
+        "channel": "indexedDB",
+        "reason": "Database names and versions only; records are not read without a project adapter"
+      },
+      {
+        "channel": "cacheStorage",
+        "reason": "Cache names only; cache bodies and keys are not enumerated"
+      },
+      {
+        "channel": "application-cache",
+        "reason": "No explicit project diagnostic adapter available"
+      },
+      {
+        "channel": "cookies",
+        "reason": "Cookie values intentionally excluded; cookie state is not extracted"
+      }
+    ],
+    "storage": {
+      "cacheStorage": [],
+      "indexedDB": [],
+      "localStorage": {
+        "entries": {
+          "access_token": "[REDACTED]",
+          "frameState": "ready",
+          "view": {
+            "selected": "assets",
+            "token": "[REDACTED]"
+          }
+        },
+        "omittedKeys": 0,
+        "totalKeys": 3
+      },
+      "sessionStorage": {
+        "entries": {
+          "filter": "recent",
+          "session_id": "[REDACTED]"
+        },
+        "omittedKeys": 0,
+        "totalKeys": 2
+      }
+    },
+    "title": "Lens fixture /a",
+    "url": "http://127.0.0.1:61790/a",
+    "viewport": {
+      "devicePixelRatio": 1,
+      "height": 900,
+      "scrollX": 0,
+      "scrollY": 0,
+      "visualScale": 1,
+      "width": 1200
+    },
+    "childFrames": [
+      {
+        "frameId": 4,
+        "documentId": "AA2E9022C2ACD221E25D4B6B6BDA7D19",
+        "context": {
+          "elements": [
+            {
+              "bounds": {
+                "height": 21,
+                "width": 284,
+                "x": 8,
+                "y": 8
+              },
+              "label": "Frame actionconsole.log(\"fixture-child-frame\");localStorage.setItem(\"frameState\",\"ready\")",
+              "role": null,
+              "selector": "body",
+              "tag": "body"
+            }
+          ],
+          "frames": [],
+          "gaps": [
+            {
+              "channel": "indexedDB",
+              "reason": "Database names and versions only; records are not read without a project adapter"
+            },
+            {
+              "channel": "cacheStorage",
+              "reason": "Cache names only; cache bodies and keys are not enumerated"
+            },
+            {
+              "channel": "application-cache",
+              "reason": "No explicit project diagnostic adapter available"
+            },
+            {
+              "channel": "cookies",
+              "reason": "Cookie values intentionally excluded; cookie state is not extracted"
+            }
+          ],
+          "storage": {
+            "cacheStorage": [],
+            "indexedDB": [],
+            "localStorage": {
+              "entries": {
+                "access_token": "[REDACTED]",
+                "frameState": "ready",
+                "view": {
+                  "selected": "assets",
+                  "token": "[REDACTED]"
+                }
+              },
+              "omittedKeys": 0,
+              "totalKeys": 3
+            },
+            "sessionStorage": {
+              "entries": {
+                "filter": "recent",
+                "session_id": "[REDACTED]"
+              },
+              "omittedKeys": 0,
+              "totalKeys": 2
+            }
+          },
+          "title": "",
+          "url": "http://127.0.0.1:61790/frame",
+          "viewport": {
+            "devicePixelRatio": 1,
+            "height": 150,
+            "scrollX": 0,
+            "scrollY": 0,
+            "visualScale": 1,
+            "width": 300
+          }
+        }
+      }
+    ]
+  }
+}

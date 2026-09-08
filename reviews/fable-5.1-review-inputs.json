@@ -1,0 +1,1603 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T20:54:12.118021+00:00",
+  "purpose": "Read-only Fable 5.1 adversarial review input identity; reports and scratch outputs are excluded.",
+  "repositories": [
+    {
+      "name": "lens",
+      "path": "/Users/veniaminkrachun/git/native-browser-lens",
+      "head": null,
+      "excludedPrefixes": [
+        "reviews/"
+      ],
+      "status": [
+        {
+          "status": "??",
+          "path": ".gitignore"
+        },
+        {
+          "status": "??",
+          "path": "ACCEPTANCE.md"
+        },
+        {
+          "status": "??",
+          "path": "AGENTS.md"
+        },
+        {
+          "status": "??",
+          "path": "CONTRACT.md"
+        },
+        {
+          "status": "??",
+          "path": "Package.swift"
+        },
+        {
+          "status": "??",
+          "path": "README.md"
+        },
+        {
+          "status": "??",
+          "path": "Sources/CSQLite/module.modulemap"
+        },
+        {
+          "status": "??",
+          "path": "Sources/CSQLite/shim.h"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensCore/BridgeMailbox.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensCore/EvidenceStore.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensCore/Investigator.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensCore/KeychainStore.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensCore/Models.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensCore/ProjectInvestigationTools.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensCore/VibeQClient.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/LensHost/main.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/AnnotationCanvas.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/LensAppModel.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/LensSettingsView.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/LensTheme.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/NativeCapture.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/NativeLensApp.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/NotebookView.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/ReviewViews.swift"
+        },
+        {
+          "status": "??",
+          "path": "Sources/NativeLens/SpeechCapture.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/LensCoreTests/AuthorityBindingTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/LensCoreTests/BridgeTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/LensCoreTests/EvidenceStoreTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/LensCoreTests/FilingTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/LensCoreTests/InvestigationTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/LensCoreTests/OpenAIClientTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/LensCoreTests/ProjectInvestigationToolsTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/NativeLensTests/AnnotationTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/NativeLensTests/FilingVisualTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "Tests/NativeLensTests/NotebookStateTests.swift"
+        },
+        {
+          "status": "??",
+          "path": "extension/README.md"
+        },
+        {
+          "status": "??",
+          "path": "extension/VERIFICATION.md"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collection-control/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collection-control/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collection-control/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collection-control/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collection-control/soak-progress.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collection-control/soak-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/devtools/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/devtools/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/devtools/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/devtools/devtools-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/devtools/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/native-host/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/native-host/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/native-host/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/native-host/devtools-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/native-host/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/profile-control/capture-latency.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/profile-control/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/profile-control/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/profile-control/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/profile-control/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/profile-control/soak-progress.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/profile-control/soak-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/revalidated/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/revalidated/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/revalidated/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/revalidated/devtools-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/revalidated/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/soak-progress.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/soak-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/tab-selection-control/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/tab-selection-control/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/tab-selection-control/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/tab-selection-control/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/tab-selection-control/soak-progress.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/tab-selection-control/soak-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/visibility-comparison/collector-capture.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/visibility-comparison/collector-capture.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/visibility-comparison/connection.png"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/visibility-comparison/smoke-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/visibility-comparison/soak-progress.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/output/playwright/visibility-comparison/soak-result.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/package-lock.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/package.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/public/devtools.html"
+        },
+        {
+          "status": "??",
+          "path": "extension/public/manifest.json"
+        },
+        {
+          "status": "??",
+          "path": "extension/public/options.css"
+        },
+        {
+          "status": "??",
+          "path": "extension/public/options.html"
+        },
+        {
+          "status": "??",
+          "path": "extension/scripts/build.mjs"
+        },
+        {
+          "status": "??",
+          "path": "extension/scripts/extension-id.mjs"
+        },
+        {
+          "status": "??",
+          "path": "extension/scripts/fixture.mjs"
+        },
+        {
+          "status": "??",
+          "path": "extension/scripts/smoke.mjs"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/background.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/collector.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/devtools.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/lifecycle.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/options.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/probe.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/sanitize.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/spatial.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/src/types.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/test/collector.test.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/test/lifecycle.test.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/test/sanitize.test.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/test/spatial.test.ts"
+        },
+        {
+          "status": "??",
+          "path": "extension/tsconfig.json"
+        },
+        {
+          "status": "??",
+          "path": "integrations/sirv-studio.md"
+        },
+        {
+          "status": "??",
+          "path": "integrations/vibeq.md"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/default-profile.json"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/installed-build.json"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/capture-678CA1A6-9024-4B08-A2CE-C545201680E6.png"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/capture-ca4ae4be-d5d2-4bf2-b93f-79bfe03d3de2.png"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/evidence.json"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/report.md"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/notebook-runtime.json"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/release-build.log"
+        },
+        {
+          "status": "??",
+          "path": "output/acceptance/swift-final-suite.log"
+        },
+        {
+          "status": "??",
+          "path": "output/native-ui/filing-states-dark.png"
+        },
+        {
+          "status": "??",
+          "path": "output/native-ui/filing-states-light.png"
+        },
+        {
+          "status": "??",
+          "path": "packaging/Info.plist"
+        },
+        {
+          "status": "??",
+          "path": "packaging/entitlements.plist"
+        },
+        {
+          "status": "??",
+          "path": "scripts/build-app.sh"
+        },
+        {
+          "status": "??",
+          "path": "scripts/install-local.py"
+        }
+      ],
+      "trackedDiffSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "files": {
+        ".gitignore": {
+          "type": "file",
+          "bytes": 91,
+          "sha256": "a15ecd89d53da659269c3285be291a6e0c9e3b768740a7485c66d0a5267c637f",
+          "mode": 420
+        },
+        "ACCEPTANCE.md": {
+          "type": "file",
+          "bytes": 14578,
+          "sha256": "7c43a037c4ec0ade3240fa13344d0a3abd81d81013bd72f3e8772bb76a6353ae",
+          "mode": 420
+        },
+        "AGENTS.md": {
+          "type": "file",
+          "bytes": 738,
+          "sha256": "ee1894090fb65a8f888fb287bf77f89511935c19fe944738092f7115934b6299",
+          "mode": 420
+        },
+        "CONTRACT.md": {
+          "type": "file",
+          "bytes": 6840,
+          "sha256": "53626d3b1859fc655edbf182d1fe4419ede9ac80688a4defdef4d00ce17e39ba",
+          "mode": 420
+        },
+        "Package.swift": {
+          "type": "file",
+          "bytes": 790,
+          "sha256": "ac8e8261993e5db4474fa335c2c9f127d1c6145e9a8118c6fffafad3f7b8a2a1",
+          "mode": 420
+        },
+        "README.md": {
+          "type": "file",
+          "bytes": 6673,
+          "sha256": "a057e5afddf3fa8196a193f4b805baa98f129131741d2cff3ed7fc13256e9afc",
+          "mode": 420
+        },
+        "Sources/CSQLite/module.modulemap": {
+          "type": "file",
+          "bytes": 80,
+          "sha256": "bbfe59a972a3e8e09e347c04bc22c0eacd2544881af8a4b6068bfc30b38466e8",
+          "mode": 420
+        },
+        "Sources/CSQLite/shim.h": {
+          "type": "file",
+          "bytes": 21,
+          "sha256": "b052d8e561e942f97b503033ecd2eaa2b35213bdbf374983efe9e68eabdfc024",
+          "mode": 420
+        },
+        "Sources/LensCore/BridgeMailbox.swift": {
+          "type": "file",
+          "bytes": 13769,
+          "sha256": "a645b0fe64f12c08d3e67f18f718332ac81be4a070b356339ea600a37a2d2150",
+          "mode": 420
+        },
+        "Sources/LensCore/EvidenceStore.swift": {
+          "type": "file",
+          "bytes": 14606,
+          "sha256": "1ab3772b9061b51d28c35468b7769d1451eec80812faf154db45084703a4b255",
+          "mode": 420
+        },
+        "Sources/LensCore/Investigator.swift": {
+          "type": "file",
+          "bytes": 19262,
+          "sha256": "ca43b68da820da9b6a16fd3b30c164c53303176cf37f787f60ab96b07b58b603",
+          "mode": 420
+        },
+        "Sources/LensCore/KeychainStore.swift": {
+          "type": "file",
+          "bytes": 1821,
+          "sha256": "7d0720557dd98733b4b29129ef13b3f62d070270175b339a1557ed2d404f6766",
+          "mode": 420
+        },
+        "Sources/LensCore/Models.swift": {
+          "type": "file",
+          "bytes": 10828,
+          "sha256": "3c8d9e021177a5fadac5c04eed8dc1cc8e1694ba87c65da1540e65ca65b47855",
+          "mode": 420
+        },
+        "Sources/LensCore/ProjectInvestigationTools.swift": {
+          "type": "file",
+          "bytes": 14265,
+          "sha256": "f1d8a494c9f570746e03e2c28f8f318732e4c76510686170882ad3e895d04eb5",
+          "mode": 420
+        },
+        "Sources/LensCore/VibeQClient.swift": {
+          "type": "file",
+          "bytes": 14244,
+          "sha256": "8b5d7569e0c6e7c3ff49cdb27cb30f6513f024cac586b5e4ec25d4bd693a2a09",
+          "mode": 420
+        },
+        "Sources/LensHost/main.swift": {
+          "type": "file",
+          "bytes": 1399,
+          "sha256": "4dcb59a8242323c63480f3ff132c4323197b57553c54fbf7e1282aea487d6317",
+          "mode": 420
+        },
+        "Sources/NativeLens/AnnotationCanvas.swift": {
+          "type": "file",
+          "bytes": 10937,
+          "sha256": "5ed2749be3ee312cd8d5965d34c8f7cd9731e83f11fc4b5542cd1362be4d0d12",
+          "mode": 420
+        },
+        "Sources/NativeLens/LensAppModel.swift": {
+          "type": "file",
+          "bytes": 42406,
+          "sha256": "fed0e33265c7711dd43dccf91dfb943eaff7cad1509507a9cfe5812302965e1b",
+          "mode": 420
+        },
+        "Sources/NativeLens/LensSettingsView.swift": {
+          "type": "file",
+          "bytes": 11508,
+          "sha256": "3d415d141dbe3a4685885adf166296a9e11dd2aeaa841162e8df17b12b4b456d",
+          "mode": 420
+        },
+        "Sources/NativeLens/LensTheme.swift": {
+          "type": "file",
+          "bytes": 4637,
+          "sha256": "46c579c4356fd048e969dd6898557eff9e56d067572853a017412ee4cb686559",
+          "mode": 420
+        },
+        "Sources/NativeLens/NativeCapture.swift": {
+          "type": "file",
+          "bytes": 13536,
+          "sha256": "b0cd7d44eb57070b6f52b6fe49f4722589ada2d0fa6cec53ddf6f7248c89bd0c",
+          "mode": 420
+        },
+        "Sources/NativeLens/NativeLensApp.swift": {
+          "type": "file",
+          "bytes": 3666,
+          "sha256": "21801281e9ec811825d54fab9d34858f8b9b1af4b7c96e120682d4828aa14fda",
+          "mode": 420
+        },
+        "Sources/NativeLens/NotebookView.swift": {
+          "type": "file",
+          "bytes": 29074,
+          "sha256": "0d95002caef5ecc3797618925d53174423a783480ee38637642b796b64bd0b48",
+          "mode": 420
+        },
+        "Sources/NativeLens/ReviewViews.swift": {
+          "type": "file",
+          "bytes": 13969,
+          "sha256": "4bbc37052bf647f569a6f47497ba55a1b50e80cfafa3dbbd4a9b940c187dc773",
+          "mode": 420
+        },
+        "Sources/NativeLens/SpeechCapture.swift": {
+          "type": "file",
+          "bytes": 8892,
+          "sha256": "f828ae663587318b3a6c5a0639c56d9aaf6a8e1d49ca65ddb356b8107db4e780",
+          "mode": 420
+        },
+        "Tests/LensCoreTests/AuthorityBindingTests.swift": {
+          "type": "file",
+          "bytes": 6601,
+          "sha256": "d26ebf71c73e93f938fb4b3600d2014573f14a3c1f15165c0907de050dbbf2ce",
+          "mode": 420
+        },
+        "Tests/LensCoreTests/BridgeTests.swift": {
+          "type": "file",
+          "bytes": 5205,
+          "sha256": "164300fb32bae0112e8700e617ba19417a23fdc143ca8cfa4967dc8ed3fd7f5d",
+          "mode": 420
+        },
+        "Tests/LensCoreTests/EvidenceStoreTests.swift": {
+          "type": "file",
+          "bytes": 2472,
+          "sha256": "3bae7ef79089740402b2e54efc104daa9e69cf8439de23fa2afa86a5bc2383fc",
+          "mode": 420
+        },
+        "Tests/LensCoreTests/FilingTests.swift": {
+          "type": "file",
+          "bytes": 3138,
+          "sha256": "9ab29ca251265f35a2536a910d6d5101046219e1f560d95b678a0daf37be6b33",
+          "mode": 420
+        },
+        "Tests/LensCoreTests/InvestigationTests.swift": {
+          "type": "file",
+          "bytes": 8226,
+          "sha256": "12b2d397bfbed32d1e2e653d3f09240dcf798b8a72ec788e4441877d0fcce0f6",
+          "mode": 420
+        },
+        "Tests/LensCoreTests/OpenAIClientTests.swift": {
+          "type": "file",
+          "bytes": 3305,
+          "sha256": "59245bdef8d18342b0b3c3f5ce9b9b3af935e531094019ffca35f714563af9ad",
+          "mode": 420
+        },
+        "Tests/LensCoreTests/ProjectInvestigationToolsTests.swift": {
+          "type": "file",
+          "bytes": 9496,
+          "sha256": "24dcfc7ac860e09bc8d2896fdd99765d4c2dc21244da27d269a3aef107edf9b7",
+          "mode": 420
+        },
+        "Tests/NativeLensTests/AnnotationTests.swift": {
+          "type": "file",
+          "bytes": 4250,
+          "sha256": "387cb3ed723b23afe31f9898b7282074b5f405d411d6bba123a469b02d04b082",
+          "mode": 420
+        },
+        "Tests/NativeLensTests/FilingVisualTests.swift": {
+          "type": "file",
+          "bytes": 3017,
+          "sha256": "d83080e629da610540d800ab801908b1f1459b9e4727f5438f14afc8b49fe74c",
+          "mode": 420
+        },
+        "Tests/NativeLensTests/NotebookStateTests.swift": {
+          "type": "file",
+          "bytes": 8259,
+          "sha256": "6267efd0d61b53087de30e42b690715809ada727cc78675a1c27425064379147",
+          "mode": 420
+        },
+        "extension/README.md": {
+          "type": "file",
+          "bytes": 5887,
+          "sha256": "c439e49cc2b0827738614fcec37c16601297c7f02ff9e203e270b5a64b6574b8",
+          "mode": 420
+        },
+        "extension/VERIFICATION.md": {
+          "type": "file",
+          "bytes": 4404,
+          "sha256": "7fc123f2cf1c7a3d60ad83f1074b56a1b305f8d0db0a2e13717ee16912f3ffb4",
+          "mode": 420
+        },
+        "extension/output/playwright/collection-control/collector-capture.json": {
+          "type": "file",
+          "bytes": 27556,
+          "sha256": "b3bb45083c6654a21ff20c811c2f23b2dda544fa16f0dee5855f8c50de879503",
+          "mode": 420
+        },
+        "extension/output/playwright/collection-control/collector-capture.png": {
+          "type": "file",
+          "bytes": 25901,
+          "sha256": "4fcc74fcdf8230f87d6aff13cb62a819fca15a89945aaf91ed470024e0cb5d15",
+          "mode": 420
+        },
+        "extension/output/playwright/collection-control/connection.png": {
+          "type": "file",
+          "bytes": 77628,
+          "sha256": "af0af848466902399f8e1a51e54f8f52a53e4d54df1455da185c299f18c9a404",
+          "mode": 420
+        },
+        "extension/output/playwright/collection-control/smoke-result.json": {
+          "type": "file",
+          "bytes": 2117,
+          "sha256": "440294f58d23b4c0d075ff098f6f2c091446d26802e6fc477fc1b4f26aa9fe7c",
+          "mode": 420
+        },
+        "extension/output/playwright/collection-control/soak-progress.json": {
+          "type": "file",
+          "bytes": 2778,
+          "sha256": "8d6b5adbe64a793befb22787e7ee9535ab48a27ad546b2011ffc54f87885abbd",
+          "mode": 420
+        },
+        "extension/output/playwright/collection-control/soak-result.json": {
+          "type": "file",
+          "bytes": 3489,
+          "sha256": "396e1f1fae299d99318a5b49d275f1735392b38d27ff7fc5bdb8d081e135c2e3",
+          "mode": 420
+        },
+        "extension/output/playwright/collector-capture.json": {
+          "type": "file",
+          "bytes": 26610,
+          "sha256": "17ccf312d2ad26be131a28a6e5bacfcc8afdef0df2c1d0581fc78d17c6c15150",
+          "mode": 420
+        },
+        "extension/output/playwright/collector-capture.png": {
+          "type": "file",
+          "bytes": 25434,
+          "sha256": "7f80e1a3fa98f950117cebb74f089ecd7e2e202038486d6e5815ac77e39a77f3",
+          "mode": 420
+        },
+        "extension/output/playwright/connection.png": {
+          "type": "file",
+          "bytes": 77623,
+          "sha256": "004c321c020a867521a20a49eab5ca1be04c70b9707e8b1524c13fc59f99295f",
+          "mode": 420
+        },
+        "extension/output/playwright/devtools/collector-capture.json": {
+          "type": "file",
+          "bytes": 26632,
+          "sha256": "3437ebd190d53124245b849ebdb6aa74326e09b539df31d9808895b612f57140",
+          "mode": 420
+        },
+        "extension/output/playwright/devtools/collector-capture.png": {
+          "type": "file",
+          "bytes": 24546,
+          "sha256": "beb59af4b12344cc93bf7bbade573b3dc3ec65aacefb60c13f8bee180a1b5d5e",
+          "mode": 420
+        },
+        "extension/output/playwright/devtools/connection.png": {
+          "type": "file",
+          "bytes": 77059,
+          "sha256": "07861027c936494ef39736ae35498997bc3d5a3bff52bde8848cb9d8f5da043e",
+          "mode": 420
+        },
+        "extension/output/playwright/devtools/devtools-capture.json": {
+          "type": "file",
+          "bytes": 27260,
+          "sha256": "c80090a1a261c614d909375968bf938f711b3389856ed4be8ca0133807e4977f",
+          "mode": 420
+        },
+        "extension/output/playwright/devtools/smoke-result.json": {
+          "type": "file",
+          "bytes": 1762,
+          "sha256": "67f8105085163ca8ddcf934bc777d7c2690f6f83ef4ffa2a96b303af4f1be7f4",
+          "mode": 420
+        },
+        "extension/output/playwright/native-host/collector-capture.json": {
+          "type": "file",
+          "bytes": 27623,
+          "sha256": "b3d930a25412cf99482373dae1351de89d3303747b96b49a4f7de4a2682d6743",
+          "mode": 420
+        },
+        "extension/output/playwright/native-host/collector-capture.png": {
+          "type": "file",
+          "bytes": 59528,
+          "sha256": "5c78fe0fbd8da4c16443ecae2c513f12348132a0d289624de052941f7fc8e48d",
+          "mode": 420
+        },
+        "extension/output/playwright/native-host/connection.png": {
+          "type": "file",
+          "bytes": 77392,
+          "sha256": "ef97008cf26c2ec5c2a8429f77f01a849579cce32cda2426839025e069b87617",
+          "mode": 420
+        },
+        "extension/output/playwright/native-host/devtools-capture.json": {
+          "type": "file",
+          "bytes": 27470,
+          "sha256": "4e103749fdad085ce74f70c58c8ee1494b5602a3126bfede59005eb997678fc6",
+          "mode": 420
+        },
+        "extension/output/playwright/native-host/smoke-result.json": {
+          "type": "file",
+          "bytes": 2376,
+          "sha256": "8225668e6312d26b18d90c9975d0b1421f1087cf20a4bdc9af21c01391219262",
+          "mode": 420
+        },
+        "extension/output/playwright/profile-control/capture-latency.json": {
+          "type": "file",
+          "bytes": 2532,
+          "sha256": "5fa5c6abeb52ad405f7a7aa67d24fef6ed07195e4ac31d25980a84c0b8bc717a",
+          "mode": 420
+        },
+        "extension/output/playwright/profile-control/collector-capture.json": {
+          "type": "file",
+          "bytes": 27639,
+          "sha256": "009755b69485066cac9e909d875d4bebcfc7349879eb78f68cccce717a2ecba1",
+          "mode": 420
+        },
+        "extension/output/playwright/profile-control/collector-capture.png": {
+          "type": "file",
+          "bytes": 25901,
+          "sha256": "4fcc74fcdf8230f87d6aff13cb62a819fca15a89945aaf91ed470024e0cb5d15",
+          "mode": 420
+        },
+        "extension/output/playwright/profile-control/connection.png": {
+          "type": "file",
+          "bytes": 77009,
+          "sha256": "9e07f263ce2fb3ac93b766e3df802b3d83379b156ea635a6d0fa50b746c3ea96",
+          "mode": 420
+        },
+        "extension/output/playwright/profile-control/smoke-result.json": {
+          "type": "file",
+          "bytes": 2225,
+          "sha256": "4e78b6e599e904c6676ff5bb462b7a7c844ac7cfb6e053d55d9a7ea34f611d6c",
+          "mode": 420
+        },
+        "extension/output/playwright/profile-control/soak-progress.json": {
+          "type": "file",
+          "bytes": 2639,
+          "sha256": "d3c32fd08071d12ddeef6fc37bab64c1f3b3044dad0ad33cd89476faa7ad93a3",
+          "mode": 420
+        },
+        "extension/output/playwright/profile-control/soak-result.json": {
+          "type": "file",
+          "bytes": 3341,
+          "sha256": "db316dea11b87f082a057daa2cbb64377c0edb3a3dc47870d8c8a44c76faf142",
+          "mode": 420
+        },
+        "extension/output/playwright/revalidated/collector-capture.json": {
+          "type": "file",
+          "bytes": 26848,
+          "sha256": "ab6d9fee919fea8383f70dc99725138fedecd7f70a5ed8f8a18dbd49514ce571",
+          "mode": 420
+        },
+        "extension/output/playwright/revalidated/collector-capture.png": {
+          "type": "file",
+          "bytes": 56750,
+          "sha256": "b34c0e3d274bc40119335c49765e8475601afabcbfe35a6abf38718d4e83bb24",
+          "mode": 420
+        },
+        "extension/output/playwright/revalidated/connection.png": {
+          "type": "file",
+          "bytes": 78008,
+          "sha256": "74df8af90593c03092b653c21059885287d31c7e905842905bc20f2abd86759c",
+          "mode": 420
+        },
+        "extension/output/playwright/revalidated/devtools-capture.json": {
+          "type": "file",
+          "bytes": 27269,
+          "sha256": "8987b9bdf025385d32cdf2f16b1c05ac91704e7a27fa56ec857edc325d443ff7",
+          "mode": 420
+        },
+        "extension/output/playwright/revalidated/smoke-result.json": {
+          "type": "file",
+          "bytes": 1998,
+          "sha256": "86f73cbce6912161f854e023a89f4e002053c440ebc89ddf4469f0ad8bed39fa",
+          "mode": 420
+        },
+        "extension/output/playwright/smoke-result.json": {
+          "type": "file",
+          "bytes": 1766,
+          "sha256": "7d58a03d5389fe6b09f5f174e2430e7b5a1e7d2fcb738a834755d2dbb6a94741",
+          "mode": 420
+        },
+        "extension/output/playwright/soak-progress.json": {
+          "type": "file",
+          "bytes": 27411,
+          "sha256": "a7859a9efcb4e272e74ffb8dc04432e94c47569726275491b3e36320545c8b32",
+          "mode": 420
+        },
+        "extension/output/playwright/soak-result.json": {
+          "type": "file",
+          "bytes": 27615,
+          "sha256": "a63b68700e31a4785640d1a3c3ba6c1f51363db6edaa2d0c14aa1e45c89e5270",
+          "mode": 420
+        },
+        "extension/output/playwright/tab-selection-control/collector-capture.json": {
+          "type": "file",
+          "bytes": 27558,
+          "sha256": "0c343a8ed356834b766beab2603a84a2387219935b4ab7b86b074523e75e0b0f",
+          "mode": 420
+        },
+        "extension/output/playwright/tab-selection-control/collector-capture.png": {
+          "type": "file",
+          "bytes": 25901,
+          "sha256": "4fcc74fcdf8230f87d6aff13cb62a819fca15a89945aaf91ed470024e0cb5d15",
+          "mode": 420
+        },
+        "extension/output/playwright/tab-selection-control/connection.png": {
+          "type": "file",
+          "bytes": 77628,
+          "sha256": "af0af848466902399f8e1a51e54f8f52a53e4d54df1455da185c299f18c9a404",
+          "mode": 420
+        },
+        "extension/output/playwright/tab-selection-control/smoke-result.json": {
+          "type": "file",
+          "bytes": 2117,
+          "sha256": "5aeafb6429106c055273e5b05475a2521bf9b5562a7da6f53143a12c1d0cadfc",
+          "mode": 420
+        },
+        "extension/output/playwright/tab-selection-control/soak-progress.json": {
+          "type": "file",
+          "bytes": 2765,
+          "sha256": "0957d61d81d2b87d1aedcaffdc2353ad4fe9ab2ac885d1edf62706e6653714dd",
+          "mode": 420
+        },
+        "extension/output/playwright/tab-selection-control/soak-result.json": {
+          "type": "file",
+          "bytes": 3457,
+          "sha256": "4f38a325d5e1db5f7b2ff837be4dea4b8864a479cfd5f8e889e16c485da35ab2",
+          "mode": 420
+        },
+        "extension/output/playwright/visibility-comparison/collector-capture.json": {
+          "type": "file",
+          "bytes": 26875,
+          "sha256": "ca95d8115ef4918a3955847337ebcc4c4ec35625c7cb580e26b7bc91b6fdcee1",
+          "mode": 420
+        },
+        "extension/output/playwright/visibility-comparison/collector-capture.png": {
+          "type": "file",
+          "bytes": 24519,
+          "sha256": "4fa3d5331df94e4df0ae7a8b315483b867e2774a71ae94fc3b6d93dc5da87848",
+          "mode": 420
+        },
+        "extension/output/playwright/visibility-comparison/connection.png": {
+          "type": "file",
+          "bytes": 77628,
+          "sha256": "af0af848466902399f8e1a51e54f8f52a53e4d54df1455da185c299f18c9a404",
+          "mode": 420
+        },
+        "extension/output/playwright/visibility-comparison/smoke-result.json": {
+          "type": "file",
+          "bytes": 2094,
+          "sha256": "b4644551ceae2c1ba88c480ceaf380d32c2e163053f59d61522454273a159d18",
+          "mode": 420
+        },
+        "extension/output/playwright/visibility-comparison/soak-progress.json": {
+          "type": "file",
+          "bytes": 2320,
+          "sha256": "a8a1d5351ca5146ec2ac4efa16e524e094f55bbaa3b0963e1199752bcae434f1",
+          "mode": 420
+        },
+        "extension/output/playwright/visibility-comparison/soak-result.json": {
+          "type": "file",
+          "bytes": 2663,
+          "sha256": "d8832b8e25f39fdf775c1373e8ac81e4fd48e6cd59c052cf85395e1ae3607b66",
+          "mode": 420
+        },
+        "extension/package-lock.json": {
+          "type": "file",
+          "bytes": 33959,
+          "sha256": "4d1bfd16616d16107357072ef3656b12b8bc89447b3c0f3e07e111794e05af61",
+          "mode": 420
+        },
+        "extension/package.json": {
+          "type": "file",
+          "bytes": 455,
+          "sha256": "4f3113167f9b26d588bf25176af0c50a1172fc2c70a76b2cb2760b03d3f4ea3b",
+          "mode": 420
+        },
+        "extension/public/devtools.html": {
+          "type": "file",
+          "bytes": 189,
+          "sha256": "7dd4f10b7342222095b4fc653bdb325e4f67dccb7dca01122ac068576bd7ac98",
+          "mode": 420
+        },
+        "extension/public/manifest.json": {
+          "type": "file",
+          "bytes": 1428,
+          "sha256": "8824c7fff2be4ad1759df5ce7f2d506d0db15419d76c6c62ee2444bd8ddb4ef5",
+          "mode": 420
+        },
+        "extension/public/options.css": {
+          "type": "file",
+          "bytes": 1959,
+          "sha256": "f43ff49768bb735d9f628583be25b63cfeced1a6fb8257c4e421ebedc2adca6c",
+          "mode": 420
+        },
+        "extension/public/options.html": {
+          "type": "file",
+          "bytes": 1991,
+          "sha256": "10627d8047c1db77a2a54b5a94c0a025ca5f624bba3e0ae4c3327bf794368134",
+          "mode": 420
+        },
+        "extension/scripts/build.mjs": {
+          "type": "file",
+          "bytes": 427,
+          "sha256": "b9565a667765295009f8740fbe5153d4160d2ff7f7f0030310d4700a33c13f81",
+          "mode": 420
+        },
+        "extension/scripts/extension-id.mjs": {
+          "type": "file",
+          "bytes": 478,
+          "sha256": "d3fc251225f18e31f9de8fe10939b194dd9d36ec3ad6c0e293e6c6db2fbc13c0",
+          "mode": 420
+        },
+        "extension/scripts/fixture.mjs": {
+          "type": "file",
+          "bytes": 4184,
+          "sha256": "428a3a24108ef64671922f98d0993fa9e39a1da142a0e87cba69efbaf289370a",
+          "mode": 420
+        },
+        "extension/scripts/smoke.mjs": {
+          "type": "file",
+          "bytes": 24529,
+          "sha256": "8f1660f24edecac4d30166e11d3f938418316dc6e2d60c305e777f6439d32205",
+          "mode": 420
+        },
+        "extension/src/background.ts": {
+          "type": "file",
+          "bytes": 29725,
+          "sha256": "b326800afb95bbce455460137b896be90794ca7f90bfee126ad5c4c24b07d02b",
+          "mode": 420
+        },
+        "extension/src/collector.ts": {
+          "type": "file",
+          "bytes": 5044,
+          "sha256": "78c4259ddba95e74056f7d719adf935d4a8582ac0a9839fdb82adb2e76074448",
+          "mode": 420
+        },
+        "extension/src/devtools.ts": {
+          "type": "file",
+          "bytes": 2357,
+          "sha256": "c95177ec5f11cf35b844aa0381fa28c6e577591a98de200f4a4c1a714bd66358",
+          "mode": 420
+        },
+        "extension/src/lifecycle.ts": {
+          "type": "file",
+          "bytes": 587,
+          "sha256": "9fa5889fb97f6036a234caf7a3b47731a25c13d40cc0b3991ee09d8a106ad1a0",
+          "mode": 420
+        },
+        "extension/src/options.ts": {
+          "type": "file",
+          "bytes": 3794,
+          "sha256": "66af74282cd9e1465be1953726642799ab79e18f8c93040d385093c71d1ba16d",
+          "mode": 420
+        },
+        "extension/src/probe.ts": {
+          "type": "file",
+          "bytes": 8598,
+          "sha256": "861e6011d2199098da90a1e53ab15cc6201acd0c3eb477895763d7db7624dd7b",
+          "mode": 420
+        },
+        "extension/src/sanitize.ts": {
+          "type": "file",
+          "bytes": 2344,
+          "sha256": "5e5a1c80a713552f934be4ff3185b8757c6605c0e75351ef419a2437f6f23b3a",
+          "mode": 420
+        },
+        "extension/src/spatial.ts": {
+          "type": "file",
+          "bytes": 2685,
+          "sha256": "181f90f7b843d2e39b9a474d96c76e93fd3122086bda90b3696651611b959941",
+          "mode": 420
+        },
+        "extension/src/types.ts": {
+          "type": "file",
+          "bytes": 1460,
+          "sha256": "c9625917acdb64d4a9ebec78d0b33d55743d28b3123fb8cf98233ba71c74e739",
+          "mode": 420
+        },
+        "extension/test/collector.test.ts": {
+          "type": "file",
+          "bytes": 3822,
+          "sha256": "4a521ade7c166a8cf45a90c8608bd1ae678aa77fd60094a5c4b21e7c4f4ff1c5",
+          "mode": 420
+        },
+        "extension/test/lifecycle.test.ts": {
+          "type": "file",
+          "bytes": 582,
+          "sha256": "3907a44ba81814f98490d235d4bea32d5324f021c8c40bd625a145a1f89c93c5",
+          "mode": 420
+        },
+        "extension/test/sanitize.test.ts": {
+          "type": "file",
+          "bytes": 1485,
+          "sha256": "13346f3d7183c162dcf88065829ac60422ae8fbc249e6f4c4591f2bb96592fa3",
+          "mode": 420
+        },
+        "extension/test/spatial.test.ts": {
+          "type": "file",
+          "bytes": 2412,
+          "sha256": "d0386ec4ef06b0ff4279c018ea3adf7072f304064647e60150929840264afc43",
+          "mode": 420
+        },
+        "extension/tsconfig.json": {
+          "type": "file",
+          "bytes": 240,
+          "sha256": "e7b690685f6093ace19e2c078827eebf405c0e712c6fef1abda471713d102396",
+          "mode": 420
+        },
+        "integrations/sirv-studio.md": {
+          "type": "file",
+          "bytes": 3119,
+          "sha256": "f697109990ceb1eb97cbe0f6ad24e349d4e9bd655f2ddf5196f09de034300dee",
+          "mode": 420
+        },
+        "integrations/vibeq.md": {
+          "type": "file",
+          "bytes": 8401,
+          "sha256": "88a34f7361d39f01439a637db0a665a5fff38906a8b510719fae62e569feeaa8",
+          "mode": 420
+        },
+        "output/acceptance/default-profile.json": {
+          "type": "file",
+          "bytes": 6921,
+          "sha256": "7596c2c428407ca8439746be63685f243c3f7fb4de66c8d6177915e9b4879aa1",
+          "mode": 420
+        },
+        "output/acceptance/installed-build.json": {
+          "type": "file",
+          "bytes": 548,
+          "sha256": "01eb47a22b6c307398e05fb7a011a2679e756dab4d7025e55c7eb10808314270",
+          "mode": 420
+        },
+        "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/capture-678CA1A6-9024-4B08-A2CE-C545201680E6.png": {
+          "type": "file",
+          "bytes": 104348,
+          "sha256": "02899f0a6ab465fdcb4a5d3727b4ec45e0f1492280d0086173d7e1a0efc7409a",
+          "mode": 420
+        },
+        "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/capture-ca4ae4be-d5d2-4bf2-b93f-79bfe03d3de2.png": {
+          "type": "file",
+          "bytes": 104348,
+          "sha256": "02899f0a6ab465fdcb4a5d3727b4ec45e0f1492280d0086173d7e1a0efc7409a",
+          "mode": 420
+        },
+        "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/evidence.json": {
+          "type": "file",
+          "bytes": 58525,
+          "sha256": "048ba1edf575bbb6a2e83a906222fddff4b829a6f40a40e9a933d465fa4ad568",
+          "mode": 420
+        },
+        "output/acceptance/lens-4555f5df-4bbc-43d0-8722-9a4938829311-r1/report.md": {
+          "type": "file",
+          "bytes": 1705,
+          "sha256": "deabedd3e2151a39913686d95f18588cfcf4b758a7af29e4a567fb2fc3097901",
+          "mode": 420
+        },
+        "output/acceptance/notebook-runtime.json": {
+          "type": "file",
+          "bytes": 442,
+          "sha256": "6e4ed1e837f41b0094bb4b03b29ef8baaa92852a0cbd4b47f5bc3242f29edf47",
+          "mode": 420
+        },
+        "output/acceptance/release-build.log": {
+          "type": "file",
+          "bytes": 732,
+          "sha256": "41483909f3db8f7752588908cdf113571a8e4aea07521bb346a79ecea6587cfd",
+          "mode": 420
+        },
+        "output/acceptance/swift-final-suite.log": {
+          "type": "file",
+          "bytes": 11294,
+          "sha256": "52c0936b6538066345814811d7be56945cc6adae892c0b8f26891e771069bac7",
+          "mode": 420
+        },
+        "output/native-ui/filing-states-dark.png": {
+          "type": "file",
+          "bytes": 227726,
+          "sha256": "6067b03259bfdf45159131a5d776ef3de02a6b3e26791ef1da67037b300d27c7",
+          "mode": 420
+        },
+        "output/native-ui/filing-states-light.png": {
+          "type": "file",
+          "bytes": 226528,
+          "sha256": "e40476a22ebed58613de9644507d00ae4ed308d12ee98fadf6c64a7b16932068",
+          "mode": 420
+        },
+        "packaging/Info.plist": {
+          "type": "file",
+          "bytes": 953,
+          "sha256": "a0c98e978dd6ab410389ba3859defecca1c6f9b4e090abfd13fc391b48619651",
+          "mode": 420
+        },
+        "packaging/entitlements.plist": {
+          "type": "file",
+          "bytes": 240,
+          "sha256": "9140d2a5939149f3e1c510fbfcdc05317d5c57d8c3cae0c13d57c4f6e87f4993",
+          "mode": 420
+        },
+        "scripts/build-app.sh": {
+          "type": "file",
+          "bytes": 824,
+          "sha256": "9d6270a88a819fbaaf530f5ac8266a5cbf9c7d3ec71a5ae227c2ce51ab6fad83",
+          "mode": 420
+        },
+        "scripts/install-local.py": {
+          "type": "file",
+          "bytes": 2163,
+          "sha256": "63d25fdc57327152d0e6044a5ee5f41af7e1b4c213cbe3240b8ca7d7476fc4ea",
+          "mode": 420
+        }
+      },
+      "branch": "codex/native-browser-lens"
+    },
+    {
+      "name": "vibeq",
+      "path": "/Users/veniaminkrachun/git/vibequeue-native-browser-lens",
+      "head": "6fa6ebcef391c8795f697f45bcc23c9aeacb58d0",
+      "excludedPrefixes": [],
+      "status": [
+        {
+          "status": " M",
+          "path": "scripts/db-backup.mjs"
+        },
+        {
+          "status": " M",
+          "path": "scripts/river-db-round-trip-smoke.mjs"
+        },
+        {
+          "status": " M",
+          "path": "src/db/schema.ts"
+        },
+        {
+          "status": " M",
+          "path": "src/index.ts"
+        },
+        {
+          "status": " M",
+          "path": "src/lib/test-db.ts"
+        },
+        {
+          "status": " M",
+          "path": "src/lib/test-r2.ts"
+        },
+        {
+          "status": "??",
+          "path": "migrations/0052_native_browser_lens.sql"
+        },
+        {
+          "status": "??",
+          "path": "src/api/capture.db.test.ts"
+        },
+        {
+          "status": "??",
+          "path": "src/api/capture.ts"
+        }
+      ],
+      "trackedDiffSHA256": "d6635cf81a188bd9de027da2eb100e26d0aefd4f7b28bd8cd5174028db8fc0cd",
+      "files": {
+        "AGENTS.md": {
+          "type": "file",
+          "bytes": 21018,
+          "sha256": "4e914396b04760a76f455fb6ad97da46b9fc5a7c663b1fdd73139de0ff99baa1",
+          "mode": 420
+        },
+        "docs/design-language.md": {
+          "type": "file",
+          "bytes": 49615,
+          "sha256": "b05aa65e4c1d1bcafef3ceac091a7cfadf938bea5dc7bc2b30c134a06c84c6eb",
+          "mode": 420
+        },
+        "frontend/DESIGN.md": {
+          "type": "file",
+          "bytes": 6513,
+          "sha256": "624984b580183e3f35027f191b7b759de43bcf1678979a6e34db9c667d119b57",
+          "mode": 420
+        },
+        "migrations/0052_native_browser_lens.sql": {
+          "type": "file",
+          "bytes": 1356,
+          "sha256": "33ab3b71db4ebf2105c16e193c29dc88baa8ef58c6c74950eed73f4fabcc97a5",
+          "mode": 420
+        },
+        "package-lock.json": {
+          "type": "file",
+          "bytes": 230454,
+          "sha256": "a5efa70d633f519ddb7689d4aa73031914454e30cd69c2af47f6fd9847b9d0a0",
+          "mode": 420
+        },
+        "package.json": {
+          "type": "file",
+          "bytes": 17113,
+          "sha256": "339ddbc3feed40f3df1a050c29127e41f476e52f696092ab5ce827a5b77ca2c6",
+          "mode": 420
+        },
+        "scripts/db-backup.mjs": {
+          "type": "file",
+          "bytes": 9983,
+          "sha256": "d8f45bb26904793d1291575266a9b16bf7e04d58224cc02dbeade3c50baa1f5d",
+          "mode": 420
+        },
+        "scripts/river-db-round-trip-smoke.mjs": {
+          "type": "file",
+          "bytes": 10458,
+          "sha256": "ccd1b62a3ef816c57b752c0eb51a572bf219f4c25a816220b6d3b4d894db6d6c",
+          "mode": 420
+        },
+        "src/api/capture.db.test.ts": {
+          "type": "file",
+          "bytes": 15072,
+          "sha256": "518fb5a3b9eb8e26d454385de81528d9deec5d10d0e4afc1fed117199b9586aa",
+          "mode": 420
+        },
+        "src/api/capture.ts": {
+          "type": "file",
+          "bytes": 14594,
+          "sha256": "235df3cdffc16bb9c9f00b79e0f588d901be273714c681dc5ed29c7d2ede21fc",
+          "mode": 420
+        },
+        "src/db/schema.ts": {
+          "type": "file",
+          "bytes": 28306,
+          "sha256": "a8211a09adc152729f372693db2952cc4a5e28db2c0ba04f21c950acbb2e7b77",
+          "mode": 420
+        },
+        "src/index.ts": {
+          "type": "file",
+          "bytes": 18241,
+          "sha256": "b246d7aec3c29bdede4d1cc451d5ba59f349c53941a6b71f4b8c07d10bce9ada",
+          "mode": 420
+        },
+        "src/lib/test-db.ts": {
+          "type": "file",
+          "bytes": 2422,
+          "sha256": "da2e442809389e024a8972bf787efec8e42e894520714721062538318e6ea9b9",
+          "mode": 420
+        },
+        "src/lib/test-r2.ts": {
+          "type": "file",
+          "bytes": 5216,
+          "sha256": "af3a703a42c9ea6118168e374b232d11e5a6b4bb83f16cba31b0d8071e6e204a",
+          "mode": 420
+        }
+      },
+      "branch": "codex/native-browser-lens-ingestion"
+    },
+    {
+      "name": "studio",
+      "path": "/Users/veniaminkrachun/.codex/worktrees/8b53/sirv-studio",
+      "head": "e82995e1f1d4a47dfe711b96a30e2750dad8aa86",
+      "excludedPrefixes": [],
+      "status": [
+        {
+          "status": " M",
+          "path": "src/start/components/StartAppProviders.tsx"
+        },
+        {
+          "status": "??",
+          "path": "src/__tests__/components/native-browser-lens-diagnostics.test.tsx"
+        },
+        {
+          "status": "??",
+          "path": "src/__tests__/lib/native-browser-lens.test.ts"
+        },
+        {
+          "status": "??",
+          "path": "src/components/providers/NativeBrowserLensDiagnostics.tsx"
+        },
+        {
+          "status": "??",
+          "path": "src/lib/dev/native-browser-lens.ts"
+        }
+      ],
+      "trackedDiffSHA256": "821f441c3bf6cdaece525ce7fc9d4c481f2b5f21574f761aadabe99ccacd36cb",
+      "files": {
+        "AGENTS.md": {
+          "type": "file",
+          "bytes": 4368,
+          "sha256": "31c8236c141c4f58fe738ee36688bf3e8ac850a2f02d770c3117347d86218c6e",
+          "mode": 420
+        },
+        "bun.lock": {
+          "type": "file",
+          "bytes": 1056445,
+          "sha256": "1828dce25dfb6d0be82d92418ac00d6458bcf0d96a2f2b687537835441bc7055",
+          "mode": 420
+        },
+        "docs/guides/writing-guidelines.md": {
+          "type": "file",
+          "bytes": 20017,
+          "sha256": "f740c15ef99b0a409d8694a674b993485aa72961ffe3e278ab866b70ee189b09",
+          "mode": 420
+        },
+        "docs/soul.md": {
+          "type": "file",
+          "bytes": 45168,
+          "sha256": "e0ae55015c24ee5be642d36cb02d36c1ada825925c9eaaa7bac13f6184867b70",
+          "mode": 420
+        },
+        "package.json": {
+          "type": "file",
+          "bytes": 40792,
+          "sha256": "34b3e6ab8be9883b01a779ccc3783427db878f6ebb55db0e02b5c734edbc8925",
+          "mode": 420
+        },
+        "scripts/vite/sirv-source-stamp.ts": {
+          "type": "file",
+          "bytes": 4649,
+          "sha256": "11251689c08d91a93599ca048fd6eec989518a753c29a2491d437d0fed364790",
+          "mode": 420
+        },
+        "src/__tests__/components/native-browser-lens-diagnostics.test.tsx": {
+          "type": "file",
+          "bytes": 2633,
+          "sha256": "0603afcf5f295ea63c5e2ead56ca1f673cbb63d952159def65b44b8008175803",
+          "mode": 420
+        },
+        "src/__tests__/lib/native-browser-lens.test.ts": {
+          "type": "file",
+          "bytes": 4108,
+          "sha256": "03681f4459cf3cb297420950ce057559b2e2744d1380ee4cbab7b045437cff31",
+          "mode": 420
+        },
+        "src/components/providers/NativeBrowserLensDiagnostics.tsx": {
+          "type": "file",
+          "bytes": 1026,
+          "sha256": "e8957e0632d3604442ccd0984c9124fc071e782410563165a27c0cf350f855ab",
+          "mode": 420
+        },
+        "src/lib/dev/native-browser-lens.ts": {
+          "type": "file",
+          "bytes": 3192,
+          "sha256": "e3580f03c66ad5664cbe813f8aab53f9c7b281e5dc86b90e8957ff7892afd121",
+          "mode": 420
+        },
+        "src/start/components/StartAppProviders.tsx": {
+          "type": "file",
+          "bytes": 3481,
+          "sha256": "1b1ee97147f217d3fd5f6ce8d067c6f3a380d7fa644e4d39bdb30a62aecdbf84",
+          "mode": 420
+        }
+      },
+      "branch": null
+    }
+  ],
+  "installedFiles": {
+    "/Users/veniaminkrachun/Applications/Native Browser Lens.app/Contents/MacOS/NativeBrowserLens": {
+      "type": "file",
+      "bytes": 4238544,
+      "sha256": "afc3c598b740368d8642a96ce97aaaae4b2e1158a1acf75e1e222885388ff950",
+      "mode": 493
+    },
+    "/Users/veniaminkrachun/Applications/Native Browser Lens.app/Contents/MacOS/lens-host": {
+      "type": "file",
+      "bytes": 982944,
+      "sha256": "762c18f0a46e684b1ab5a0e37dcbdd67cd47de91b72459a199b2a531c7428816",
+      "mode": 493
+    },
+    "/Users/veniaminkrachun/Applications/Native Browser Lens.app/Contents/Info.plist": {
+      "type": "file",
+      "bytes": 953,
+      "sha256": "a0c98e978dd6ab410389ba3859defecca1c6f9b4e090abfd13fc391b48619651",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/Library/Application Support/Google/Chrome/NativeMessagingHosts/studio.sirv.native_browser_lens.json": {
+      "type": "file",
+      "bytes": 326,
+      "sha256": "bae58b5f771c732010190bdb42a308deb6822bbe33a9f75038b85d310108b1cd",
+      "mode": 384
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/manifest.json": {
+      "type": "file",
+      "bytes": 1428,
+      "sha256": "8824c7fff2be4ad1759df5ce7f2d506d0db15419d76c6c62ee2444bd8ddb4ef5",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/background.js": {
+      "type": "file",
+      "bytes": 46570,
+      "sha256": "fa1fe0af471a0e417ba4fb492aebedb9ebebc856b3d17ec22930ab190b448fd0",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/background.js.map": {
+      "type": "file",
+      "bytes": 82650,
+      "sha256": "395ada81fc359ff1483fe9167ae519e2c2d1c8834de32cf8462b2a6add4aa5fc",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/devtools.html": {
+      "type": "file",
+      "bytes": 189,
+      "sha256": "7dd4f10b7342222095b4fc653bdb325e4f67dccb7dca01122ac068576bd7ac98",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/devtools.js": {
+      "type": "file",
+      "bytes": 4340,
+      "sha256": "6e32214da13da9f1de2e24cd56ae88072205efc89938b5fcdfca70b52754f147",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/devtools.js.map": {
+      "type": "file",
+      "bytes": 7753,
+      "sha256": "67be0b1facd0fbad8f78d2e33a33cc1dd07995c16c814a5790897b2cd94e1118",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/options.css": {
+      "type": "file",
+      "bytes": 1959,
+      "sha256": "f43ff49768bb735d9f628583be25b63cfeced1a6fb8257c4e421ebedc2adca6c",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/options.html": {
+      "type": "file",
+      "bytes": 1991,
+      "sha256": "10627d8047c1db77a2a54b5a94c0a025ca5f624bba3e0ae4c3327bf794368134",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/options.js": {
+      "type": "file",
+      "bytes": 3577,
+      "sha256": "7f31d3a643f9435a475630abb7e56926d23d9a85f3c137bc91f8424da4570a9e",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/options.js.map": {
+      "type": "file",
+      "bytes": 6801,
+      "sha256": "6ac162e667cedea7bd0180b022a2d8ed949917770d195b67399144ca07abdb7b",
+      "mode": 420
+    },
+    "/Users/veniaminkrachun/Applications/Native Browser Lens.app/Contents/_CodeSignature/CodeResources": {
+      "type": "file",
+      "bytes": 2427,
+      "sha256": "e3d79a03aec81d56c32929036c1d4ea2f307e2444fe214ec19fca5d6a4c95d28",
+      "mode": 420
+    }
+  },
+  "runtimeRoots": {
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist": [
+      "background.js",
+      "background.js.map",
+      "devtools.html",
+      "devtools.js",
+      "devtools.js.map",
+      "manifest.json",
+      "options.css",
+      "options.html",
+      "options.js",
+      "options.js.map"
+    ],
+    "/Users/veniaminkrachun/Applications/Native Browser Lens.app/Contents": [
+      "Info.plist",
+      "MacOS/NativeBrowserLens",
+      "MacOS/lens-host",
+      "_CodeSignature/CodeResources"
+    ]
+  }
+}

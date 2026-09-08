@@ -1,0 +1,181 @@
+{
+  "source": "Installed app SQLite, actual existing Chrome profile; local fixture only",
+  "observations": [
+    {
+      "observationId": "4555f5df-4bbc-43d0-8722-9a4938829311",
+      "projectId": "A908D193-B4BC-414F-AD9B-3452A0DCEFC2",
+      "markdownSaved": true,
+      "captures": [
+        {
+          "captureId": "ca4ae4be-d5d2-4bf2-b93f-79bfe03d3de2",
+          "identity": {
+            "capturedAt": 1788900066526,
+            "documentId": "5A0685EAC1BEEB6E0287CFE3CDD12E0A",
+            "windowId": 1927761915,
+            "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "clientId": "311494FB-441A-4F3E-83EF-3A91290E7FAA",
+            "url": "http://127.0.0.1:43117/a",
+            "tabId": 1927762330,
+            "title": "Lens fixture /a",
+            "projectId": "A908D193-B4BC-414F-AD9B-3452A0DCEFC2"
+          },
+          "coordinateSpace": "browser-viewport",
+          "events": 17,
+          "eventKinds": {
+            "console": 5,
+            "action": 1,
+            "request": 4,
+            "response": 3,
+            "exception": 1,
+            "network-failure": 1,
+            "response-body": 2
+          },
+          "gaps": [
+            {
+              "channel": "history",
+              "reason": "Evidence starts when this tab is armed; earlier requests are unavailable"
+            },
+            {
+              "channel": "indexedDB",
+              "reason": "Database names and versions only; records are not read without a project adapter"
+            },
+            {
+              "channel": "cacheStorage",
+              "reason": "Cache names only; cache bodies and keys are not enumerated"
+            },
+            {
+              "channel": "cookies",
+              "reason": "Cookie values intentionally excluded; cookie state is not extracted"
+            },
+            {
+              "channel": "frames",
+              "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured"
+            },
+            {
+              "channel": "source-build",
+              "reason": "Diagnostic adapter identifies an unsealed working tree; commit label is not exact deployed source proof"
+            }
+          ],
+          "imageBytes": 104348,
+          "imageSha256": "02899f0a6ab465fdcb4a5d3727b4ec45e0f1492280d0086173d7e1a0efc7409a"
+        },
+        {
+          "captureId": "678CA1A6-9024-4B08-A2CE-C545201680E6",
+          "identity": {
+            "capturedAt": 1788900151759,
+            "documentId": "5A0685EAC1BEEB6E0287CFE3CDD12E0A",
+            "windowId": 1927761915,
+            "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "clientId": "311494FB-441A-4F3E-83EF-3A91290E7FAA",
+            "url": "http://127.0.0.1:43117/a",
+            "tabId": 1927762330,
+            "title": "Lens fixture /a",
+            "projectId": "A908D193-B4BC-414F-AD9B-3452A0DCEFC2"
+          },
+          "coordinateSpace": "browser-viewport",
+          "events": 18,
+          "eventKinds": {
+            "console": 5,
+            "action": 1,
+            "request": 4,
+            "response": 3,
+            "exception": 1,
+            "network-failure": 1,
+            "response-body": 3
+          },
+          "gaps": [
+            {
+              "channel": "history",
+              "reason": "Evidence starts when this tab is armed; earlier requests are unavailable"
+            },
+            {
+              "channel": "indexedDB",
+              "reason": "Database names and versions only; records are not read without a project adapter"
+            },
+            {
+              "channel": "cacheStorage",
+              "reason": "Cache names only; cache bodies and keys are not enumerated"
+            },
+            {
+              "channel": "cookies",
+              "reason": "Cookie values intentionally excluded; cookie state is not extracted"
+            },
+            {
+              "channel": "frames",
+              "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured"
+            },
+            {
+              "channel": "source-build",
+              "reason": "Diagnostic adapter identifies an unsealed working tree; commit label is not exact deployed source proof"
+            }
+          ],
+          "imageBytes": 104348,
+          "imageSha256": "02899f0a6ab465fdcb4a5d3727b4ec45e0f1492280d0086173d7e1a0efc7409a"
+        }
+      ]
+    },
+    {
+      "observationId": "95b49fb4-da71-4307-90a7-f2c7dd4b4572",
+      "projectId": "A908D193-B4BC-414F-AD9B-3452A0DCEFC2",
+      "markdownSaved": false,
+      "captures": [
+        {
+          "captureId": "0b9a0030-5cbc-4c56-9b07-6d1449a64924",
+          "identity": {
+            "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": 1788900206188,
+            "url": "http://127.0.0.1:43117/a",
+            "clientId": "311494FB-441A-4F3E-83EF-3A91290E7FAA",
+            "tabId": 1927762330,
+            "windowId": 1927761915,
+            "title": "Lens fixture /a",
+            "documentId": "5A0685EAC1BEEB6E0287CFE3CDD12E0A",
+            "projectId": "A908D193-B4BC-414F-AD9B-3452A0DCEFC2"
+          },
+          "coordinateSpace": "browser-viewport",
+          "events": 7,
+          "eventKinds": {
+            "console": 1,
+            "network-failure": 1,
+            "response": 1,
+            "frame": 2,
+            "action": 1,
+            "devtools-network": 1
+          },
+          "gaps": [
+            {
+              "channel": "history",
+              "reason": "Evidence starts when this tab is armed; earlier requests are unavailable"
+            },
+            {
+              "channel": "devtools",
+              "reason": "DevTools mode lacks complete console, exception, worker, and cache-provenance coverage"
+            },
+            {
+              "channel": "indexedDB",
+              "reason": "Database names and versions only; records are not read without a project adapter"
+            },
+            {
+              "channel": "cacheStorage",
+              "reason": "Cache names only; cache bodies and keys are not enumerated"
+            },
+            {
+              "channel": "cookies",
+              "reason": "Cookie values intentionally excluded; cookie state is not extracted"
+            },
+            {
+              "channel": "frames",
+              "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured"
+            },
+            {
+              "channel": "source-build",
+              "reason": "Diagnostic adapter identifies an unsealed working tree; commit label is not exact deployed source proof"
+            }
+          ],
+          "imageBytes": 77714,
+          "imageSha256": "7a639defb6f58816746bc2ed029896b967c1316c1ea51342de50a060004debb4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+Building for production...
+[3 / 11] LensCore
+[5 / 12] LensCore
+[8 / 11] LensCore
+[11 / 12] lens-host-product
+[11 / 12] NativeBrowserLens-product
+[12 / 12] NativeBrowserLens-product
+[15 / 15] lens-host-product
+Build complete! (6,74 sec)
+/Users/veniaminkrachun/git/native-browser-lens/dist/Native Browser Lens.app/Contents/MacOS/lens-host: replacing existing signature
+/Users/veniaminkrachun/git/native-browser-lens/dist/Native Browser Lens.app: replacing existing signature
+
+> native-browser-lens-collector@0.1.0 build
+> tsc --noEmit && node scripts/build.mjs
+
+Load unpacked extension from extension/dist in chrome://extensions.
+/Users/veniaminkrachun/git/native-browser-lens/dist/Native Browser Lens.app

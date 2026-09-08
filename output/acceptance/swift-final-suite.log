@@ -1,0 +1,116 @@
+Building for debugging...
+[Computing dependencies]
+[1 / 1]
+Build complete! (0,57 sec)
+Test Suite 'All tests' started at 2026-09-08 22:44:05.011.
+Test Suite 'NativeLensTests.xctest' started at 2026-09-08 22:44:05.016.
+Test Suite 'AnnotationTests' started at 2026-09-08 22:44:05.016.
+Test Case '-[NativeLensTests.AnnotationTests testLetterboxingExcludesMarginsAndNormalizesRetinaIndependently]' started.
+Test Case '-[NativeLensTests.AnnotationTests testLetterboxingExcludesMarginsAndNormalizesRetinaIndependently]' passed (0.003 seconds).
+Test Case '-[NativeLensTests.AnnotationTests testMaskBurnsIntoCorrectTopLeftPixelsAndLeavesOriginalUntouched]' started.
+Test Case '-[NativeLensTests.AnnotationTests testMaskBurnsIntoCorrectTopLeftPixelsAndLeavesOriginalUntouched]' passed (0.008 seconds).
+Test Case '-[NativeLensTests.AnnotationTests testSpatialAnnotationResolvesSmallestStableElementAndRejectsDifferentCapture]' started.
+Test Case '-[NativeLensTests.AnnotationTests testSpatialAnnotationResolvesSmallestStableElementAndRejectsDifferentCapture]' passed (0.001 seconds).
+Test Suite 'AnnotationTests' passed at 2026-09-08 22:44:05.028.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.012 (0.012) seconds
+Test Suite 'FilingVisualTests' started at 2026-09-08 22:44:05.028.
+Test Case '-[NativeLensTests.FilingVisualTests testRenderFilingStateFixturesWhenRequested]' started.
+Test Case '-[NativeLensTests.FilingVisualTests testRenderFilingStateFixturesWhenRequested]' passed (0.260 seconds).
+Test Suite 'FilingVisualTests' passed at 2026-09-08 22:44:05.288.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.260 (0.260) seconds
+Test Suite 'NotebookStateTests' started at 2026-09-08 22:44:05.288.
+Test Case '-[NativeLensTests.NotebookStateTests testCaptureStartedOnUnconfiguredOriginDoesNotCreateNotebook]' started.
+Test Case '-[NativeLensTests.NotebookStateTests testCaptureStartedOnUnconfiguredOriginDoesNotCreateNotebook]' passed (0.148 seconds).
+Test Case '-[NativeLensTests.NotebookStateTests testDatabaseFailureRetainsCaptureUntilExplicitSaveRetry]' started.
+Test Case '-[NativeLensTests.NotebookStateTests testDatabaseFailureRetainsCaptureUntilExplicitSaveRetry]' passed (0.069 seconds).
+Test Case '-[NativeLensTests.NotebookStateTests testLateInvestigationDoesNotReplaceManualMarkdown]' started.
+Test Case '-[NativeLensTests.NotebookStateTests testLateInvestigationDoesNotReplaceManualMarkdown]' passed (0.125 seconds).
+Test Case '-[NativeLensTests.NotebookStateTests testQueuedExtensionCaptureSurvivesAppRestartAndRejectsOtherProfile]' started.
+Test Case '-[NativeLensTests.NotebookStateTests testQueuedExtensionCaptureSurvivesAppRestartAndRejectsOtherProfile]' passed (0.142 seconds).
+Test Case '-[NativeLensTests.NotebookStateTests testVideoIdentitySeparatesChromeProfilesWithTheSameTabNumber]' started.
+Test Case '-[NativeLensTests.NotebookStateTests testVideoIdentitySeparatesChromeProfilesWithTheSameTabNumber]' passed (0.000 seconds).
+Test Suite 'NotebookStateTests' passed at 2026-09-08 22:44:05.772.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.484 (0.484) seconds
+Test Suite 'NativeLensTests.xctest' passed at 2026-09-08 22:44:05.772.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.755 (0.756) seconds
+Test Suite 'All tests' passed at 2026-09-08 22:44:05.772.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.755 (0.761) seconds
+Test Suite 'All tests' started at 2026-09-08 22:44:05.867.
+Test Suite 'LensCoreTests.xctest' started at 2026-09-08 22:44:05.872.
+Test Suite 'AuthorityBindingTests' started at 2026-09-08 22:44:05.872.
+Test Case '-[LensCoreTests.AuthorityBindingTests testChangedMemberAfterCommittedTimeoutCannotCreateAnotherTask]' started.
+Test Case '-[LensCoreTests.AuthorityBindingTests testChangedMemberAfterCommittedTimeoutCannotCreateAnotherTask]' passed (0.019 seconds).
+Test Case '-[LensCoreTests.AuthorityBindingTests testRotatedTokenForSameMemberRecoversCommittedReceiptAfterStoreReopen]' started.
+Test Case '-[LensCoreTests.AuthorityBindingTests testRotatedTokenForSameMemberRecoversCommittedReceiptAfterStoreReopen]' passed (0.006 seconds).
+Test Suite 'AuthorityBindingTests' passed at 2026-09-08 22:44:05.897.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.025 (0.025) seconds
+Test Suite 'BridgeTests' started at 2026-09-08 22:44:05.898.
+Test Case '-[LensCoreTests.BridgeTests testClosedNotebookCoalescesStatusWithoutDroppingCapturedEvidence]' started.
+Test Case '-[LensCoreTests.BridgeTests testClosedNotebookCoalescesStatusWithoutDroppingCapturedEvidence]' passed (0.028 seconds).
+Test Case '-[LensCoreTests.BridgeTests testNewStatusCanBeClaimedWhileEarlierStatusRemainsUnacknowledged]' started.
+Test Case '-[LensCoreTests.BridgeTests testNewStatusCanBeClaimedWhileEarlierStatusRemainsUnacknowledged]' passed (0.004 seconds).
+Test Case '-[LensCoreTests.BridgeTests testQueuedMessageWakesNativeConsumerAndKeepsBrowserProfilesSeparate]' started.
+Test Case '-[LensCoreTests.BridgeTests testQueuedMessageWakesNativeConsumerAndKeepsBrowserProfilesSeparate]' passed (0.003 seconds).
+Test Case '-[LensCoreTests.BridgeTests testUnacknowledgedCaptureReplaysAfterRestartInOriginalOrder]' started.
+Test Case '-[LensCoreTests.BridgeTests testUnacknowledgedCaptureReplaysAfterRestartInOriginalOrder]' passed (0.002 seconds).
+Test Suite 'BridgeTests' passed at 2026-09-08 22:44:05.934.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.036 (0.037) seconds
+Test Suite 'EvidenceStoreTests' started at 2026-09-08 22:44:05.934.
+Test Case '-[LensCoreTests.EvidenceStoreTests testExportContainsOnlyExplicitlyReviewedVideoAndKeepsPathsPortable]' started.
+Test Case '-[LensCoreTests.EvidenceStoreTests testExportContainsOnlyExplicitlyReviewedVideoAndKeepsPathsPortable]' passed (0.004 seconds).
+Test Case '-[LensCoreTests.EvidenceStoreTests testSavedObservationSurvivesStoreReopenAndOtherProjectWrites]' started.
+Test Case '-[LensCoreTests.EvidenceStoreTests testSavedObservationSurvivesStoreReopenAndOtherProjectWrites]' passed (0.006 seconds).
+Test Suite 'EvidenceStoreTests' passed at 2026-09-08 22:44:05.944.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.010 (0.010) seconds
+Test Suite 'FilingTests' started at 2026-09-08 22:44:05.945.
+Test Case '-[LensCoreTests.FilingTests testTimeoutAfterCommitRecoversSameTicketAfterStoreReopen]' started.
+Test Case '-[LensCoreTests.FilingTests testTimeoutAfterCommitRecoversSameTicketAfterStoreReopen]' passed (0.006 seconds).
+Test Suite 'FilingTests' passed at 2026-09-08 22:44:05.951.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.006 (0.006) seconds
+Test Suite 'InvestigationTests' started at 2026-09-08 22:44:05.951.
+Test Case '-[LensCoreTests.InvestigationTests testCloudImageLimitsKeepTechnicalEvidenceAndReportEachOmission]' started.
+Test Case '-[LensCoreTests.InvestigationTests testCloudImageLimitsKeepTechnicalEvidenceAndReportEachOmission]' passed (0.002 seconds).
+Test Case '-[LensCoreTests.InvestigationTests testCloudSelectionExcludesUnselectedCapturesAndPriorLocalFindings]' started.
+Test Case '-[LensCoreTests.InvestigationTests testCloudSelectionExcludesUnselectedCapturesAndPriorLocalFindings]' passed (0.001 seconds).
+Test Case '-[LensCoreTests.InvestigationTests testCollectorNestedLogErrorsAreObservedWhileInformationalLogsAreExcluded]' started.
+Test Case '-[LensCoreTests.InvestigationTests testCollectorNestedLogErrorsAreObservedWhileInformationalLogsAreExcluded]' passed (0.002 seconds).
+Test Case '-[LensCoreTests.InvestigationTests testCollectorNetworkFailureBecomesObservedFindingWithEventReference]' started.
+Test Case '-[LensCoreTests.InvestigationTests testCollectorNetworkFailureBecomesObservedFindingWithEventReference]' passed (0.001 seconds).
+Test Case '-[LensCoreTests.InvestigationTests testSourceFromDifferentBuildCannotBePresentedAsMatchedImplementation]' started.
+Test Case '-[LensCoreTests.InvestigationTests testSourceFromDifferentBuildCannotBePresentedAsMatchedImplementation]' passed (0.075 seconds).
+Test Case '-[LensCoreTests.InvestigationTests testSourceReferenceCannotReadASecretOrEscapeRepository]' started.
+Test Case '-[LensCoreTests.InvestigationTests testSourceReferenceCannotReadASecretOrEscapeRepository]' passed (0.000 seconds).
+Test Case '-[LensCoreTests.InvestigationTests testStableSourceStampResolvesAndAnUnresolvedAnnotationDoesNotFallback]' started.
+Test Case '-[LensCoreTests.InvestigationTests testStableSourceStampResolvesAndAnUnresolvedAnnotationDoesNotFallback]' passed (0.010 seconds).
+Test Case '-[LensCoreTests.InvestigationTests testStampedSourceCannotReadSecretThroughAnInRepositoryAlias]' started.
+Test Case '-[LensCoreTests.InvestigationTests testStampedSourceCannotReadSecretThroughAnInRepositoryAlias]' passed (0.001 seconds).
+Test Suite 'InvestigationTests' passed at 2026-09-08 22:44:06.043.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.091 (0.092) seconds
+Test Suite 'OpenAIClientTests' started at 2026-09-08 22:44:06.043.
+Test Case '-[LensCoreTests.OpenAIClientTests testInvestigationFollowsReadOnlyToolAndReturnsItsEvidenceWithoutServerStorage]' started.
+Test Case '-[LensCoreTests.OpenAIClientTests testInvestigationFollowsReadOnlyToolAndReturnsItsEvidenceWithoutServerStorage]' passed (0.001 seconds).
+Test Suite 'OpenAIClientTests' passed at 2026-09-08 22:44:06.044.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'ProjectInvestigationToolsTests' started at 2026-09-08 22:44:06.044.
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testCallsAndReturnedEvidenceStayWithinBudget]' started.
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testCallsAndReturnedEvidenceStayWithinBudget]' passed (0.036 seconds).
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testRequestsAndCorrelatedLogsUseOnlySelectedProjectEvidence]' started.
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testRequestsAndCorrelatedLogsUseOnlySelectedProjectEvidence]' passed (0.002 seconds).
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testSearchFollowsSourceTestsAndDocsWithoutSecretsOrSymlinkEscapes]' started.
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testSearchFollowsSourceTestsAndDocsWithoutSecretsOrSymlinkEscapes]' passed (0.003 seconds).
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testWorkingTreeAndConflictingBuildsNeverAssertMatchedSource]' started.
+Test Case '-[LensCoreTests.ProjectInvestigationToolsTests testWorkingTreeAndConflictingBuildsNeverAssertMatchedSource]' passed (0.332 seconds).
+Test Suite 'ProjectInvestigationToolsTests' passed at 2026-09-08 22:44:06.418.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.374 (0.374) seconds
+Test Suite 'LensCoreTests.xctest' passed at 2026-09-08 22:44:06.418.
+	 Executed 22 tests, with 0 failures (0 unexpected) in 0.544 (0.546) seconds
+Test Suite 'All tests' passed at 2026-09-08 22:44:06.418.
+	 Executed 22 tests, with 0 failures (0 unexpected) in 0.544 (0.550) seconds
+◇ Test run started.
+↳ Testing Library Version: 2077
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.
+◇ Test run started.
+↳ Testing Library Version: 2077
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

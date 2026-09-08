@@ -1,0 +1,65 @@
+{
+  "devtoolsVerified": false,
+  "focusedWindowVerified": false,
+  "at": "2026-09-08T20:23:20.515Z",
+  "browser": "151.0.7922.34",
+  "fixtureOrigin": "http://127.0.0.1:49463",
+  "extensionId": "mfpclfngcgiahifebjbjlgagmlflcjpg",
+  "nativeHost": "/Users/veniaminkrachun/git/native-browser-lens/.build/out/Products/Release/lens-host",
+  "assertions": [
+    "two-project two-window isolation",
+    "absent OS-focus remains inactive",
+    "capture-time reflow revalidation",
+    "replacement node receives fresh spatial identity",
+    "MAIN-world diagnostic adapter",
+    "debugger network and 503 response",
+    "console exception with stack",
+    "sanitized same-origin body",
+    "sanitized storage",
+    "source stamp and viewport",
+    "durable extension capture-started before artifacts",
+    "real PNG capture via chunked native host",
+    "filesystem-watched native command roundtrip and client identity",
+    "navigation replacement",
+    "pause and resume"
+  ],
+  "captureEvents": 23,
+  "imageBytes": 25901,
+  "gaps": [
+    {
+      "startedAt": 1788898992223,
+      "reason": "Evidence starts when this tab is armed; earlier requests are unavailable",
+      "channel": "history"
+    },
+    {
+      "startedAt": 1788898994322,
+      "reason": "Database names and versions only; records are not read without a project adapter",
+      "channel": "indexedDB"
+    },
+    {
+      "startedAt": 1788898994322,
+      "reason": "Cache names only; cache bodies and keys are not enumerated",
+      "channel": "cacheStorage"
+    },
+    {
+      "startedAt": 1788898994322,
+      "reason": "Cookie values intentionally excluded; cookie state is not extracted",
+      "channel": "cookies"
+    },
+    {
+      "startedAt": 1788898994373,
+      "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured",
+      "channel": "frames"
+    },
+    {
+      "startedAt": 1788898994374,
+      "reason": "Diagnostic adapter identifies an unsealed working tree; commit label is not exact deployed source proof",
+      "channel": "source-build"
+    }
+  ],
+  "defaultsNotVerified": [
+    "default Chrome profile consent",
+    "native ScreenCaptureKit",
+    "DevTools window handover"
+  ]
+}

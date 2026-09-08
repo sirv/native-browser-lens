@@ -1,0 +1,12 @@
+{
+  "observationId": "4555f5df-4bbc-43d0-8722-9a4938829311",
+  "capturesSurvivedAppRestart": 2,
+  "markdownUnchangedAfterRestartAndInvestigation": true,
+  "markdownSHA256": "8bdd77d47cf29511817a7c336815ec12d631efecf2bb8f7a2737d9d225e1aec2",
+  "localFindings": 33,
+  "observedNetworkFailure": true,
+  "missingSourceExplicit": true,
+  "providerUsed": false,
+  "defaultProfileHostReconnected": true,
+  "devToolsClosedAndDeepModeResumed": true
+}

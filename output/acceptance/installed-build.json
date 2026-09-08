@@ -1,0 +1,8 @@
+{
+  "builtAt": "2026-09-08T20:45:51.175684+00:00",
+  "files": {
+    "/Users/veniaminkrachun/Applications/Native Browser Lens.app/Contents/MacOS/NativeBrowserLens": "afc3c598b740368d8642a96ce97aaaae4b2e1158a1acf75e1e222885388ff950",
+    "/Users/veniaminkrachun/Applications/Native Browser Lens.app/Contents/MacOS/lens-host": "762c18f0a46e684b1ab5a0e37dcbdd67cd47de91b72459a199b2a531c7428816",
+    "/Users/veniaminkrachun/git/native-browser-lens/extension/dist/background.js": "fa1fe0af471a0e417ba4fb492aebedb9ebebc856b3d17ec22930ab190b448fd0"
+  }
+}

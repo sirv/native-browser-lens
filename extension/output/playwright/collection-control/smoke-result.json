@@ -1,0 +1,64 @@
+{
+  "devtoolsVerified": false,
+  "focusedWindowVerified": false,
+  "at": "2026-09-08T20:28:47.749Z",
+  "browser": "151.0.7922.34",
+  "fixtureOrigin": "http://127.0.0.1:50234",
+  "extensionId": "mfpclfngcgiahifebjbjlgagmlflcjpg",
+  "nativeHost": "isolated real Native Messaging fixture receiver",
+  "assertions": [
+    "two-project two-window isolation",
+    "absent OS-focus remains inactive",
+    "capture-time reflow revalidation",
+    "replacement node receives fresh spatial identity",
+    "MAIN-world diagnostic adapter",
+    "debugger network and 503 response",
+    "console exception with stack",
+    "sanitized same-origin body",
+    "sanitized storage",
+    "source stamp and viewport",
+    "durable extension capture-started before artifacts",
+    "real PNG capture via chunked native host",
+    "navigation replacement",
+    "pause and resume"
+  ],
+  "captureEvents": 23,
+  "imageBytes": 25901,
+  "gaps": [
+    {
+      "channel": "history",
+      "reason": "Evidence starts when this tab is armed; earlier requests are unavailable",
+      "startedAt": 1788899325266
+    },
+    {
+      "channel": "indexedDB",
+      "reason": "Database names and versions only; records are not read without a project adapter",
+      "startedAt": 1788899327323
+    },
+    {
+      "channel": "cacheStorage",
+      "reason": "Cache names only; cache bodies and keys are not enumerated",
+      "startedAt": 1788899327323
+    },
+    {
+      "channel": "cookies",
+      "reason": "Cookie values intentionally excluded; cookie state is not extracted",
+      "startedAt": 1788899327323
+    },
+    {
+      "channel": "frames",
+      "reason": "Restricted or ungranted frames are not readable; listed frame URLs do not prove frame contents were captured",
+      "startedAt": 1788899327363
+    },
+    {
+      "channel": "source-build",
+      "reason": "Diagnostic adapter identifies an unsealed working tree; commit label is not exact deployed source proof",
+      "startedAt": 1788899327363
+    }
+  ],
+  "defaultsNotVerified": [
+    "default Chrome profile consent",
+    "native ScreenCaptureKit",
+    "DevTools window handover"
+  ]
+}

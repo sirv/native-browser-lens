@@ -1,0 +1,120 @@
+{
+  "startedAt": "2026-09-08T20:28:48.220Z",
+  "requestedSeconds": 90,
+  "samples": [
+    {
+      "armedSelectedTab": true,
+      "phase": 0,
+      "resources": {
+        "armed": {
+          "cpuSeconds": 2.9511250000000007,
+          "rssKiB": 1076576,
+          "processCount": 9
+        },
+        "baseline": {
+          "cpuSeconds": 1.841443,
+          "rssKiB": 776032,
+          "processCount": 7
+        }
+      },
+      "elapsedSeconds": 30.07,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 301,
+        "timerDelayP95": 1.300000011920929,
+        "requestP95": 4.100000023841858,
+        "jsHeap": 2530180
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 301,
+        "timerDelayP95": 1.199999988079071,
+        "requestP95": 3.699999988079071,
+        "jsHeap": 1250080
+      },
+      "evidenceBytes": 29480,
+      "tabModes": [
+        "paused",
+        "paused"
+      ]
+    },
+    {
+      "armedSelectedTab": true,
+      "phase": 1,
+      "resources": {
+        "armed": {
+          "cpuSeconds": 5.234251,
+          "rssKiB": 1107312,
+          "processCount": 9
+        },
+        "baseline": {
+          "cpuSeconds": 2.5974310000000003,
+          "rssKiB": 777424,
+          "processCount": 7
+        }
+      },
+      "elapsedSeconds": 60.192,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 301,
+        "timerDelayP95": 1.399999976158142,
+        "requestP95": 4.100000023841858,
+        "jsHeap": 3024582
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 602,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 4.399999976158142,
+        "jsHeap": 1722367
+      },
+      "evidenceBytes": 200536,
+      "tabModes": [
+        "deep",
+        "deep"
+      ]
+    },
+    {
+      "armedSelectedTab": true,
+      "phase": 2,
+      "resources": {
+        "armed": {
+          "cpuSeconds": 6.494356000000001,
+          "rssKiB": 1033104,
+          "processCount": 9
+        },
+        "baseline": {
+          "cpuSeconds": 3.286496,
+          "rssKiB": 688720,
+          "processCount": 7
+        }
+      },
+      "elapsedSeconds": 90.116,
+      "armed": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 299,
+        "timerDelayP95": 1.300000011920929,
+        "requestP95": 3,
+        "jsHeap": 2733298
+      },
+      "baseline": {
+        "visibility": "visible",
+        "focused": true,
+        "ticks": 901,
+        "timerDelayP95": 1.100000023841858,
+        "requestP95": 4,
+        "jsHeap": 2240583
+      },
+      "evidenceBytes": 200438,
+      "tabModes": [
+        "paused",
+        "paused"
+      ]
+    }
+  ]
+}
