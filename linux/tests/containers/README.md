@@ -8,8 +8,8 @@ From the repository root, after building a release:
 docker build -f linux/tests/containers/Ubuntu24.Dockerfile -t native-browser-lens-qa:ubuntu24 linux/tests/containers
 docker build -f linux/tests/containers/Fedora44.Dockerfile -t native-browser-lens-qa:fedora44 linux/tests/containers
 mkdir -p .build/ubuntu24-output .build/fedora44-output
-docker run --rm -v "$PWD:/work:ro" -v "$PWD/dist/releases/native-browser-lens-0.10.3-linux-x86_64:/release:ro" -v "$PWD/.build/ubuntu24-output:/work/.build:rw" native-browser-lens-qa:ubuntu24 sh linux/tests/containers/run.sh
-docker run --rm -v "$PWD:/work:ro" -v "$PWD/dist/releases/native-browser-lens-0.10.3-linux-x86_64:/release:ro" -v "$PWD/.build/fedora44-output:/work/.build:rw" native-browser-lens-qa:fedora44 sh linux/tests/containers/run.sh
+docker run --rm -v "$PWD:/work:ro" -v "$PWD/dist/releases/native-browser-lens-0.10.4-linux-x86_64:/release:ro" -v "$PWD/.build/ubuntu24-output:/work/.build:rw" native-browser-lens-qa:ubuntu24 sh linux/tests/containers/run.sh
+docker run --rm -v "$PWD:/work:ro" -v "$PWD/dist/releases/native-browser-lens-0.10.4-linux-x86_64:/release:ro" -v "$PWD/.build/fedora44-output:/work/.build:rw" native-browser-lens-qa:fedora44 sh linux/tests/containers/run.sh
 ```
 
 Adjust the release folder for a later version. The bind-mounted output directories must be writable by the container's UID 1000. There is no privileged mode, Docker socket mount, host session bus or home-directory mount. Only the named output directory is writable. The app's notebook, browser registrations and rollback copies live in temporary container directories.

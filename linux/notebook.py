@@ -1455,7 +1455,7 @@ class Notebook(Gtk.Application):
         return onboarding.show(self)
 
     def open_browser(self,binary,url):
-        try:subprocess.Popen([binary,url],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
+        try:subprocess.Popen([*(binary if isinstance(binary,list) else [binary]),url],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
         except OSError as error:self.status.set_text('Could not open the browser: '+str(error))
 
     def open_source(self,source):

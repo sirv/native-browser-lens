@@ -4,7 +4,7 @@ The Linux notebook uses GTK 4 and the same Swift LensCore, SQLite format, Chrome
 
 ## Install the prebuilt app
 
-Run `sh native-browser-lens-0.10.3-linux-x86_64.run` and choose **Install and open Lens**. Running it with `sh` avoids a separate executable-permission step after download. The archive also includes `Install.sh`, or use `python3 install.py --launch` for a terminal. The self-extracting installer checks its payload checksum; the installer verifies the release manifest, CPU architecture and desktop dependencies before replacing the app. Swift, its runtime, Codex and the English dictation engine/model are bundled. No Swift or Node.js installation is required for the prebuilt app.
+Run `sh native-browser-lens-0.10.4-linux-x86_64.run` and choose **Install and open Lens**. Running it with `sh` avoids a separate executable-permission step after download. The archive also includes `Install.sh`, or use `python3 install.py --launch` for a terminal. The self-extracting installer checks its payload checksum; the installer verifies the release manifest, CPU architecture and desktop dependencies before replacing the app. Swift, its runtime, Codex and the English dictation engine/model are bundled. No Swift or Node.js installation is required for the prebuilt app. Repository collaborators can download the assets from the [private draft release](https://github.com/VKrachun/native-browser-lens/releases/tag/untagged-9ef88d7c6cbc113b2fb4); public distribution remains pending publisher inputs.
 
 Installation is per user. On a desktop, the `.run` and `Install.sh` entry points can request missing Python/GTK components through `pkexec` and the host package manager before opening the installer. Canceling authorization preserves the installed app. **Install desktop components** offers the same package setup inside the graphical installer. If the desktop has no authorization helper, install the printed packages in a terminal first. Native Chrome/Chromium or Firefox, a running desktop session and a window-capable XDG portal are needed for their respective integrations.
 
@@ -65,9 +65,26 @@ On desktops with a StatusNotifier tray host, Lens shows capture, pause, open and
 
 Storage is `$XDG_DATA_HOME/native-browser-lens`, defaulting to `~/.local/share/native-browser-lens`. `LENS_DATA_DIR` selects an isolated notebook for tests. Inbox processing is event-driven: GIO monitors the notebook inbox; the host uses inotify. Starts and chunks are acknowledged only after the complete observation and image are saved. Invalid envelopes are retained in a private diagnostic artifact before acknowledgement.
 
+## Firefox Flatpak
+
+Firefox 157+ can use the host's `xdg-native-messaging-proxy`. Firefox 158 on Freedesktop 25.08 passed real Lens capture through Fedora 44's proxy 0.1.0: two projects, failed requests, actions/storage, redaction, toolbar PNG, navigation and notebook persistence. Forced-on (`1`) and sandbox auto-detect (`2`) proxy preferences passed. The QA used a separate Flatpak installation, private D-Bus and fixture-only filesystem access; it did not alter the installed Zen browser or persistent user overrides.
+
+1. Install the host proxy through a distribution that supplies it. Fedora 44 provides `sudo dnf install xdg-native-messaging-proxy`. Lens's installer already registers its host in `~/.mozilla/native-messaging-hosts`, where the proxy searches. Copying a host executable into the browser sandbox is unnecessary.
+2. If the browser package does not already grant it, explicitly allow this D-Bus service: `flatpak override --user --talk-name=org.freedesktop.NativeMessagingProxy org.mozilla.firefox`. This lets Firefox reach installed native-messaging hosts; the browser still checks each extension's allowed host identity. Lens does not make this permission change. To disable this bridge alone, use `flatpak override --user --no-talk-name=org.freedesktop.NativeMessagingProxy org.mozilla.firefox`; this preserves other overrides.
+3. In Firefox `about:config`, set `widget.use-xdg-desktop-portal.native-messaging-proxy` to `2` (auto-detect) or `1` (enabled), then restart Firefox when your work is saved. Lens does not edit profiles or preferences.
+4. In Lens Browser setup, select **Firefox (Flatpak)**. **Copy temporary add-on path** prepares one private unsigned XPI; **Open browser extensions** opens `about:debugging`. Choose **This Firefox → Load Temporary Add-on** and select that XPI with the file chooser. A single archive gives the sandbox the complete collector. Approve the project in the extension, open its site, and test a toolbar capture. The temporary installation ends when Firefox restarts; permanent installation still needs Mozilla signing.
+
+Native Firefox and Chrome/Chromium retain their existing setup. Zen 1.21.5b on this host uses Gecko 152 and lacks the newer proxy client. Snap was not tested. These package/transport boundaries are explicit rather than inferred from a successful native-browser test.
+
+Primary transport details: [Mozilla's native messaging design](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/native-messaging-portal-design.html), [Flatpak's proxy](https://github.com/flatpak/xdg-native-messaging-proxy), and [Mozilla's Flatpak permission tracking](https://bugzilla.mozilla.org/show_bug.cgi?id=2078349).
+
 ## Verification
 
-Current 0.10.3 checks on 2026-10-17 pass 52 Swift, 15 collector and 42 Python tests, a clean source review, fresh Ubuntu/Fedora package workflows, real Chromium/Firefox native-host capture and installed Wayland launch. All 141 installed files verify and the current observation/twelve artifacts match their pre-install hashes. Earlier real Wayland portal/PipeWire, tray/DBusMenu and default-profile capture evidence remains separately recorded in [the feature parity record](LINUX_PARITY.md). Local filing/recovery uses actual isolated Secret Service and workerd/D1/R2; production filing remains open. The installed bundle also passed synthetic speech → reviewed Codex text/image reporting with a source-build gap retained in 9.49 seconds. This single sample excludes physical input and human review and is not a p95 claim. The frozen bundle also completed a 30-minute fixture with 69 captures: 355.34 ms median, 392.04 ms p95 and 552.26 ms maximum capture-to-paint (one sample over 500 ms). [GAPS.md](GAPS.md) records the full samples and physical-input/resource-measurement limits.
+Current 0.10.4 checks pass 52 Swift, 45 Linux and 15 collector tests, a clean final source review, fresh Ubuntu/Fedora package workflows, real native Firefox and Firefox 158 Flatpak/proxy capture, and installed Wayland launch. Version 0.10.4 is installed and running. All 141 installed files verify; the current observation and twelve artifacts match their pre-install hashes exactly. The actual Chrome profile reports one active/selected deep project tab. Proof is `.build/flatpak-v0104-install-verification.json` and `live-status.json` under that prefix. Reload the unpacked collector in `chrome://extensions` after the app update; this session has no enabled browser automation surface for that UI action.
+
+The frozen 0.10.4 bundle completed 1800.73 seconds with sixty seeded reports and 69 measured captures: ten consecutive requests awaited through GTK paint and 59 periodic captures. Capture-to-paint median was 358.67 ms, p95 387.72 ms and maximum 439.34 ms; no sample exceeded 500 ms. The captured project tab stayed selected at every sample and both collector tabs stayed deep; the other project tab's selected state was not independently sampled throughout. Checkpoint storage stayed below 188 KiB, GTK RSS ranged from 204.3 to 261.1 MiB, and all capture stages and 59 resource samples were retained. The process exited 0 and all 141 frozen files verify. Proof is `.build/flatpak-v0104-soak/{soak-result,summary,runtime}.json`. This shared-host Xvfb fixture excludes physical input, portal video, microphone and provider timing; summed process RSS can count shared pages more than once.
+
+Synthetic offline speech → reviewed Codex text/image reporting took 10.62 seconds, with manual notes and the source-build warning retained. This single sample exceeds the 10-second target and excludes physical input, human review and provider p95. Production VibeQ member authentication passes through the existing keyring credential; reviewed filing remains pending. [GAPS.md](GAPS.md) records the open publisher/device inputs.
 
 ```sh
 swift test
@@ -114,8 +131,8 @@ Firefox's limited mode captures granted webRequest metadata, main-frame actions 
 ```sh
 GDK_BACKEND=x11 xvfb-run -n 213 -s '-screen 0 1440x1100x24' \
   python3 extension/scripts/firefox-smoke.py --headed \
-  --host dist/releases/native-browser-lens-0.10.3-linux-x86_64/lens-host \
-  --extension dist/releases/native-browser-lens-0.10.3-linux-x86_64/extension-firefox
+  --host dist/releases/native-browser-lens-0.10.4-linux-x86_64/lens-host \
+  --extension dist/releases/native-browser-lens-0.10.4-linux-x86_64/extension-firefox
 ```
 
 The Firefox smoke uses the installed Firefox executable, its built-in Marionette testing protocol, an isolated profile/home, test-only localhost host grants and the real bundled native host/service. It never opens the user's Firefox profile. It checks the configured shortcut but uses the toolbar action for screenshot acceptance; physical shortcut timing is not proven.

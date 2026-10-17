@@ -3,6 +3,7 @@ import importlib.util
 import pathlib
 import tempfile
 import unittest
+from unittest.mock import patch,Mock
 import cairo
 
 sys.path.insert(0, str(pathlib.Path(__file__).parents[1]))
@@ -12,6 +13,14 @@ spec.loader.exec_module(notebook)
 
 
 class AnnotationTests(unittest.TestCase):
+    def test_browser_launcher_keeps_flatpak_arguments_and_url_separate(self):
+        app=Mock()
+        with patch.object(notebook.subprocess,'Popen') as launch:
+            notebook.Notebook.open_browser(app,['/usr/bin/flatpak','run','org.mozilla.firefox'],'https://fixture.example/?q=hello;world')
+            self.assertEqual(launch.call_args.args[0],['/usr/bin/flatpak','run','org.mozilla.firefox','https://fixture.example/?q=hello;world'])
+            notebook.Notebook.open_browser(app,'/usr/bin/firefox','about:debugging')
+            self.assertEqual(launch.call_args.args[0],['/usr/bin/firefox','about:debugging'])
+
     def test_masks_are_opaque_at_frozen_image_coordinates_and_original_is_unchanged(self):
         with tempfile.TemporaryDirectory() as directory:
             original = pathlib.Path(directory) / 'original.png'

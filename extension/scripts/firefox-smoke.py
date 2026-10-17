@@ -14,7 +14,9 @@ import time
 import uuid
 import zipfile
 
-parser=argparse.ArgumentParser();parser.add_argument('--extension',type=Path);parser.add_argument('--headed',action='store_true');parser.add_argument('--host',type=Path,required=True);parser.add_argument('--output',type=Path,default=Path('.build/firefox-smoke'));args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--extension',type=Path);parser.add_argument('--headed',action='store_true');parser.add_argument('--host',type=Path,required=True);parser.add_argument('--output',type=Path,default=Path('.build/firefox-smoke'));parser.add_argument('--flatpak',action='store_true');parser.add_argument('--native-proxy',type=Path);args=parser.parse_args()
+if args.flatpak != bool(args.native_proxy):parser.error('--flatpak and --native-proxy must be used together')
+if args.flatpak and os.environ.get('LENS_PRIVATE_BUS')!='1':parser.error('Run the Flatpak fixture with LENS_PRIVATE_BUS=1 dbus-run-session')
 repo=Path(__file__).resolve().parents[2];output=args.output.resolve();output.mkdir(parents=True,exist_ok=True)
 
 
@@ -80,17 +82,28 @@ document.querySelector("#output").textContent=JSON.stringify({result});}catch(er
     with socket.socket() as port:port.bind(('127.0.0.1',0));number=port.getsockname()[1]
     extension_uuid=str(uuid.uuid4())
     preferences={'marionette.port':number,'extensions.webextensions.uuids':json.dumps({identity:extension_uuid}),'browser.shell.checkDefaultBrowser':False,'browser.startup.homepage_override.mstone':'ignore','browser.startup.page':0,'browser.ml.enable':False,'browser.safebrowsing.update.enabled':False,'app.update.disabledForTesting':True}
+    if args.flatpak:preferences.update({'widget.use-xdg-desktop-portal.native-messaging-proxy':1,'widget.use-xdg-desktop-portal.native-messaging':0})
     (profile/'user.js').write_text('\n'.join('user_pref('+json.dumps(key)+','+json.dumps(value)+');' for key,value in preferences.items()))
-    process=None
+    process=proxy=None
+    proxy_log=(output/'native-proxy.log').open('wb') if args.flatpak else None
     try:
+        if args.flatpak:
+            proxy=subprocess.Popen([str(args.native_proxy.resolve())],env={**environment,'HOME':directory},stdout=proxy_log,stderr=proxy_log)
+            subprocess.run(['gdbus','wait','--session','--timeout=20','org.freedesktop.NativeMessagingProxy'],check=True,timeout=25)
+            assert proxy.poll() is None,'The native messaging proxy exited before Firefox started'
         with (output/'firefox.log').open('wb') as log:
-            process=subprocess.Popen(['firefox',*([ ] if args.headed else ['--headless']),'--no-remote','--marionette','--remote-allow-system-access','--profile',str(profile)],env={**os.environ,'HOME':directory,'LENS_DATA_DIR':str(data),'XDG_CACHE_HOME':directory+'/cache'},stdout=log,stderr=log)
+            browser=['flatpak','run','--user','--die-with-parent','--talk-name=org.freedesktop.NativeMessagingProxy','--filesystem='+directory,'org.mozilla.firefox'] if args.flatpak else ['firefox']
+            process=subprocess.Popen([*browser,*([ ] if args.headed else ['--headless']),'--no-remote','--marionette','--remote-allow-system-access','--profile',str(profile)],env={**os.environ,'HOME':directory,'LENS_DATA_DIR':str(data),'XDG_CACHE_HOME':directory+'/cache'},stdout=log,stderr=log)
             deadline=time.monotonic()+20;connection=None
             while time.monotonic()<deadline:
                 try:connection=socket.create_connection(('127.0.0.1',number),timeout=15);break
                 except ConnectionRefusedError:assert process.poll() is None;time.sleep(.1)
             assert connection,'Firefox did not start'
             client=Marionette(connection);capabilities=client.command('WebDriver:NewSession',{'capabilities':{}})['capabilities']
+            if args.flatpak:
+                client.command('Marionette:SetContext',{'value':'chrome'})
+                assert client.script('return Cc["@mozilla.org/process/environment;1"].getService(Ci.nsIEnvironment).get("FLATPAK_ID");')=='org.mozilla.firefox'
+                client.command('Marionette:SetContext',{'value':'content'})
             client.command('Addon:Install',{'path':str(xpi),'temporary':True})
             client.command('WebDriver:Navigate',{'url':'moz-extension://'+extension_uuid+'/fixture.html'})
             control=client.command('WebDriver:GetWindowHandle')['value']
@@ -180,10 +193,16 @@ document.querySelector("#output").textContent=JSON.stringify({result});}catch(er
             pictures=[c['screenshotPath'] for o in saved['observations'] for c in o['captures'] if c.get('screenshotPath')]
             assert pictures and all(Path(p).read_bytes().startswith(b'\x89PNG') for p in pictures)
             summary=dict(passed=True,browser=capabilities['browserVersion'],projects=2,nativeHost=str(args.host.resolve()),mode='limited',events=len(capture['events']),imagePresent=True,imageBytes=len(png),initialNativeCaptureOmission=capture.get('screenshotOmission'),savedObservations=len(saved['observations']),assertions=['real Firefox extension install','framed native host','two project isolation','webRequest HTTP 503','document-bound actions','DOM/storage snapshot','credential redaction','explicit debugger coverage','pause and resume','real browser action and activeTab PNG','stable spatial screenshot binding','navigation replaces document evidence','actual notebook persistence'])
-            (output/'result.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))
     finally:
-        if process:
-            process.terminate()
-            try:process.wait(timeout=5)
-            except subprocess.TimeoutExpired:process.kill();process.wait()
+        for child in [process,proxy]:
+            if child and child.poll() is None:
+                child.terminate()
+                try:child.wait(timeout=5)
+                except subprocess.TimeoutExpired:child.kill();child.wait()
+        if proxy_log:proxy_log.close()
         for server in servers:server.shutdown();server.server_close()
+    summary['packaging']='flatpak' if args.flatpak else 'native'
+    if args.flatpak:
+        assert 'Handling Start studio.sirv.native_browser_lens (mozilla)' in (output/'native-proxy.log').read_text()
+        summary.update(nativeTransport='NativeMessagingProxy',temporarySandboxGrants=['org.freedesktop.NativeMessagingProxy',directory],proxyPreference=1)
+    (output/'result.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary))

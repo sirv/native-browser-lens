@@ -5,6 +5,9 @@ import json
 from pathlib import Path
 import shutil
 import os
+import subprocess
+import tempfile
+import zipfile
 from urllib.parse import urlsplit
 import uuid
 
@@ -35,6 +38,31 @@ def collector_folder(family='chromium'):
     return folder if folder.is_dir() else Path(__file__).resolve().parent.parent/('extension/dist-firefox' if family=='firefox' else 'extension/dist')
 
 
+def available_browsers():
+    browsers=[(label,path) for label,names in [('Chrome',('google-chrome','google-chrome-stable')),('Chromium',('chromium','chromium-browser')),('Firefox',('firefox',))] if (path:=next((shutil.which(name) for name in names if shutil.which(name)),None))]
+    if flatpak:=shutil.which('flatpak'):
+        try:
+            if subprocess.run([flatpak,'info','org.mozilla.firefox'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=3).returncode==0:browsers.append(('Firefox (Flatpak)',[flatpak,'run','org.mozilla.firefox']))
+        except (OSError,subprocess.TimeoutExpired):pass
+    return browsers
+
+
+def temporary_firefox_xpi(folder):
+    cache=Path(os.environ.get('XDG_CACHE_HOME',str(Path.home()/'.cache')))/'native-browser-lens'
+    cache.mkdir(parents=True,exist_ok=True,mode=0o700)
+    target=cache/'firefox-collector-unsigned.xpi'
+    with tempfile.NamedTemporaryFile(dir=cache,delete=False) as output:
+        temporary=Path(output.name)
+        try:
+            with zipfile.ZipFile(output,'w',zipfile.ZIP_DEFLATED) as archive:
+                for path in sorted(Path(folder).rglob('*')):
+                    if path.is_symlink():raise ValueError('Collector files must not contain symbolic links.')
+                    if path.is_file() and path.suffix!='.map':archive.write(path,path.relative_to(folder))
+            output.flush();os.replace(temporary,target)
+        finally:temporary.unlink(missing_ok=True)
+    return target
+
+
 def codex_binary():
     candidates=[os.environ.get('LENS_CODEX_BINARY'),str(Path(__file__).with_name('codex')),shutil.which('codex'),str(Path.home()/'.local/bin/codex'),str(Path.home()/'.codex/packages/standalone/current/bin/codex')]
     return next((path for path in candidates if path and os.access(path,os.X_OK)),None)
@@ -50,10 +78,11 @@ def show(app):
     window,content=app.review_window('Connect your browser','Choose your project, load the collector once, then approve the project in its browser. Lens will show when capture is ready.')
     window.set_child(None);window.set_child(Gtk.ScrolledWindow(child=content))
     app.setup_window=window
-    browsers=[(label,path) for label,names in [('Chrome',('google-chrome','google-chrome-stable')),('Chromium',('chromium','chromium-browser')),('Firefox',('firefox',))] if (path:=next((shutil.which(name) for name in names if shutil.which(name)),None))]
+    browsers=available_browsers()
     picker=Gtk.DropDown.new_from_strings([label for label,_ in browsers] or ['Install Chrome, Chromium or Firefox first'])
     content.append(picker)
-    def family():return 'firefox' if browsers and browsers[picker.get_selected()][0]=='Firefox' else 'chromium'
+    def family():return 'firefox' if browsers and browsers[picker.get_selected()][0].startswith('Firefox') else 'chromium'
+    def flatpak():return bool(browsers and isinstance(browsers[picker.get_selected()][1],list))
     def folder():return collector_folder(family())
     target={'id':None}
     index=app.project_picker.get_selected()
@@ -80,15 +109,16 @@ def show(app):
         app.send('configure',projects=projects,callback=configured)
     add=app.button('Use this project',add_project);content.append(add)
     content.append(Gtk.Label(label='2. Add the browser collector',xalign=0,css_classes=['heading']))
-    instructions=Gtk.Label(xalign=0,wrap=True);content.append(instructions)
+    instructions=Gtk.Label(xalign=0,wrap=True,selectable=True);content.append(instructions)
     content.append(Gtk.Label(label='Already installed? After an app update, use Reload on the Native Browser Lens extension card.',xalign=0,wrap=True,css_classes=['dim-label']))
     path=Gtk.Label(xalign=0,wrap=True,selectable=True,css_classes=['dim-label']);content.append(path)
     def copy_folder():
-        source=folder()/'manifest.json' if family()=='firefox' else folder()
-        Gdk.Display.get_default().get_clipboard().set(str(source));message.set_text('Collector path copied. Paste it in the browser’s load chooser.')
+        try:source=temporary_firefox_xpi(folder()) if flatpak() else folder()/'manifest.json' if family()=='firefox' else folder()
+        except (OSError,ValueError) as error:message.set_text('Could not prepare the collector: '+str(error));return False
+        Gdk.Display.get_default().get_clipboard().set(str(source));message.set_text('Collector path copied. Paste it in the browser’s load chooser.');return True
     def open_browser(page,copy=False):
         if not browsers:message.set_text('Install a supported native browser, then open this setup again.');return
-        if copy:copy_folder()
+        if copy and not copy_folder():return
         app.open_browser(browsers[picker.get_selected()][1],page)
     content.append(app.button('Open browser extensions',lambda:open_browser('about:debugging#/runtime/this-firefox' if family()=='firefox' else 'chrome://extensions',True)))
     copy=app.button('Copy extension folder',copy_folder);content.append(copy)
@@ -120,9 +150,9 @@ def show(app):
         connected=bool(clients)
         version=json.loads((folder()/'manifest.json').read_text())['version']
         stale=connected and any(app.client_versions.get(client)!=version for client in clients)
-        path.set_text(str(folder()/'manifest.json' if family()=='firefox' else folder()))
-        copy.set_label('Copy manifest path' if family()=='firefox' else 'Copy extension folder')
-        instructions.set_text('In This Firefox, choose Load Temporary Add-on and select the copied manifest.json path. This unsigned collector lasts until Firefox restarts. Permanent installation needs Mozilla signing; signing checks stay enabled. Use the collector button or Alt+Shift+L for screenshots; native-app capture may need approved window sharing.' if family()=='firefox' else 'Open Extensions, turn on Developer mode, then click Load unpacked. Paste the copied folder path in the folder chooser.')
+        path.set_text('Copy prepares one unsigned XPI for the sandbox’s file chooser.' if flatpak() else str(folder()/'manifest.json' if family()=='firefox' else folder()))
+        copy.set_label('Copy temporary add-on path' if flatpak() else 'Copy manifest path' if family()=='firefox' else 'Copy extension folder')
+        instructions.set_text('Requires Firefox 157+ and the host NativeMessagingProxy package. In Firefox about:config, set widget.use-xdg-desktop-portal.native-messaging-proxy to 2. Grant proxy access with: flatpak override --user --talk-name=org.freedesktop.NativeMessagingProxy org.mozilla.firefox\nThis lets Firefox reach installed native-messaging hosts. Lens changes no preferences or permissions. In This Firefox, choose Load Temporary Add-on and select the copied XPI. It lasts until Firefox restarts; permanent installation needs Mozilla signing.' if flatpak() else 'In This Firefox, choose Load Temporary Add-on and select the copied manifest.json path. This unsigned collector lasts until Firefox restarts. Permanent installation needs Mozilla signing; signing checks stay enabled. Use the collector button or Alt+Shift+L for screenshots; native-app capture may need approved window sharing.' if family()=='firefox' else 'Open Extensions, turn on Developer mode, then click Load unpacked. Paste the copied folder path in the folder chooser.')
         state.set_text('Collection is paused. Resume to detect project tabs and capture.' if app.paused else 'Collector connected. Reload its extension card to use the latest app features.' if stale else f"Collector connected · {len(ready)} ready project tab(s)." if ready else 'Collector connected. Approve the project origin and open its site.' if connected else 'Waiting for the selected browser. Load the collector in the profile you use.')
         resume.set_visible(app.paused)
         permissions.set_sensitive(connected and project is not None);open_site.set_sensitive(project is not None);test.set_sensitive(bool(ready) and not app.paused)

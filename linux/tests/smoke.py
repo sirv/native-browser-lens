@@ -8,6 +8,8 @@ import subprocess
 import tempfile
 import time
 import uuid
+import zipfile
+from unittest.mock import patch
 
 repo = Path(__file__).resolve().parents[2]
 if 'LENS_SERVICE_PATH' not in os.environ:
@@ -55,6 +57,7 @@ def assert_mask_visible(app,name):
 with tempfile.TemporaryDirectory(prefix='lens-linux-ui-') as directory:
     os.environ['LENS_DATA_DIR'] = directory
     os.environ['XDG_CONFIG_HOME'] = str(Path(directory) / 'config')
+    os.environ['XDG_CACHE_HOME'] = str(Path(directory) / 'cache')
     app = notebook.Notebook(desktop=False)
     app.set_flags(notebook.Gio.ApplicationFlags.NON_UNIQUE)
     app.register(None)
@@ -263,7 +266,7 @@ with tempfile.TemporaryDirectory(prefix='lens-linux-ui-') as directory:
     wait_for(lambda:app.history.get_first_child() is None,'observation search')
     app.history_search.set_text('')
     wait_for(lambda:app.history.get_first_child() is not None,'clear search')
-    app.browser_setup()
+    with patch.object(notebook.onboarding,'available_browsers',return_value=[('Chromium','/not-launched'),('Firefox','/not-launched'),('Firefox (Flatpak)',['flatpak','run','org.mozilla.firefox'])]):app.browser_setup()
     setup=next(w for w in app.get_windows() if w.get_title()=='Connect your browser')
     def button_with_label(widget,label):
         if isinstance(widget,notebook.Gtk.Button) and widget.get_label()==label:return widget
@@ -285,6 +288,13 @@ with tempfile.TemporaryDirectory(prefix='lens-linux-ui-') as directory:
             picker.set_selected(labels.index('Firefox'))
             button_with_label(setup,'Copy manifest path').emit('clicked')
             assert any(isinstance(w,notebook.Gtk.Label) and 'Mozilla signing' in (w.get_text() or '') for w in descendants(setup))
+            picker.set_selected(labels.index('Firefox (Flatpak)'))
+            button_with_label(setup,'Copy temporary add-on path').emit('clicked')
+            with zipfile.ZipFile(Path(directory)/'cache/native-browser-lens/firefox-collector-unsigned.xpi') as archive:
+                assert json.loads(archive.read('manifest.json'))['browser_specific_settings']['gecko']['id']=='native-browser-lens@sirv.studio'
+                assert 'background.js' in archive.namelist()
+            assert any(isinstance(w,notebook.Gtk.Label) and 'NativeMessagingProxy' in (w.get_text() or '') for w in descendants(setup))
+            screenshot('linux-flatpak-setup.png')
             break
     setup.close()
     with __import__('unittest.mock',fromlist=['patch']).patch.object(notebook.updates,'check',return_value={'available':False,'message':'No public Linux release has been published yet.'}):

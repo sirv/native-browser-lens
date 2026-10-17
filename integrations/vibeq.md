@@ -4,6 +4,8 @@ Current Linux backend worktree: `/home/igor/Projects/vibequeue-native-browser-le
 
 ## Authentication and review
 
+On 2026-10-17, the actual 0.10.4 Linux candidate successfully read production members at `https://work.sirv.studio` using the existing unlocked Secret Service credential. The read-only check used a temporary notebook/configuration and did not change or print credentials. `.build/vibeq-native-production-readonly.json` records success without the member list. Two synthetic reports and exact attachment hashes are prepared in `.build/production-filing-review-v0104/plan.json`; production filing, retry and amendment await explicit review. Authentication alone does not prove filing.
+
 Use `Authorization: Bearer <personal VibeQ JWT>` from the existing VibeQ token flow. Store the token in Keychain on macOS or Secret Service on Linux. `GET /api/members` supplies valid member IDs; display names and GitHub handles are not interchangeable IDs. Anonymous, sandbox-scoped, and attachment-scoped tokens cannot file. Explicit review is required before creating a submission or a new revision.
 
 ## Upload and submit
