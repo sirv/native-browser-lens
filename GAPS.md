@@ -10,7 +10,7 @@ The continuing goal covers implementation, installation and acceptance. Local fi
 - [x] Firefox collector and exact native-host registration
 - [ ] Public Linux release, Chrome Web Store install and permanently signed Firefox distribution
 - [x] Firefox Flatpak via NativeMessagingProxy with explicit host/browser setup
-- [ ] Snap bridge acceptance; the installed older Zen Flatpak lacks the proxy client
+- [x] Firefox Snap through Ubuntu's WebExtensions portal and current Zen Flatpak through NativeMessagingProxy
 - [x] Filterable console, request waterfall, details and explicit coverage
 - [x] Hyprland capture binding with explicit OS window/tab identity limits
 - [x] Codex subscription reports with reviewed text/images and preserved manual notes
@@ -20,7 +20,7 @@ The continuing goal covers implementation, installation and acceptance. Local fi
 - [ ] Physical shortcut feedback and capture latency in the user workflow
 - [x] Local VibeQ ingestion with installed-client recovery/amendment and full backend gates
 - [x] Production VibeQ backend ingestion, migration and Worker release
-- [ ] Authenticated reviewed native-client production filing, recovery and amendment
+- [x] Authenticated reviewed native-client production filing, idempotent retry and amendment
 
 ## Current installed release 0.10.4 — Flatpak setup
 
@@ -32,7 +32,11 @@ The frozen 0.10.4 bundle completed 1800.73 seconds with sixty seeded reports and
 
 The exact bundle also passed synthetic offline speech → reviewed Codex reporting with the existing subscription and no API key: 0.74 seconds recognition, 10.62 seconds Finish→complete draft. Manual notes and source-build uncertainty were preserved. This one shared-host sample exceeds the 10-second target and does not establish physical microphone quality or provider p95.
 
-The installer, archive, browser packages, reproducible Firefox source and checksums are prepared for the [private draft release](https://github.com/VKrachun/native-browser-lens/releases). Server digests for the initial eight frozen assets match their local files. Drafts do not enable the public update feed. Publisher authority/license, store accounts and permanent Firefox signing remain unresolved.
+The same frozen bundle passes Firefox Snap 158.0-2 (revision 9057) on Ubuntu 26.04.1, using the stock WebExtensions portal under `snap.firefox.firefox (enforce)`. Explicit portal mode and automatic fallback both pass two-project isolation, failed requests, actions/storage, redaction, toolbar PNG, navigation and notebook persistence. Snap's AppArmor policy blocks the newer proxy; no policy or confinement setting was weakened. The owned KVM guest preapproved only the synthetic host permission, so this is not a physical consent-dialog check. Proof is `.build/snap-qa/acceptance.json`; the guest and fixture browsers are stopped.
+
+Zen 1.23.3b Flatpak passes the same capture assertions through NativeMessagingProxy with auto-detect mode 2, using an isolated profile with onboarding complete. The actual host's closed Zen installation was updated from 1.21.5b to 1.23.3b. A checksum-verified upstream proxy 0.1.0 and Manjaro libdex component were installed per user, and Zen received only the proxy D-Bus grant. Actual D-Bus activation, installed Lens manifest resolution and access from Zen's sandbox pass. The component also passes the full Firefox Flatpak capture fixture. No user browser profile or preference was edited; the collector still needs the user's temporary add-on gesture. A copy is ready in Downloads. Proof is `.build/flatpak-qa/zen-ready-v0104/result.json`, `native-component-firefox-v0104/result.json` under that prefix, and `.build/native-proxy-host/installation.json`. [Linux setup](LINUX.md#zen-flatpak) records setup and removal.
+
+The installer, archive, browser packages, reproducible Firefox source and checksums are published in the [private prerelease](https://github.com/VKrachun/native-browser-lens/releases/tag/v0.10.4), accessible to repository collaborators. All ten server asset digests match their local files. Private prereleases do not enable the public update feed. Publisher authority/license, store accounts and permanent Firefox signing remain unresolved.
 
 ## Historical installed release 0.10.3
 
@@ -46,7 +50,7 @@ The 0.10.3 burst preflight separately passed eleven captures (307.02 ms median, 
 
 The actual installed 0.10.3 helpers passed synthetic speech → reviewed Codex text/image reporting with the source-build warning retained: 0.71 seconds recognition, 9.49 seconds Finish→complete suggestion, unchanged manual notes. This one shared-host sample excludes a physical microphone and human review; it is not a p95 or a guaranteed service target. Proof is `.build/headers-v0103-current-provider.log` and the adjacent synthetic report JSON.
 
-Current store preparation includes four newly captured 1280×800 screenshots (collector, Storm, Day, linked timeline), a checked 440×280 brand tile and a private-review Firefox source archive that rebuilds both frozen collector packages byte-for-byte. No package or listing was uploaded to a browser store; the installer and Firefox submission archive remain local review artifacts. The authenticated upstream repository is private and specifies no detected project license; owner/publisher distribution authority and licensing remain unresolved. The current update URL also needs a public publisher release feed before public distribution. [The store handoff](extension/STORE.md) records the exact local artifacts and remaining inputs.
+Current store preparation includes four newly captured 1280×800 screenshots (collector, Storm, Day, linked timeline), a checked 440×280 brand tile and a private-review Firefox source archive that rebuilds both frozen collector packages byte-for-byte. No package or listing was uploaded to a browser store; the installer and Firefox submission archive are available in the private prerelease for collaborator review. The authenticated upstream repository is private and specifies no detected project license; owner/publisher distribution authority and licensing remain unresolved. The current update URL also needs a public publisher release feed before public distribution. [The store handoff](extension/STORE.md) records the exact local artifacts and remaining inputs.
 
 ## Remaining acceptance inputs
 
@@ -54,9 +58,8 @@ Current store preparation includes four newly captured 1280×800 screenshots (co
 | --- | --- | --- |
 | Public Linux release and one-click Chrome install | Verified prebuilt installer/update/rollback, source review, extension ZIP and current store images | Owner/publisher authority and license, public release/feed, store identity/account, hosted policy and support contact; public installer/store publication still needs these publisher inputs |
 | Permanent Firefox install | Actual Firefox/native-host capture, unsigned XPI and byte-identical source rebuild | Mozilla signing access and returned signed XPI, followed by a permanent-install check |
-| Sandboxed browser integration | Native browsers and Firefox 158 Flatpak/proxy capture pass; setup UI passes | Host proxy installation, explicit browser permission/preference, permanent signing; current Zen 152 lacks the client and Snap remains unverified |
+| Permanent sandboxed-browser setup | Firefox Flatpak, Firefox Snap and Zen 1.23.3b pass real capture; this host's Zen proxy/permission are ready | User-operated temporary add-on load and origin approval; signed XPI for permanent installation; other distributions need their documented compatible transport |
 | Physical device/workflow acceptance | Portal/GStreamer fixtures, configured Hyprland binding, key-free recognition and synthetic report timing | User-operated microphone/shortcut and complete measured workflow; prior questions remain unanswered |
-| Production VibeQ client acceptance | Backend commit 4f710861 deployed, migration 0070/all three tables verified, CI artifact verification and live gates pass; local installed-client recovery/amendment passes; 0.10.4 reads production members through the existing keyring credential | Explicit review of the prepared synthetic native-client production filing, retry and amendment |
 
 Three installed 0.10.0 basic synthetic speech-to-report checks took 9.01, 9.45 and 8.28 seconds. A case with an unmatched-build exception took 11.73 seconds. This is not a p95 or physical-device acceptance claim. `.build/performance-v010-provider-summary.json` records the experimental controls and limits; low verbosity alone was not shipped. The 0.10.0 bundle completed 1800.71 seconds with ten burst and 59 periodic captures: 364.54 ms median, 436.52 ms p95, 454.04 ms maximum, none over 500 ms. The captured tab stayed selected and both collector tabs stayed deep, checkpoint storage stayed below 188 KiB and GTK RSS ranged from 210.2 to 262.5 MiB. Records are `.build/performance-v010-soak/{soak-result,summary}.json`. This is historical shared-host Xvfb proof for that exact bundle; current 0.10.4 acceptance is recorded above.
 
@@ -86,7 +89,7 @@ Browser setup copies the installed collector path, opens setup and permissions p
 
 Firefox's limited mode passed real two-project isolation, HTTP 503 metadata, redaction, document-bound actions, DOM/storage snapshots, pause/navigation, toolbar-action PNG capture and actual notebook persistence. Its unsigned package loads temporarily. Permanent installation needs Mozilla signing; signature checks remain enabled. Firefox permissions cover all ports of an approved host, disclosed before approval; Lens selects exact project origins and probes only the main frame. Missing debugger/console/worker/body channels remain explicit.
 
-Installed Zen Flatpak 1.21.5b (Gecko 152.0.4) has the WebExtensions portal client, but its native-messaging module contains no client for the newer NativeMessagingProxy. The host exposes no WebExtensions portal, proxy executable or activatable proxy service; Zen also has no proxy D-Bus grant. Installing a proxy alone would therefore not establish compatibility for this build. `.build/sandbox-browser-read-only.json` records the inspected module hash, deployment and transport checks. [Mozilla documents both transports](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/native-messaging-portal-design.html); newer browser/proxy combinations need their own end-to-end capture proof. No sandbox permissions or browser preferences were changed. Manual backups support transfer; concurrent cloud sync is not implemented.
+At the earlier read-only checkpoint, Zen Flatpak 1.21.5b (Gecko 152.0.4) lacked the newer proxy client and this host had no compatible bridge. `.build/sandbox-browser-read-only.json` preserves that inspection. The current 1.23.3b update and verified proxy setup above supersede that installed-state limit; the older build was not repaired by merely adding a proxy. [Mozilla documents both transports](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/native-messaging-portal-design.html). Manual backups support transfer; concurrent cloud sync is not implemented.
 
 ## Desktop and live-service boundaries
 
@@ -98,7 +101,9 @@ The dirty/diverged `/home/igor/Projects/vibequeue` checkout remains untouched. T
 
 [Release run 39050300625](https://github.com/IgorVaryvoda/vibequeue/actions/runs/39050300625) passed receipt validation, migration 0070, web/API deployment and origin-artifact verification. Production contains all three capture tables. The live API Worker version `4292f67b-c828-4cbc-a209-5ea24c671526` serves 100% of traffic and is tagged with the exact landed commit. Active-job checks were empty before push and during rollout. Pre/post-deploy live gates pass; signed Slack probes were skipped because local signing credentials were absent, and no Slack delivery test was posted. Proof uses `.build/vibeq-release-*`, `.build/vibeq-worker-deployments.json` and `.build/vibeq-production-schema-deployed.json`.
 
-The installed 0.7.0 client previously passed real private-bus Secret Service → local workerd/D1/R2 filing: a lost committed response recovered without a duplicate task, manual edits survived, and a reviewed amendment updated the same task (two revisions/four checked attachments). Candidate 0.10.4 successfully authenticated a read-only production member request using the existing unlocked keyring credential. The temporary notebook did not change the credential or user data. Two synthetic reports, their exact attachment hashes, a retry and an amendment are prepared in `.build/production-filing-review-v0104/plan.json`; they await the required explicit reviewed action. No production task was filed. [The integration record](integrations/vibeq.md) separates the deployed backend from that remaining client acceptance.
+The installed 0.10.4 native service passed the explicitly reviewed production test at `https://work.sirv.studio`: two synthetic observations became two distinct tasks; a new-process retry recovered the original receipt without re-uploading attachments; revision 2 updated the original task. All six downloaded Markdown/JSON attachments match their frozen SHA-256 hashes. Both unassigned test tasks are now Done, with receipts and revision history preserved. No private project evidence, user notebook or credential change was involved. Proof is `.build/production-filing-review-v0104/{production-result,attachment-verification}.json`. A forced lost response was tested against local workerd; production used a normal committed-receipt retry.
+
+[The integration record](integrations/vibeq.md) separates production proof from the earlier private-bus/local-workerd fault-injection checks.
 
 ## Debugging workflow added in 0.9.0
 

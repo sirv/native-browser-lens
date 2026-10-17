@@ -131,6 +131,11 @@ document.querySelector("#output").textContent=JSON.stringify({result});}catch(er
             for handle in client.command('WebDriver:GetWindowHandles'):
                 client.command('WebDriver:SwitchToWindow',{'handle':handle})
                 if client.script('return location.href;').startswith(target['url']):break
+            deadline=time.monotonic()+10
+            while time.monotonic()<deadline:
+                if client.script('return document.readyState==="complete" && Boolean(document.querySelector("#save"));'):break
+                time.sleep(.05)
+            else:raise AssertionError('The selected fixture page did not finish loading')
             element=client.command('WebDriver:FindElement',{'using':'css selector','value':'#save'})['value']
             client.command('WebDriver:ElementClick',{'id':element['element-6066-11e4-a52e-4f735466cecf']})
             time.sleep(.4)
