@@ -1,7 +1,37 @@
 import XCTest
+import CSQLite
 @testable import LensCore
 
 final class EvidenceStoreTests: XCTestCase {
+    func testTargetedLookupAndCaptureReplayDoNotDecodeTheWholeNotebook() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let store = EvidenceStore(root: root)
+        var item = NotebookObservation(projectId: "p", markdown: "My exact words")
+        let capture = CaptureRecord(identity: CaptureIdentity(projectId: "p"))
+        item.captures = [capture]
+        let other = NotebookObservation(projectId: "other")
+        try store.save(item); try store.save(other)
+        XCTAssertEqual(try store.observation(id: item.id)?.markdown, "My exact words")
+        XCTAssertNil(try store.observation(id: UUID().uuidString))
+        XCTAssertTrue(try store.containsCapture(id: capture.id))
+        XCTAssertFalse(try store.containsCapture(id: UUID().uuidString))
+        XCTAssertThrowsError(try store.observation(id: "' OR 1=1 --"))
+        var database: OpaquePointer?
+        XCTAssertEqual(sqlite3_open(root.appendingPathComponent("notebook.sqlite").path, &database), SQLITE_OK)
+        defer { sqlite3_close(database) }
+        XCTAssertEqual(sqlite3_exec(database, "UPDATE observations SET value=X'7b' WHERE id='\(other.id)'", nil, nil, nil), SQLITE_OK)
+        XCTAssertThrowsError(try store.observations())
+        XCTAssertEqual(try store.observation(id: item.id)?.markdown, "My exact words")
+    }
+    func testProjectOriginsMatchBrowserCanonicalOrigins() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let store = EvidenceStore(root: root)
+        try store.saveProjects([ProjectProfile(origins: [" HTTPS://EXAMPLE.COM:443/ ", "http://localhost:80/", "http://[::1]:3000/"])])
+        XCTAssertEqual(try store.projects()[0].origins, ["https://example.com", "http://localhost", "http://[::1]:3000"])
+        XCTAssertThrowsError(try store.saveProjects([ProjectProfile(origins: ["https://example.com/path"])]))
+    }
     func testExportContainsOnlyExplicitlyReviewedVideoAndKeepsPathsPortable() throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }

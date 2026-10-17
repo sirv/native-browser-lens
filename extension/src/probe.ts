@@ -1,5 +1,7 @@
 /** Serialized by chrome.scripting. Keep dependencies inside this function. */
 export async function pageSnapshot() {
+  const local = globalThis as typeof globalThis & { __nativeLensDocumentToken?: string };
+  const documentToken = local.__nativeLensDocumentToken ??= crypto.randomUUID();
   const omitted: { channel: string; reason: string }[] = [];
   const secret = /authorization|cookie|password|passwd|secret|token|api.?key|session.?id|credential|csrf|xsrf/i;
   function readStorage(storage: Storage) {
@@ -33,12 +35,13 @@ export async function pageSnapshot() {
   if (buildElement?.textContent) { try { adapter = JSON.parse(buildElement.textContent.slice(0, 16384)); if (typeof (adapter as {buildId?: unknown}).buildId === 'string') buildId = (adapter as {buildId:string}).buildId; } catch { omitted.push({ channel: 'application', reason: 'Invalid native-lens-context JSON' }); } }
   if (!adapter) omitted.push({ channel: 'application-cache', reason: 'No explicit project diagnostic adapter available' });
   omitted.push({ channel: 'cookies', reason: 'Cookie values intentionally excluded; cookie state is not extracted' });
-  return { url: location.href, title: document.title, buildId, viewport: { width: innerWidth, height: innerHeight, devicePixelRatio, scrollX, scrollY, visualScale: visualViewport?.scale ?? 1 }, storage: state, application: adapter, frames: [...document.querySelectorAll('iframe')].slice(0, 20).map(x => ({ src: x.src, title: x.title })), gaps: omitted };
+  return { documentToken, url: location.href, title: document.title, buildId, viewport: { width: innerWidth, height: innerHeight, devicePixelRatio, scrollX, scrollY, visualScale: visualViewport?.scale ?? 1 }, storage: state, application: adapter, frames: [...document.querySelectorAll('iframe')].slice(0, 20).map(x => ({ src: x.src, title: x.title })), gaps: omitted };
 }
 
 /** A passive listener only. Does not prevent or synthesize user interaction. */
-export function installActionProbe() {
-  const global = globalThis as typeof globalThis & { __nativeLensInstalled?: boolean; __nativeLensLastElement?: unknown; __nativeLensLastTarget?: WeakRef<Element>; __nativeLensAnchorId?: string };
+export function installActionProbe(documentId?: string) {
+  const global = globalThis as typeof globalThis & { __nativeLensDocumentId?: string; __nativeLensInstalled?: boolean; __nativeLensLastElement?: unknown; __nativeLensLastTarget?: WeakRef<Element>; __nativeLensAnchorId?: string };
+  global.__nativeLensDocumentId = documentId;
   if (global.__nativeLensInstalled) return;
   global.__nativeLensInstalled = true;
   document.addEventListener('pointerdown', event => {
@@ -50,12 +53,15 @@ export function installActionProbe() {
     global.__nativeLensLastElement = element;
     global.__nativeLensLastTarget = new WeakRef(el);
     global.__nativeLensAnchorId = crypto.randomUUID();
-    void chrome.runtime.sendMessage({ kind: 'pageAction', element }).catch(() => {});
+    const api: typeof chrome = (globalThis as typeof globalThis & { browser?: typeof chrome }).browser ?? chrome;
+    void api.runtime.sendMessage({ kind: 'pageAction', element, documentId: global.__nativeLensDocumentId }).catch(() => {});
   }, { capture: true, passive: true });
 }
 
 /** Synchronous, cheap probes bracket the screenshot before slower storage reads. */
 export function spatialSnapshot() {
+  const local = globalThis as typeof globalThis & { __nativeLensDocumentToken?: string };
+  const documentToken = local.__nativeLensDocumentToken ??= crypto.randomUUID();
   const global = globalThis as typeof globalThis & { __nativeLensLastTarget?: WeakRef<Element>; __nativeLensElementIds?: WeakMap<Element, string> };
   const ids = global.__nativeLensElementIds ??= new WeakMap<Element, string>();
   const viewport = { width: innerWidth, height: innerHeight, devicePixelRatio, scrollX, scrollY, visualScale: visualViewport?.scale ?? 1 };
@@ -81,7 +87,7 @@ export function spatialSnapshot() {
     if (bytes + size > 48 * 1024 || elements.length >= 250) { truncated = true; break; }
     bytes += size; elements.push(element);
   }
-  return { viewport, elements, capturedAt: Date.now(), coverage: { scanned, candidates: candidates.size, truncated, bytes }, ...(elements.length ? {} : { omission: 'No visible interactive or source-stamped element candidates in the captured viewport' }) };
+  return { documentToken, viewport, elements, capturedAt: Date.now(), coverage: { scanned, candidates: candidates.size, truncated, bytes }, ...(elements.length ? {} : { omission: 'No visible interactive or source-stamped element candidates in the captured viewport' }) };
 }
 
 /** MAIN-world project opt-in. Browser state remains behind an explicit read-only adapter. */

@@ -1,8 +1,33 @@
 import Foundation
+#if os(Linux)
+import Glibc
+import CLinux
+#else
 import Darwin
+#endif
 
-/// File queues provide persistence; vnode notifications wake consumers without periodic polling.
+/// File queues provide persistence; filesystem notifications wake consumers without periodic polling.
 public final class BridgeWatch {
+    #if os(Linux)
+    private let source: DispatchSourceRead
+    fileprivate init(directory: URL, queue: DispatchQueue, handler: @escaping () -> Void) throws {
+        let descriptor = inotify_init1(Int32(IN_NONBLOCK | IN_CLOEXEC))
+        guard descriptor >= 0 else { throw LensError.storage("Could not open the local evidence watcher") }
+        guard inotify_add_watch(descriptor, directory.path, UInt32(IN_CLOSE_WRITE | IN_MOVED_TO | IN_DELETE_SELF | IN_MOVE_SELF)) >= 0 else {
+            close(descriptor)
+            throw LensError.storage("Could not watch the local evidence bridge")
+        }
+        source = DispatchSource.makeReadSource(fileDescriptor: descriptor, queue: queue)
+        source.setEventHandler {
+            var buffer = [UInt8](repeating: 0, count: 16_384)
+            while Glibc.read(descriptor, &buffer, buffer.count) > 0 {}
+            handler()
+        }
+        source.setCancelHandler { close(descriptor) }
+        source.resume()
+        queue.async(execute: DispatchWorkItem(block: handler))
+    }
+    #else
     private let source: DispatchSourceFileSystemObject
     fileprivate init(directory: URL, queue: DispatchQueue, handler: @escaping () -> Void) throws {
         let descriptor = open(directory.path, O_EVTONLY)
@@ -13,14 +38,22 @@ public final class BridgeWatch {
         source.resume()
         queue.async(execute: DispatchWorkItem(block: handler))
     }
+    #endif
     public func cancel() { source.cancel() }
     deinit { source.cancel() }
 }
 
 public enum LensPaths {
+    // Bundled Linux launches use ld.so; Bundle.main can identify the loader instead of this helper.
+    public static var executableDirectory: URL { URL(fileURLWithPath: CommandLine.arguments[0]).resolvingSymlinksInPath().deletingLastPathComponent() }
     public static var defaultRoot: URL {
         if let path = ProcessInfo.processInfo.environment["LENS_DATA_DIR"], !path.isEmpty { return URL(fileURLWithPath: path, isDirectory: true) }
+        #if os(Linux)
+        let base = ProcessInfo.processInfo.environment["XDG_DATA_HOME"].flatMap { $0.hasPrefix("/") ? $0 : nil }
+        return URL(fileURLWithPath: base ?? FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".local/share").path, isDirectory: true).appendingPathComponent("native-browser-lens", isDirectory: true)
+        #else
         return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("Native Browser Lens", isDirectory: true)
+        #endif
     }
 }
 
@@ -30,6 +63,7 @@ public final class BridgeMailbox {
     private let queueLock = NSRecursiveLock()
     private var inboxFiles: [String: URL] = [:]
     private var inboxIDs: [String: String] = [:]
+    private var selections: [String: (signature: JSONValue, epoch: String)] = [:]
     public init(root: URL = LensPaths.defaultRoot) { self.root = root }
     private var bridge: URL { root.appendingPathComponent("bridge", isDirectory: true) }
     private func directory(_ path: String) throws -> URL {
@@ -52,9 +86,18 @@ public final class BridgeMailbox {
         try send(kind: "configure", payload: .object(["projects": try .from(projects)]))
     }
     public func configuration() -> [ProjectProfile] { (try? JSONDecoder().decode([ProjectProfile].self, from: Data(contentsOf: bridge.appendingPathComponent("projects.json")))) ?? [] }
+    public func connectedClientIDs() throws -> [String] {
+        try FileManager.default.contentsOfDirectory(at: directory("clients"), includingPropertiesForKeys: nil).filter { url in
+            guard UUID(uuidString: url.lastPathComponent) != nil else { return false }
+            let owner = url.appendingPathComponent(".owner-pid")
+            guard FileManager.default.fileExists(atPath: owner.path) else { return true }
+            guard let value = try? String(contentsOf: owner, encoding: .utf8), let pid = Int32(value), pid > 0 else { return false }
+            return kill(pid, 0) == 0 || errno == EPERM
+        }.map(\.lastPathComponent).sorted()
+    }
     public func send(kind: String, payload: JSONValue) throws {
         let clients = try directory("clients")
-        let available = try FileManager.default.contentsOfDirectory(at: clients, includingPropertiesForKeys: nil).filter { UUID(uuidString: $0.lastPathComponent) != nil }
+        let available = try connectedClientIDs().map { clients.appendingPathComponent($0) }
         let requested = payload["clientId"]?.stringValue
         if ["capture", "snapshot", "resumeTab"].contains(kind), requested == nil, available.count != 1 { throw LensError.invalid("Select a connected browser profile before capturing") }
         let targets = available.filter { requested == nil || requested == $0.lastPathComponent }
@@ -66,6 +109,9 @@ public final class BridgeMailbox {
     public func register(clientId: String) throws {
         guard UUID(uuidString: clientId) != nil else { throw LensError.invalid("Invalid native client identity") }
         let dir = try directory("clients/" + clientId)
+        let owner = dir.appendingPathComponent(".owner-pid")
+        try String(ProcessInfo.processInfo.processIdentifier).write(to: owner, atomically: true, encoding: .utf8)
+        try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: owner.path)
         try write(WireMessage(kind: "configure", payload: .object(["projects": try .from(configuration())])), to: dir)
     }
     public func unregister(clientId: String) {
@@ -74,6 +120,7 @@ public final class BridgeMailbox {
         try? FileManager.default.removeItem(at: bridge.appendingPathComponent("clients/" + clientId))
     }
     public func receive(_ message: WireMessage, clientId: String? = nil) throws {
+        queueLock.lock(); defer { queueLock.unlock() }
         guard message.version == 1 else { throw LensError.invalid("Unsupported bridge version") }
         var tagged = message
         if let clientId, var payload = message.payload.objectValue {
@@ -81,6 +128,16 @@ public final class BridgeMailbox {
             if let tabs = payload["tabs"]?.arrayValue { payload["tabs"] = .array(tabs.map { tab in var values = tab.objectValue ?? [:]; values["clientId"] = .string(clientId); return .object(values) }) }
             if var tab = payload["tab"]?.objectValue { tab["clientId"] = .string(clientId); payload["tab"] = .object(tab) }
             if var identity = payload["identity"]?.objectValue { identity["clientId"] = .string(clientId); payload["identity"] = .object(identity) }
+            if message.kind == "status" {
+                let selected = (payload["tabs"]?.arrayValue ?? []).filter { $0["selected"]?.boolValue == true }.map { tab in
+                    JSONValue.array(["projectId", "windowId", "tabId", "documentId", "title", "mode"].map { tab[$0] ?? .null })
+                }.sorted { $0.pretty < $1.pretty }
+                let signature = JSONValue.array(selected)
+                let epoch = selections[clientId].flatMap { $0.signature == signature ? $0.epoch : nil } ?? UUID().uuidString
+                selections[clientId] = (signature, epoch)
+                // Keep evidence of a switch even if queued statuses coalesce back to the original tab.
+                payload["selectionEpoch"] = .string(epoch)
+            }
             tagged.payload = .object(payload)
         }
         let statusName = message.kind == "status" && clientId.flatMap(UUID.init(uuidString:)) != nil ? "status-" + clientId! + ".json" : nil

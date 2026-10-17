@@ -16,7 +16,7 @@ export function sanitize(value: unknown, depth = 0): unknown {
   if (Array.isArray(value)) return value.slice(0, 80).map(item => sanitize(item, depth + 1));
   if (value && typeof value === 'object') {
     const record = value as Record<string, unknown>;
-    if (typeof record.name === 'string' && sensitive.test(record.name) && 'value' in record) return { ...record, value: REDACTED };
+    if (typeof record.name === 'string' && (sensitive.test(record.name) || /session/i.test(record.name)) && ('value' in record || 'binaryValue' in record)) return { name: sanitizeText(record.name), value: REDACTED };
     return Object.fromEntries(Object.entries(record).slice(0, 80).map(([key, v]) => [key, sensitive.test(key) ? REDACTED : sanitize(v, depth + 1)]));
   }
   return value;

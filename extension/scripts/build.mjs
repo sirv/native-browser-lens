@@ -1,6 +1,15 @@
 import { build } from 'esbuild';
-import { mkdir, cp } from 'node:fs/promises';
+import { mkdir, cp, readFile, writeFile, rm } from 'node:fs/promises';
 await mkdir('dist', { recursive: true });
 await build({ entryPoints: ['src/background.ts', 'src/devtools.ts', 'src/options.ts'], outdir: 'dist', bundle: true, format: 'esm', target: 'chrome125', sourcemap: true });
 await cp('public', 'dist', { recursive: true });
+const firefox = JSON.parse(await readFile('public/manifest.json', 'utf8'));
+delete firefox.key; delete firefox.minimum_chrome_version;
+firefox.permissions = firefox.permissions.filter(x => x !== 'debugger').concat('webRequest');
+firefox.background = { scripts: ['background.js'], type: 'module' };
+firefox.browser_specific_settings = { gecko: { id: 'native-browser-lens@sirv.studio', strict_min_version: '140.0', data_collection_permissions: { required: ['none'] } } };
+await rm('dist-firefox', { recursive: true, force: true });
+await cp('dist', 'dist-firefox', { recursive: true });
+await writeFile('dist-firefox/manifest.json', JSON.stringify(firefox, null, 2) + '\n');
 console.log('Load unpacked extension from extension/dist in chrome://extensions.');
+console.log('Firefox temporary collector: extension/dist-firefox/manifest.json in about:debugging. Permanent installation requires Mozilla signing.');

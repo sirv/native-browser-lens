@@ -1,9 +1,15 @@
 {
   "manifest_version": 3,
   "name": "Native Browser Lens",
-  "description": "Local browser evidence for the Native Browser Lens Mac notebook.",
-  "version": "0.1.0",
+  "description": "Local browser evidence for the Native Browser Lens notebook on macOS and Linux.",
+  "version": "0.10.3",
   "minimum_chrome_version": "125",
+  "icons": {
+    "16": "icons/lens-16.png",
+    "32": "icons/lens-32.png",
+    "48": "icons/lens-48.png",
+    "128": "icons/lens-128.png"
+  },
   "permissions": [
     "debugger",
     "nativeMessaging",
@@ -25,7 +31,11 @@
   "devtools_page": "devtools.html",
   "options_page": "options.html",
   "action": {
-    "default_title": "Native Browser Lens — capture observation"
+    "default_icon": {
+      "16": "icons/lens-16.png",
+      "32": "icons/lens-32.png"
+    },
+    "default_title": "Native Browser Lens \u2014 capture observation"
   },
   "commands": {
     "capture-observation": {

@@ -98,7 +98,7 @@ final class LensAppModel: ObservableObject {
     var currentProject: ProjectProfile? { projects.first { $0.id == (current?.projectId ?? selectedProjectID) } }
     var currentCapture: CaptureRecord? { current?.captures.first { $0.id == selectedCaptureID } ?? current?.captures.last }
     var selectedTab: TabStatus? { tabs.first { tabKey($0) == selectedTabKey } }
-    var armedCount: Int { tabs.filter { ["deep", "devtools"].contains($0.mode) }.count }
+    var armedCount: Int { tabs.filter { ["deep", "devtools", "limited"].contains($0.mode) }.count }
     var statusText: String {
         if paused { return "Capture paused" }
         if recordingVideo { return "\(armedCount) tabs · video armed" }
@@ -129,8 +129,9 @@ final class LensAppModel: ObservableObject {
                     }
                 }
             }
-            try store.saveProjects(updated); try bridge.saveConfiguration(projects: effectiveProjects(updated))
-            projects = updated
+            try store.saveProjects(updated)
+            projects = try store.projects()
+            try bridge.saveConfiguration(projects: effectiveProjects(projects))
             if selectedProjectID == nil { selectedProjectID = updated.first?.id }
             lastVideoAttemptKey = nil
             updateVideo()
@@ -611,7 +612,7 @@ final class LensAppModel: ObservableObject {
     }
     private func updateVideo() {
         guard !videoChanging else { return }
-        let active = tabs.filter { $0.active && ["deep", "devtools"].contains($0.mode) }
+        let active = tabs.filter { $0.active && ["deep", "devtools", "limited"].contains($0.mode) }
         let tab = active.count == 1 ? active.first : selectedTab.flatMap { selected in active.first { tabKey($0) == tabKey(selected) } }
         guard !paused, let tab, projects.first(where: { $0.id == tab.projectId })?.recording == "video" else {
             if video.tabKey != nil { videoChanging = true; Task { await video.stop(); recordingVideo = false; videoStatus = "Video is off"; videoChanging = false } }

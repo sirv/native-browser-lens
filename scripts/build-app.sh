@@ -2,6 +2,7 @@
 set -euo pipefail
 LENS_REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$LENS_REPO"
+if [[ "$(uname -s)" == "Linux" ]]; then exec bash scripts/build-linux.sh; fi
 swift build --configuration release
 LENS_BIN="$(swift build --configuration release --show-bin-path)"
 LENS_APP="$LENS_REPO/dist/Native Browser Lens.app"

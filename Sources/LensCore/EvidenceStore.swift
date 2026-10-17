@@ -1,6 +1,10 @@
 import Foundation
 import CSQLite
+#if os(Linux)
+import CLinux
+#else
 import CryptoKit
+#endif
 
 public final class EvidenceStore {
     public let root: URL
@@ -32,11 +36,15 @@ public final class EvidenceStore {
             guard sqlite3_step(s) == SQLITE_DONE else { throw LensError.storage("Could not save the local notebook") }
         }
     }
-    private func values<T: Decodable>(sql: String, type: T.Type) throws -> [T] {
+    private func values<T: Decodable>(sql: String, type: T.Type, parameters: [String] = []) throws -> [T] {
         try database { db in
             var statement: OpaquePointer?
             guard sqlite3_prepare_v2(db, sql, -1, &statement, nil) == SQLITE_OK, let s = statement else { throw LensError.storage("Could not read the local notebook") }
             defer { sqlite3_finalize(s) }
+            let transient = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+            for (index, value) in parameters.enumerated() {
+                guard sqlite3_bind_text(s, Int32(index + 1), value, -1, transient) == SQLITE_OK else { throw LensError.storage("Could not bind notebook lookup") }
+            }
             var result: [T] = []
             while true {
                 let status = sqlite3_step(s)
@@ -51,15 +59,28 @@ public final class EvidenceStore {
     }
     public func projects() throws -> [ProjectProfile] { try values(sql: "SELECT value FROM settings WHERE id='projects'", type: [ProjectProfile].self).first ?? [] }
     public func saveProjects(_ projects: [ProjectProfile]) throws {
+        var projects = projects
         guard Set(projects.map(\.id)).count == projects.count else { throw LensError.invalid("Project identities must be unique") }
-        for project in projects {
-            for origin in project.origins {
-                guard let c = URLComponents(string: origin), ["http", "https"].contains(c.scheme ?? ""), c.host != nil, c.user == nil, c.password == nil, c.query == nil, c.fragment == nil, c.path.isEmpty || c.path == "/" else { throw LensError.invalid("Project access requires an exact HTTP or HTTPS origin") }
+        for index in projects.indices {
+            projects[index].origins = try projects[index].origins.map { origin in
+                guard var c = URLComponents(string: origin.trimmingCharacters(in: .whitespacesAndNewlines)), ["http", "https"].contains(c.scheme?.lowercased() ?? ""), c.host?.isEmpty == false, c.user == nil, c.password == nil, c.query == nil, c.fragment == nil, c.path.isEmpty || c.path == "/" else { throw LensError.invalid("Project access requires an exact HTTP or HTTPS origin") }
+                c.scheme = c.scheme?.lowercased(); c.host = c.host?.lowercased(); c.path = ""
+                if (c.scheme == "https" && c.port == 443) || (c.scheme == "http" && c.port == 80) { c.port = nil }
+                guard let result = c.url?.absoluteString else { throw LensError.invalid("Project origin is invalid") }
+                return result
             }
         }
         try put(table: "settings", id: "projects", createdAt: nil, value: projects)
     }
     public func observations() throws -> [NotebookObservation] { try values(sql: "SELECT value FROM observations ORDER BY created_at DESC", type: NotebookObservation.self) }
+    public func observation(id: String) throws -> NotebookObservation? {
+        guard UUID(uuidString: id) != nil else { throw LensError.invalid("Invalid observation identity") }
+        return try values(sql: "SELECT value FROM observations WHERE id=?", type: NotebookObservation.self, parameters: [id]).first
+    }
+    public func containsCapture(id: String) throws -> Bool {
+        guard UUID(uuidString: id) != nil else { throw LensError.invalid("Invalid capture identity") }
+        return try !values(sql: "SELECT observations.value FROM observations, json_each(CAST(observations.value AS TEXT),'$.captures') AS capture WHERE json_extract(capture.value,'$.id')=? LIMIT 1", type: NotebookObservation.self, parameters: [id]).isEmpty
+    }
     public func save(_ observation: NotebookObservation) throws {
         guard UUID(uuidString: observation.id) != nil else { throw LensError.invalid("Invalid observation identity") }
         for capture in observation.captures {
@@ -85,11 +106,12 @@ public final class EvidenceStore {
         let stem = "lens-" + observation.id + "-r" + String(observation.draftRevision)
         var folder = destination.appendingPathComponent(stem, isDirectory: true)
         if FileManager.default.fileExists(atPath: folder.path) { folder = destination.appendingPathComponent(stem + "-" + UUID().uuidString, isDirectory: true) }
-        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
         let sanitized = try EvidenceSanitizer.exportable(observation)
         var portable = sanitized
         for index in portable.captures.indices {
             let capture = portable.captures[index]
+            try DiagnosticArtifacts.export(capture: &portable.captures[index], observationId: observation.id, store: self, folder: folder)
             guard UUID(uuidString: capture.id) != nil else { throw LensError.invalid("Invalid capture identity in export") }
             portable.captures[index].originalScreenshotPath = nil
             if let path = capture.screenshotPath {
@@ -124,6 +146,7 @@ public final class EvidenceStore {
         }
         if !sanitized.findings.isEmpty { markdown += "\n## Investigation\n\n" + sanitized.findings.map { "- **" + $0.kind + "**: " + $0.text + ($0.source.map { " (" + $0 + ")" } ?? "") }.joined(separator: "\n") }
         try Data(markdown.utf8).write(to: folder.appendingPathComponent("report.md"), options: .atomic)
+        for file in try FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil) { try FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: file.path) }
         return folder
     }
 }
@@ -157,13 +180,26 @@ public enum EvidenceSanitizer {
         selected = try exportable(selected)
         for index in selected.captures.indices {
             selected.captures[index].originalScreenshotPath = nil
+            // This copy contains the baked derivative; editable masks belong to the private original.
+            selected.captures[index].annotations.removeAll { $0.kind == "mask" }
             selected.captures[index].context.removeValue(forKey: "videoPath")
+            selected.captures[index].context.removeValue(forKey: "diagnosticArtifacts")
         }
         return selected
     }
     static let sensitive = try! NSRegularExpression(pattern: "(?i)(authorization|cookie|password|secret|token|api[-_]?key|credential|set-cookie)")
+    static func isSensitiveField(_ name: String) -> Bool {
+        sensitive.firstMatch(in: name, range: NSRange(name.startIndex..., in: name)) != nil || name.range(of: "(?i)(passwd|session|csrf|xsrf)", options: .regularExpression) != nil
+    }
+    private static let privateKey = try! NSRegularExpression(pattern: "(?s)-----BEGIN ((?:[A-Z0-9]+ )*PRIVATE KEY)-----.*?(?:-----END \\1-----|$)")
     public static func text(_ value: String) -> String {
         var output = value
+        for match in privateKey.matches(in: output, range: NSRange(output.startIndex..., in: output)).reversed() {
+            guard let range = Range(match.range, in: output) else { continue }
+            // Preserve source line numbers even when a later excerpt starts inside a key.
+            let replacement = "[redacted private key]" + String(repeating: "\n", count: output[range].utf8.filter { $0 == 10 }.count)
+            output.replaceSubrange(range, with: replacement)
+        }
         let patterns = ["(?i)(Bearer\\s+)[A-Za-z0-9._~+/-]+=*", "(?i)((?:token|password|secret|api[-_]?key|session|authorization)[\\\"']?\\s*[:=]\\s*[\\\"']?)[^\\s&\\\"',}]+", "sk-[A-Za-z0-9_-]{12,}"]
         for pattern in patterns { if let re = try? NSRegularExpression(pattern: pattern) { output = re.stringByReplacingMatches(in: output, range: NSRange(output.startIndex..., in: output), withTemplate: "[redacted]") } }
         return output
@@ -172,7 +208,18 @@ public enum EvidenceSanitizer {
         switch value {
         case .object(let object): return .object(object.mapValues { json($0) }.mapKeysAndValues { key, value in
             let range = NSRange(key.startIndex..., in: key)
-            return (key, sensitive.firstMatch(in: key, range: range) == nil ? value : .string("[redacted]"))
+            var clean = value
+            if ["headers", "requestHeaders", "responseHeaders"].contains(key) {
+                if let headers = value.objectValue {
+                    clean = .object(headers.mapKeysAndValues { name, item in (name, isSensitiveField(name) ? .string("[redacted]") : item) })
+                } else if let headers = value.arrayValue {
+                    clean = .array(headers.map { header in
+                        guard let name = header["name"]?.stringValue, isSensitiveField(name) else { return header }
+                        return .object(["name": .string(name), "value": .string("[redacted]")])
+                    })
+                }
+            }
+            return (key, sensitive.firstMatch(in: key, range: range) == nil ? clean : .string("[redacted]"))
         })
         case .array(let values): return .array(values.map(json))
         case .string(let value): return .string(text(value))
@@ -191,7 +238,15 @@ public enum EvidenceSanitizer {
 private extension Dictionary where Key == String, Value == JSONValue {
     func mapKeysAndValues(_ transform: (String, JSONValue) -> (String, JSONValue)) -> [String: JSONValue] { Dictionary(uniqueKeysWithValues: map { transform($0.key, $0.value) }) }
 }
-public func sha256(_ data: Data) -> String { SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined() }
+public func sha256(_ data: Data) -> String {
+    #if os(Linux)
+    var digest = [UInt8](repeating: 0, count: Int(SHA256_DIGEST_LENGTH))
+    data.withUnsafeBytes { _ = SHA256($0.bindMemory(to: UInt8.self).baseAddress, data.count, &digest) }
+    return digest.map { String(format: "%02x", $0) }.joined()
+    #else
+    return SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+    #endif
+}
 public func stableUUID(_ string: String) -> String {
     let h = Array(sha256(Data(string.utf8)).prefix(32)); let raw = String(h)
     return [String(raw.prefix(8)), String(raw.dropFirst(8).prefix(4)), "4"+String(raw.dropFirst(13).prefix(3)), "a"+String(raw.dropFirst(17).prefix(3)), String(raw.dropFirst(20))].joined(separator: "-")

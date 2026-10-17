@@ -2,6 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { sanitize, sanitizeURL, bodyEvidence } from '../src/sanitize.js';
 
+test('public debugger target metadata remains separate from session credentials', () => {
+  const clean = sanitize({ targetSession: 'public-cdp-channel', sessionId: 'private-cookie-session', headers: { 'X-Session-ID': 'private-header' } }) as any;
+  assert.equal(clean.targetSession, 'public-cdp-channel');
+  assert.equal(clean.sessionId, '[REDACTED]'); assert.equal(clean.headers['X-Session-ID'], '[REDACTED]');
+  const headers = sanitize([{ name: 'X-Session', value: 'private-session' }, { name: 'Authorization', binaryValue: [65, 66] }, { name: 'X-Request-ID', value: 'public-request' }]) as any[];
+  assert.equal(headers[0].value, '[REDACTED]'); assert.equal(headers[1].value, '[REDACTED]'); assert.equal(headers[1].binaryValue, undefined);
+  assert.equal(headers[2].value, 'public-request');
+});
+
 test('secrets are removed from nested objects, headers, strings and URL parameters', () => {
   const result = sanitize({ Authorization: 'Bearer abc', nested: { password: 'bad', text: 'Authorization: Bearer xyz; token=shh' }, headers: [{ name: 'Set-Cookie', value: 'sid=private' }], url: 'https://example.test/a?access_token=abc&view=list#token=secret' });
   const text = JSON.stringify(result);

@@ -1,0 +1,39 @@
+{
+  "formatVersion": 1,
+  "appVersion": "0.10.3",
+  "bundleManifestSHA256": "7a1cb54a534905d0f506b30eb49b891555e52ccd447bd00192d52539a2f9f242",
+  "source": "Actual packaged GTK UI and Chromium collector with the real native host, isolated fixture projects; promo is unchanged brand artwork",
+  "sourceCaptureSHA256": "2b2be2fb34cd131240eb57532a5b566365860b0ffc4e4563f656506dad2bf5db",
+  "assets": {
+    "collector-setup-1280x800.png": {
+      "sha256": "5d268c2ef6d43549d11b9182f2f7a2d526a31e7c04fa83cab06e2c51de3659b0",
+      "width": 1280,
+      "height": 800,
+      "source": "Actual 0.10.3 GTK or Chromium fixture, no user data"
+    },
+    "notebook-day-1280x800.png": {
+      "sha256": "4675cfc53d800e44401bb9eb6ab788da789fb4252218f0e6b6901a32e29baef7",
+      "width": 1280,
+      "height": 800,
+      "source": "Actual 0.10.3 GTK or Chromium fixture, no user data"
+    },
+    "notebook-storm-1280x800.png": {
+      "sha256": "a60a2a01be59a8702b19cde091462c65ac5d3f1c43605f4726c8939cc5e40bf6",
+      "width": 1280,
+      "height": 800,
+      "source": "Actual 0.10.3 GTK or Chromium fixture, no user data"
+    },
+    "notebook-timeline-1280x800.png": {
+      "sha256": "ab60ac322b114d471b0158120d88191417b38918ed745c5395cf001f2dd8623f",
+      "width": 1280,
+      "height": 800,
+      "source": "Actual 0.10.3 GTK or Chromium fixture, no user data"
+    },
+    "promo-440x280.png": {
+      "sha256": "34847fb83c24391a11edb49877dc205fb96505ee363274d7d5307b4753742894",
+      "width": 440,
+      "height": 280,
+      "source": "Existing editable brand SVG"
+    }
+  }
+}

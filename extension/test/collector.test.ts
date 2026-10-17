@@ -4,6 +4,16 @@ import { Collector } from '../src/collector.js';
 
 const project = { id: 'studio', name: 'Studio', origins: ['https://dev.sirv.studio'], repositoryPath: '/studio', documentationPaths: [], recording: 'diagnostics' as const, enabled: true, adapter: 'sirv' as const, ownership: [], logPaths: [] };
 
+test('activation events immediately publish a switch to an untracked tab and back before async queries finish', () => {
+  const c = new Collector(); c.configure([project]);
+  c.track({ id: 1, windowId: 11, url: project.origins[0], active: true }, 'doc'); c.focusWindow(11);
+  c.selectTab(99, 11);
+  const away = c.statuses();
+  c.selectTab(1, 11);
+  assert.equal(away[0].selected, false); assert.equal(away[0].active, false);
+  assert.equal(c.status(1)?.selected, true); assert.equal(c.status(1)?.active, true);
+});
+
 test('capture only contains the selected tab and current document even with two projects and windows', () => {
   // Fails if a navigation or second tab leaks previous document evidence into a capture.
   const c = new Collector(() => 1000);
@@ -60,7 +70,9 @@ test('only the selected tab in the focused window is active and focus changes pr
   assert.equal(c.capture(1).events[0].data.text, 'one');
   c.focusWindow(undefined);
   assert.deepEqual(c.statuses().filter(t => t.active), []);
+  assert.deepEqual(c.statuses().filter(t => t.selected).map(t => t.tabId), [1, 2]);
   c.focusWindow(22);
   c.track({ id: 2, windowId: 22, url: project.origins[0], active: false }, 'doc-two');
+  assert.equal(c.status(2)?.selected, false);
   assert.deepEqual(c.statuses().filter(t => t.active), []);
 });

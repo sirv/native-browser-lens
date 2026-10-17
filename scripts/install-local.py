@@ -6,6 +6,11 @@ import base64
 import json
 import pathlib
 import shutil
+import os
+import sys
+
+if sys.platform == "linux":
+    os.execv(sys.executable, [sys.executable, str(pathlib.Path(__file__).with_name("install-linux.py"))])
 
 repo = pathlib.Path(__file__).resolve().parent.parent
 source = repo / "dist/Native Browser Lens.app"

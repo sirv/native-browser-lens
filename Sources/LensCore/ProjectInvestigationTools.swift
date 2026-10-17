@@ -16,7 +16,6 @@ public actor ProjectInvestigationTools {
     private var calls = 0
     private var textBytes = 0
     private var collected: [Finding] = []
-    private static let extensions = Set(["ts", "tsx", "js", "jsx", "mjs", "cjs", "swift", "rs", "py", "go", "java", "kt", "c", "cpp", "h", "css", "scss", "html", "md", "mdx", "json", "yaml", "yml", "toml", "sql"])
     private static let excludedDirectories = Set(["node_modules", "vendor", "dist", "build", "target", "coverage", "credentials", "secrets"])
 
     public init(project: ProjectProfile, observation: NotebookObservation) {
@@ -116,11 +115,11 @@ public actor ProjectInvestigationTools {
     }
 
     private func permittedFile(_ path: String) throws -> URL {
-        guard !path.contains(":"), Self.permittedComponents(path), Self.extensions.contains(URL(fileURLWithPath: path).pathExtension.lowercased()) else { throw LensError.invalid("Only project source, test and documentation files are available") }
-        let target = try LocalRead.safeFile(path, root: project.repositoryPath)
+        guard !path.contains(":"), Self.permittedComponents(path) else { throw LensError.invalid("Only project source, test and documentation files are available") }
+        let target = try LocalRead.safeSourceFile(path, root: project.repositoryPath)
         let root = URL(fileURLWithPath: project.repositoryPath).resolvingSymlinksInPath().path
         let resolved = String(target.path.dropFirst(root.count + 1))
-        guard Self.permittedComponents(resolved), Self.extensions.contains(target.pathExtension.lowercased()) else { throw LensError.invalid("Resolved file is outside the permitted source scope") }
+        guard Self.permittedComponents(resolved) else { throw LensError.invalid("Resolved file is outside the permitted source scope") }
         return target
     }
 

@@ -1,0 +1,92 @@
+# Gap closure
+
+The continuing goal covers implementation, installation and acceptance. Local fixtures do not establish production or physical-device proof.
+
+- [x] Notebook archive, Trash, restore and reviewed permanent deletion
+- [x] Storage totals and optional retention limited to Trash, preserving pending filings
+- [x] Private checksummed backup, full restore, safety backup and recovery
+- [x] Portable report import without overwriting current observations
+- [x] Precompiled Linux installer, desktop dependency setup, verified updates and rollback
+- [x] Firefox collector and exact native-host registration
+- [ ] Public Linux release, Chrome Web Store install and permanently signed Firefox distribution
+- [ ] Flatpak/Snap bridge setup where the browser sandbox supports it
+- [x] Filterable console, request waterfall, details and explicit coverage
+- [x] Hyprland capture binding with explicit OS window/tab identity limits
+- [x] Codex subscription reports with reviewed text/images and preserved manual notes
+- [x] Bundled offline English dictation and cancellation/routing checks
+- [ ] Physical microphone quality and complete speech-to-report timing
+- [x] Current-build 30-minute busy-page/GTK fixture with total-process samples, capture bursts and measured capture p95 (0.10.3 passed)
+- [ ] Physical shortcut feedback and capture latency in the user workflow
+- [x] Local VibeQ ingestion with installed-client recovery/amendment and full backend gates
+- [x] Production VibeQ backend ingestion, migration and Worker release
+- [ ] Authenticated reviewed native-client production filing, recovery and amendment
+
+## Current installed release 0.10.3
+
+Version 0.10.3 is installed and running. The update preserved the current observation and all twelve artifacts with exact hashes; all 141 installed files verify. The app reports one real connected Chrome profile and one active/selected deep tab. The code review is clean with no accepted/actionable findings remaining. Checks pass: 52 Swift, 42 Linux and 15 collector; fresh Ubuntu/Fedora verified installer/update/rollback, service, full GTK/video and offline recognition; real Chromium and Firefox/native-host capture; the packaged HTTP reproduce/verify loop. Private records use `.build/headers-v0103-*` and `.build/autoreview-v0103.{json,log}`. The user authorized landing the reviewed source and releasing the VibeQ backend; its production release is recorded below. No public desktop installer or store listing has been published.
+
+Privacy fixes cover source-file/symlink scope, private keys, dictionary/array/binary credential headers, typed verification summaries and local-only error details. Selection changes survive queued updates; activation and title changes reach the host promptly. Public debugger target IDs, body-omission scope, trace header pairs and imported spatial references retain evidence links. Repeated rolling events are deduplicated with disclosure, and byte budgets match the actual formatted JSON. External before/after assertions require the captured failure, identical steps/runner, exact statuses and one matching response per run.
+
+The frozen 0.10.3 bundle completed 1800.50 seconds with sixty seeded reports and 69 measured captures: ten consecutive requests awaited through GTK paint and 59 periodic captures. Capture-to-paint median was 355.34 ms, p95 392.04 ms and maximum 552.26 ms; one sample exceeded 500 ms. The captured project tab stayed selected at every sample and both collector tabs stayed in deep mode; the other project tab's selected state was not independently sampled throughout. Checkpoint storage stayed below 188 KiB, GTK RSS ranged from 174.6 to 246.3 MiB, and all capture stages and 59 resource samples were retained. The process exited 0 and the frozen bundle manifest was unchanged. Proof is `.build/headers-v0103-soak/{soak-result,summary,runtime}.json`. This shared-host Xvfb fixture excludes physical input, portal video, microphone and provider timing; summed process RSS can count shared pages more than once.
+
+The 0.10.3 burst preflight separately passed eleven captures (307.02 ms median, 346.00 ms maximum). The 0.10.2 long run was stopped after the header-array privacy finding and remains historical. Reload the unpacked browser collector after updates to connect the new code/native host; browser permission checks remain enabled.
+
+The actual installed 0.10.3 helpers passed synthetic speech → reviewed Codex text/image reporting with the source-build warning retained: 0.71 seconds recognition, 9.49 seconds Finish→complete suggestion, unchanged manual notes. This one shared-host sample excludes a physical microphone and human review; it is not a p95 or a guaranteed service target. Proof is `.build/headers-v0103-current-provider.log` and the adjacent synthetic report JSON.
+
+Current store preparation includes four newly captured 1280×800 screenshots (collector, Storm, Day, linked timeline), a checked 440×280 brand tile and a private-review Firefox source archive that rebuilds both frozen collector packages byte-for-byte. No package or listing was uploaded to a browser store; the installer and Firefox submission archive remain local review artifacts. The authenticated upstream repository is private and specifies no detected project license; owner/publisher distribution authority and licensing remain unresolved. The current update URL also needs a public publisher release feed before public distribution. [The store handoff](extension/STORE.md) records the exact local artifacts and remaining inputs.
+
+## Remaining acceptance inputs
+
+| Requirement | Ready local evidence | Input or external change still needed |
+| --- | --- | --- |
+| Public Linux release and one-click Chrome install | Verified prebuilt installer/update/rollback, source review, extension ZIP and current store images | Owner/publisher authority and license, public release/feed, store identity/account, hosted policy and support contact; public installer/store publication still needs these publisher inputs |
+| Permanent Firefox install | Actual Firefox/native-host capture, unsigned XPI and byte-identical source rebuild | Mozilla signing access and returned signed XPI, followed by a permanent-install check |
+| Sandboxed browser integration | Native Chrome/Chromium/Firefox pass; installed Zen Flatpak checked | A supported native-messaging portal/proxy on the host/browser; none was available in the checked configuration |
+| Physical device/workflow acceptance | Portal/GStreamer fixtures, configured Hyprland binding, key-free recognition and synthetic report timing | User-operated microphone/shortcut and complete measured workflow; prior questions remain unanswered |
+| Production VibeQ client acceptance | Backend commit 4f710861 deployed, migration 0070/all three tables verified, CI artifact verification and live gates pass; local installed-client recovery/amendment passes | Intended account/token setup and an explicitly reviewed native-client production filing, recovery and amendment |
+
+Three installed 0.10.0 basic synthetic speech-to-report checks took 9.01, 9.45 and 8.28 seconds. A case with an unmatched-build exception took 11.73 seconds. This is not a p95 or physical-device acceptance claim. `.build/performance-v010-provider-summary.json` records the experimental controls and limits; low verbosity alone was not shipped. The 0.10.0 bundle completed 1800.71 seconds with ten burst and 59 periodic captures: 364.54 ms median, 436.52 ms p95, 454.04 ms maximum, none over 500 ms. The captured tab stayed selected and both collector tabs stayed deep, checkpoint storage stayed below 188 KiB and GTK RSS ranged from 210.2 to 262.5 MiB. Records are `.build/performance-v010-soak/{soak-result,summary}.json`. This is historical shared-host Xvfb proof for that exact bundle; current 0.10.3 acceptance is recorded above.
+
+## Historical installed release 0.9.0
+
+All 141 installed files verify. The latest observation and eleven artifacts match their pre-install hashes. The app is running on Wayland and reports the real Chrome profile's active/selected deep tab. Fresh Ubuntu/Fedora package checks, the five debugging improvements and the real local reproduce/verify loop pass. Installation and live-status proof are `.build/debugging-v09-install-verification.json` and `.build/debugging-v09-live-status.json`. The current-version capture burst/30-minute acceptance remains separate from the completed 0.7.0 run below. The most recent complete synthetic speech-to-draft sample was 11.70 seconds and misses the 10-second target; physical microphone and human-review time are excluded.
+
+## Historical installed release 0.7.0 — 2026-10-17
+
+Version 0.7.0 is installed and running natively on Wayland. All 115 installed files match the release manifest. The update preserved the latest observation and all 11 existing artifacts with exact pre-install hashes. The actual Chrome profile reports one deep, selected, active project tab. Installed Codex status is ready through the existing ChatGPT sign-in. No API key is needed for investigation or dictation.
+
+The 272.3 MiB `.run` installer, archive, Chrome ZIP, explicitly unsigned Firefox XPI and SHA-256 files are under `dist/releases/`. Run `sh native-browser-lens-0.7.0-linux-x86_64.run` to avoid a separate executable-permission step. The release bundles Swift/runtime libraries, Codex and the offline Whisper engine/model. First installation opens Browser setup; updates open the notebook. Open review/setup forms still prevent an update to preserve their input.
+
+Most recent unit suites passed: 33 Swift, 41 Python and 13 collector tests. The actual 0.7.0 release passed isolated install/update/rollback and preservation, incremental capture/edit service replies, and the full GTK workflow on fresh Ubuntu 24.04 and Fedora 44 containers without Swift or Node.js. Those workflows include actual H.264 playback and offline recognition. GTK regression checks preserve history keyboard focus and the editor cursor across updates, retain existing rows on insertion, and cover search and lifecycle changes. Chromium native-host capture passed with 0.7.0; the latest separate Firefox capture proof used 0.6.0. Private current evidence is in `.build/performance-v07-*`; earlier release records remain separate.
+
+Fresh Ubuntu bootstrap also installed the actual missing packages through the installer itself. Its authorization helper was an isolated container fixture; no host packages were changed and no physical authorization dialog was tested. Missing-encoder/decoder/parser, Cairo typelib, GTK media backend and OpenGL ES requirements are checked. Fedora uses official OpenH264 support. Reproducible environments are in `linux/tests/containers/`.
+
+## Performance
+
+The completed 1,805.92-second 0.4.0 full-app capture soak saved 56 measured captures and ended with 60 observations. Both collector tabs stayed deep across all samples; checkpoint storage stayed below 188 KiB. GTK RSS ranged from 224.4 to 260.7 MiB, ending at 258.1 MiB while saved observations accumulated. Capture request to GTK paint had a 2.22-second median and 4.76-second p95, missing the 500 ms target. This exposed a status-sync bottleneck: with about 50 saved observations, each status-only reply serialized roughly 8 MiB and took 2.5–2.7 seconds. The same private notebook with 0.5.0 takes 14–21 ms and returns 928 bytes. Background sync timings are not physical capture timings.
+
+Version 0.6.0 extended incremental replies to changed observations and replaced whole-notebook lookups with targeted reads. Version 0.7.0 reuses unchanged GTK history rows, avoids duplicate capture rendering during picker changes, and preserves unchanged editor text. Explicit Refresh and maintenance still reload the full saved notebook. The completed 0.7.0 run lasted 1,800.95 seconds and saved 59 measured captures, starting with 64 observations (including 60 imported fixture reports) and ending with 123. Capture request to real GTK paint had a 396.05 ms median and 471.43 ms p95, meeting the fixture's 500 ms p95 target; two samples exceeded 500 ms. The captured tab stayed selected and both collector tabs stayed deep; the other project tab's selected state was not sampled throughout. Checkpoint storage remained below 188 KiB. GTK RSS ranged from 226.7 to 261.4 MiB as saved reports accumulated. Every capture has helper/UI/paint stage timings; native-host, browser and helper resource samples are retained. The earlier 0.6.0 run measured 476.80 ms median and 708.25 ms p95. These are shared-host Xvfb results, with overlapping fixture/backend checks and summed RSS that can count shared pages more than once. They exclude physical shortcuts, portal video, microphone and provider calls. Physical user-workflow latency and complete device acceptance remain unproven.
+
+## Browser delivery boundaries
+
+Browser setup copies the installed collector path, opens setup and permissions pages, and reports connection/version/ready-tab state. Chrome requires Load unpacked, explicit origin approval and a collector reload after updates. The icon, 440×280 promotional tile, four verified 1280×800 demo screenshots, listing copy, permission justifications, privacy draft and publication/identity instructions are in `extension/STORE.md` and `extension/PRIVACY.md`. There is no publisher-owned Web Store listing or hosted policy URL yet. A store-assigned Chrome ID must be paired with a rebuilt native-host registration before distribution. No browser policy or preference was changed.
+
+Firefox's limited mode passed real two-project isolation, HTTP 503 metadata, redaction, document-bound actions, DOM/storage snapshots, pause/navigation, toolbar-action PNG capture and actual notebook persistence. Its unsigned package loads temporarily. Permanent installation needs Mozilla signing; signature checks remain enabled. Firefox permissions cover all ports of an approved host, disclosed before approval; Lens selects exact project origins and probes only the main frame. Missing debugger/console/worker/body channels remain explicit.
+
+Installed Zen Flatpak 1.21.5b (Gecko 152.0.4) has the WebExtensions portal client, but its native-messaging module contains no client for the newer NativeMessagingProxy. The host exposes no WebExtensions portal, proxy executable or activatable proxy service; Zen also has no proxy D-Bus grant. Installing a proxy alone would therefore not establish compatibility for this build. `.build/sandbox-browser-read-only.json` records the inspected module hash, deployment and transport checks. [Mozilla documents both transports](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/native-messaging-portal-design.html); newer browser/proxy combinations need their own end-to-end capture proof. No sandbox permissions or browser preferences were changed. Manual backups support transfer; concurrent cloud sync is not implemented.
+
+## Desktop and live-service boundaries
+
+The active Hyprland Lua config contains one Ctrl+Alt+Shift+L capture binding. A timestamped sibling backup preserves the original keybind file. Lua parsing, reload with zero config errors, and compositor readback passed; proof is `.build/hyprland-binding-installed.json`. Physical keypress timing remains unverified. The portal's selected OS window cannot independently prove ownership of a browser tab, and capture coverage states that limit.
+
+Physical microphone input was not opened by automated tests. Live Codex with reviewed synthetic text and an image passed previously in 9.12 seconds; synthetic offline dictation timings vary with host load. Neither proves the complete microphone-to-report target.
+
+The dirty/diverged `/home/igor/Projects/vibequeue` checkout remains untouched. The sibling backend worktree is clean. Commit `4f710861b24c7c718b991d1d4aca25332b84aee8` and its verified Git-note receipt were pushed atomically to origin/main and the receipt ref after the user authorized landing. The clean-commit `verify:local` run passed in 395.98 seconds, including the complete source gate and API/web dry runs. The source gate includes all 61 source checks, 1,875 Worker tests, 939 frontend tests and 41 QA-monitor tests.
+
+[Release run 39050300625](https://github.com/IgorVaryvoda/vibequeue/actions/runs/39050300625) passed receipt validation, migration 0070, web/API deployment and origin-artifact verification. Production contains all three capture tables. The live API Worker version `4292f67b-c828-4cbc-a209-5ea24c671526` serves 100% of traffic and is tagged with the exact landed commit. Active-job checks were empty before push and during rollout. Pre/post-deploy live gates pass; signed Slack probes were skipped because local signing credentials were absent, and no Slack delivery test was posted. Proof uses `.build/vibeq-release-*`, `.build/vibeq-worker-deployments.json` and `.build/vibeq-production-schema-deployed.json`.
+
+The installed 0.7.0 client previously passed real private-bus Secret Service → local workerd/D1/R2 filing: a lost committed response recovered without a duplicate task, manual edits survived, and a reviewed amendment updated the same task (two revisions/four checked attachments). A native-client personal token and explicitly reviewed production filing remain unverified. No production task was filed by this release. [The integration record](integrations/vibeq.md) separates the deployed backend from that remaining client acceptance.
+
+## Debugging workflow added in 0.9.0
+
+The five approved debugging improvements are implemented locally: linked timeline, export-scoped evidence CLI, failure-first structured selection/omission preview, captured-commit stack source maps and an HTTP reproduce/fix/verify handoff with raw diagnostic imports. [DEBUGGING.md](DEBUGGING.md) records commands, evidence and exact limits. The real local Playwright 503→200 loop passes, including checked artifacts and preserved notes. This does not close authenticated production reproduction or comparative debugging accuracy. Codex's bundled experimental realtime audio currently rejects subscription login with an API-key-auth requirement; offline dictation remains the key-free path.

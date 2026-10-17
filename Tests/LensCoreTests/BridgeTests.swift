@@ -2,6 +2,23 @@ import XCTest
 @testable import LensCore
 
 final class BridgeTests: XCTestCase {
+    func testCoalescedStatusRetainsSelectionChangeAfterSwitchingAwayAndBack() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let bridge = BridgeMailbox(root: root), client = UUID().uuidString
+        func status(_ selected: Bool) throws {
+            try bridge.receive(WireMessage(kind: "status", payload: .object(["tabs": .array([.object(["tabId": .number(1), "documentId": .string("doc"), "selected": .bool(selected), "mode": .string("deep")])])])), clientId: client)
+        }
+        try status(true)
+        let initial = try XCTUnwrap(bridge.drain().first?.payload["selectionEpoch"]?.stringValue)
+        try status(true)
+        XCTAssertEqual(try bridge.drain().first?.payload["selectionEpoch"]?.stringValue, initial)
+        try status(false); try status(true)
+        let coalesced = try bridge.drain()
+        XCTAssertEqual(coalesced.count, 1)
+        XCTAssertEqual(coalesced[0].payload["tabs"]?.arrayValue?.first?["selected"]?.boolValue, true)
+        XCTAssertNotEqual(coalesced[0].payload["selectionEpoch"]?.stringValue, initial)
+    }
     func testNewStatusCanBeClaimedWhileEarlierStatusRemainsUnacknowledged() throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }
@@ -60,6 +77,7 @@ final class BridgeTests: XCTestCase {
         let bridge = BridgeMailbox(root: root)
         let clientA = UUID().uuidString; let clientB = UUID().uuidString
         try bridge.register(clientId: clientA); try bridge.register(clientId: clientB)
+        XCTAssertEqual(Set(try bridge.connectedClientIDs()), Set([clientA, clientB]))
         _ = try bridge.commands(clientId: clientA); _ = try bridge.commands(clientId: clientB)
         let arrival = expectation(description: "Filesystem event delivers the message")
         let watch = try bridge.watchInbox(queue: DispatchQueue(label: "test.bridge")) {
@@ -72,5 +90,10 @@ final class BridgeTests: XCTestCase {
         try bridge.send(kind: "capture", payload: .object(["tabId": .number(1), "clientId": .string(clientB)]))
         XCTAssertTrue(try bridge.commands(clientId: clientA).isEmpty)
         XCTAssertEqual(try bridge.commands(clientId: clientB).map(\.kind), ["capture"])
+        bridge.unregister(clientId: clientA)
+        let stale = root.appendingPathComponent("bridge/clients/" + UUID().uuidString)
+        try FileManager.default.createDirectory(at: stale, withIntermediateDirectories: true)
+        try "2147483647".write(to: stale.appendingPathComponent(".owner-pid"), atomically: true, encoding: .utf8)
+        XCTAssertEqual(try bridge.connectedClientIDs(), [clientB])
     }
 }

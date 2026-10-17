@@ -1,6 +1,10 @@
 import Foundation
 import LensCore
+#if os(Linux)
+import Glibc
+#else
 import Darwin
+#endif
 
 let mailbox = BridgeMailbox()
 let clientId = UUID().uuidString

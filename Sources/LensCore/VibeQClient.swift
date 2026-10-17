@@ -1,6 +1,9 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
-public struct FilingProgress: Sendable {
+public struct FilingProgress: Codable, Sendable {
     public var stage: String; public var state: String; public var completed: Int; public var total: Int; public var detail: String
     public init(stage: String, state: String, completed: Int = 0, total: Int = 0, detail: String = "") { self.stage=stage; self.state=state; self.completed=completed; self.total=total; self.detail=detail }
 }
@@ -27,6 +30,43 @@ public struct VibeQClient {
     public let baseURL: URL
     private let token: String; private let session: URLSession
     public init(baseURL: URL, token: String, session: URLSession = .shared) { self.baseURL=baseURL; self.token=token; self.session=session }
+    public static func rebaseBackup(store: EvidenceStore, oldRoot: String, newRoot: String? = nil) throws {
+        let destination = newRoot ?? store.root.path
+        guard oldRoot.hasPrefix("/"), oldRoot != "/", destination.hasPrefix("/"), destination != "/" else { throw LensError.invalid("Invalid notebook backup location") }
+        func path(_ value: String, id: String) throws -> String {
+            let prefix = oldRoot + "/observations/" + id + "/"
+            guard value.hasPrefix(prefix), !value.dropFirst(prefix.count).split(separator: "/").contains("..") else { throw LensError.invalid("Backup media leaves its observation") }
+            return destination + value.dropFirst(oldRoot.count)
+        }
+        func rebase(_ value: NotebookObservation) throws -> NotebookObservation {
+            var item = value
+            for i in item.captures.indices {
+                if let p = item.captures[i].screenshotPath { item.captures[i].screenshotPath = try path(p, id: item.id) }
+                if let p = item.captures[i].originalScreenshotPath { item.captures[i].originalScreenshotPath = try path(p, id: item.id) }
+                if let p = item.captures[i].context["videoPath"]?.stringValue { item.captures[i].context["videoPath"] = .string(try path(p, id: item.id)) }
+                var diagnostics = DiagnosticArtifacts.records(item.captures[i])
+                for j in diagnostics.indices {
+                    if var fields = diagnostics[j].objectValue, let p = fields["path"]?.stringValue { fields["path"] = .string(try path(p, id: item.id)); diagnostics[j] = .object(fields) }
+                }
+                if !diagnostics.isEmpty { item.captures[i].context["diagnosticArtifacts"] = .array(diagnostics) }
+            }
+            return item
+        }
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.sortedKeys]
+        for item in try store.observations() {
+            try store.save(rebase(item))
+            let directory = store.root.appendingPathComponent("observations/" + item.id)
+            guard FileManager.default.fileExists(atPath: directory.path) else { continue }
+            for file in try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil) where file.lastPathComponent.hasPrefix("submission-r") && file.pathExtension == "json" {
+                var attempt = try JSONDecoder().decode(FilingAttempt.self, from: Data(contentsOf: file))
+                guard attempt.snapshot.id == item.id, attempt.formatVersion == 2 else { throw LensError.invalid("Backup contains an unsupported filing attempt") }
+                attempt.snapshot = try rebase(attempt.snapshot)
+                attempt.exportPath = try path(attempt.exportPath, id: item.id)
+                attempt.snapshotHash = sha256(try encoder.encode(attempt.snapshot))
+                _ = try store.saveArtifact(observationId: item.id, filename: file.lastPathComponent, data: encoder.encode(attempt))
+            }
+        }
+    }
     public static func pendingSubmission(observationId: String, revision: Int, store: EvidenceStore) throws -> FilingReview? {
         let url = try store.artifactURL(observationId: observationId, filename: "submission-r\(revision).json")
         guard FileManager.default.fileExists(atPath: url.path) else { return nil }

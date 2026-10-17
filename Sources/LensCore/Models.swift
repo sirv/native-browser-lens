@@ -50,6 +50,7 @@ public struct ProjectProfile: Codable, Equatable, Identifiable, Sendable {
     }
 }
 public struct TabStatus: Codable, Equatable, Identifiable, Sendable {
+    public var selected: Bool?
     public var clientId: String?
     public var id: Int { tabId }; public var tabId: Int; public var windowId: Int; public var projectId: String; public var url: String; public var title: String; public var mode: String; public var documentId: String; public var armedAt: Double; public var capabilities: [String]; public var reason: String?; public var active: Bool
     public init(tabId: Int, windowId: Int = 0, projectId: String, url: String, title: String = "", mode: String = "unavailable", documentId: String = "", armedAt: Double = nowMilliseconds(), capabilities: [String] = [], reason: String? = nil, active: Bool = false) { self.tabId=tabId; self.windowId=windowId; self.projectId=projectId; self.url=url; self.title=title; self.mode=mode; self.documentId=documentId; self.armedAt=armedAt; self.capabilities=capabilities; self.reason=reason; self.active=active }
@@ -88,6 +89,8 @@ public struct FilingReceipt: Codable, Equatable, Sendable {
     public init(submissionId: String, observationId: String, revision: Int, taskId: String, taskUrl: String, createdAt: Double = nowMilliseconds(), attachmentStatus: String = "complete", missingAttachments: [String] = []) { self.submissionId=submissionId; self.observationId=observationId; self.revision=revision; self.taskId=taskId; self.taskUrl=taskUrl; self.createdAt=createdAt; self.attachmentStatus=attachmentStatus; self.missingAttachments=missingAttachments }
 }
 public struct NotebookObservation: Codable, Equatable, Identifiable, Sendable {
+    public var archivedAt: Double?
+    public var trashedAt: Double?
     public var id: String; public var projectId: String; public var createdAt: Double; public var title: String; public var markdown: String; public var draftRevision: Int; public var editVersion: Int; public var captures: [CaptureRecord]; public var findings: [Finding]; public var receipt: FilingReceipt?
     public init(id: String = UUID().uuidString, projectId: String, createdAt: Double = nowMilliseconds(), title: String = "Untitled observation", markdown: String = "", draftRevision: Int = 1, editVersion: Int = 0, captures: [CaptureRecord] = [], findings: [Finding] = [], receipt: FilingReceipt? = nil) { self.id=id; self.projectId=projectId; self.createdAt=createdAt; self.title=title; self.markdown=markdown; self.draftRevision=draftRevision; self.editVersion=editVersion; self.captures=captures; self.findings=findings; self.receipt=receipt }
 }
