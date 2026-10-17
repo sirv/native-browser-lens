@@ -32,7 +32,7 @@ The frozen 0.10.4 bundle completed 1800.73 seconds with sixty seeded reports and
 
 The exact bundle also passed synthetic offline speech → reviewed Codex reporting with the existing subscription and no API key: 0.74 seconds recognition, 10.62 seconds Finish→complete draft. Manual notes and source-build uncertainty were preserved. This one shared-host sample exceeds the 10-second target and does not establish physical microphone quality or provider p95.
 
-The installer, archive, browser packages, reproducible Firefox source and checksums are prepared for the [private draft release](https://github.com/VKrachun/native-browser-lens/releases/tag/untagged-9ef88d7c6cbc113b2fb4). Server digests for the initial eight frozen assets match their local files. Drafts do not enable the public update feed. Publisher authority/license, store accounts and permanent Firefox signing remain unresolved.
+The installer, archive, browser packages, reproducible Firefox source and checksums are prepared for the [private draft release](https://github.com/VKrachun/native-browser-lens/releases). Server digests for the initial eight frozen assets match their local files. Drafts do not enable the public update feed. Publisher authority/license, store accounts and permanent Firefox signing remain unresolved.
 
 ## Historical installed release 0.10.3
 
