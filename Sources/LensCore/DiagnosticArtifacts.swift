@@ -19,6 +19,7 @@ public enum DiagnosticArtifacts {
         if let complete = value["executionComplete"]?.boolValue { summary["executionComplete"] = .bool(complete) }
         if let build = value["buildId"]?.stringValue, build.range(of: "^[a-fA-F0-9]{40}$", options: .regularExpression) != nil { summary["buildId"] = .string(build) }
         if value["tool"]?.stringValue == "playwright" { summary["tool"] = .string("playwright") }
+        if let origin = value["testOrigin"]?.stringValue, let url = URLComponents(string: origin), url.scheme == "http", url.host == "127.0.0.1", url.port != nil, url.user == nil, url.password == nil, url.query == nil, url.fragment == nil, url.path.isEmpty { summary["testOrigin"] = .string(origin) }
         if let failure = value["failure"], failure != .null { summary["failure"] = .string("Runner reported an error. Review the original diagnostic for details.") }
         return .object(summary)
     }
@@ -72,6 +73,7 @@ public enum DiagnosticArtifacts {
         capture.gaps.append(CoverageGap(channel: "imported-diagnostics", reason: "Imported \(type). Its browser session/document identity and tool assertions are not independently verified. Raw attachment remains local until separately reviewed. HAR normalization includes at most 1000 same-origin entries, with bodies/cookies omitted; trace archives are stored without extraction or execution."))
     }
     public static func validateResult(_ value: JSONValue, observationId: String, capture: CaptureRecord) throws {
+        if let origin = value["testOrigin"], origin != .null, summaryResult(value)["testOrigin"] != origin { throw LensError.invalid("Local verification origin must be an HTTP loopback origin with a port") }
         let allowedConditionFields = Set(["type", "url", "method", "failureStatus", "successStatus", "queryPolicy"])
         guard let condition = value["condition"]?.objectValue, Set(condition.keys).isSubset(of: allowedConditionFields),
               let address = condition["url"]?.stringValue, address.count <= 4096, let url = URLComponents(string: address), ["http", "https"].contains(url.scheme), url.host != nil, url.user == nil, url.password == nil, url.query == nil, url.fragment == nil,

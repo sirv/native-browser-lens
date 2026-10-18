@@ -23,6 +23,16 @@ def checksum(path):
     return value.hexdigest()
 
 
+def bundle_codex(folder):
+    executable=shutil.which('codex')
+    if not executable:raise ValueError('Install the full Codex distribution before building a subscription-enabled release.')
+    executable=Path(executable).resolve()
+    companion=executable.with_name('codex-code-mode-host')
+    if not companion.is_file():raise ValueError('The Codex distribution is missing codex-code-mode-host, required for fix execution tools.')
+    for path in (executable,companion):shutil.copy2(path,folder/path.name)
+    return executable
+
+
 def bundle_runtime(folder):
     libraries={}
     loader=None
@@ -88,9 +98,7 @@ def main(skip_build=False):
     if folder.exists():shutil.rmtree(folder)
     shutil.copytree(source,folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
     libraries=bundle_runtime(folder)
-    codex=shutil.which('codex')
-    if not codex:raise ValueError('Install Codex before building a subscription-enabled release.')
-    shutil.copy2(Path(codex).resolve(),folder/'codex')
+    codex=bundle_codex(folder)
     licenses=folder/'licenses';licenses.mkdir()
     for path in [REPO/'LICENSE',Path('/usr/share/licenses/common')]:
         if path.is_dir():shutil.copytree(path,licenses/path.name)
@@ -106,7 +114,7 @@ def main(skip_build=False):
     (folder/'Install.sh').chmod(0o755)
     (folder/'README.txt').write_text('Native Browser Lens '+version+'\n\nRun Install.sh, or python3 install.py --gui. No Swift or Node.js installation is needed.\nThe installer checks desktop dependencies and preserves the previous build and notebook.\nBrowser setup opens on first installation. Load the provided Chrome/Chromium collector, approve your project origins, and use Alt+Shift+L to capture. Updates open the main notebook. Firefox has a separate extension-firefox folder and unsigned XPI: load it temporarily through about:debugging. Permanent Firefox installation requires Mozilla signing; signature checks stay enabled.\nAI investigation uses your existing Codex / ChatGPT sign-in; no API key is required.\nEnglish dictation uses bundled Whisper locally. Audio stays in memory and never enters a network request.\nTo restore the previous app build: python3 install.py --rollback --launch\nNotebook backups and Trash controls are in Notebook > Storage and backups.\n')
     files={str(path.relative_to(folder)):checksum(path) for path in folder.rglob('*') if path.is_file()}
-    release=dict(formatVersion=1,version=version,architecture=platform.machine(),files=files,codexVersion=subprocess.check_output([codex,'--version'],text=True).strip())
+    release=dict(formatVersion=1,version=version,architecture=platform.machine(),files=files,codexVersion=subprocess.check_output([str(codex),'--version'],text=True).strip())
     (folder/'release.json').write_text(json.dumps(release,indent=2)+'\n')
     archive=releases/(name+'.tar.gz')
     with tarfile.open(archive,'w:gz') as output:output.add(folder,arcname=name)

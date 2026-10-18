@@ -2,6 +2,27 @@ import XCTest
 @testable import LensCore
 
 final class DiagnosticTests: XCTestCase {
+    func testLocalVerificationOriginSurvivesSummaryWithoutExternalOrigins() {
+        let value: JSONValue = .object(["testOrigin": .string("http://127.0.0.1:43123")])
+        XCTAssertEqual(DiagnosticArtifacts.summaryResult(value)["testOrigin"], value["testOrigin"])
+        XCTAssertNil(DiagnosticArtifacts.summaryResult(.object(["testOrigin": .string("https://private.example")]))["testOrigin"])
+        XCTAssertNil(DiagnosticArtifacts.summaryResult(.object(["testOrigin": .string("http://127.0.0.1:43123/private?token=secret")]))["testOrigin"])
+    }
+    func testFixSelectionRequiresCurrentReviewAndExcludesOtherCapturesAndRawDiagnostics() throws {
+        let identity = CaptureIdentity(projectId: "p")
+        let event = EvidenceEvent(projectId: "p", tabId: identity.tabId, documentId: identity.documentId, kind: "response", data: ["status": .number(500), "url": .string("https://example.test/api"), "method": .string("GET")])
+        let capture = CaptureRecord(identity: identity, events: [event], context: ["diagnosticArtifacts": .array([.object(["path": .string("private trace")])]), "videoPath": .string("private video")])
+        let item = NotebookObservation(projectId: "p", markdown: "Retain manual text", editVersion: 3, captures: [capture, CaptureRecord(identity: identity)], findings: [Finding(kind: "hypothesis", text: "Other capture")])
+        XCTAssertThrowsError(try Reproduction.fixSelection(observation: item, captureId: capture.id, eventId: event.id, successStatus: 200, reviewedVersion: 2))
+        XCTAssertThrowsError(try Reproduction.fixSelection(observation: item, captureId: item.captures[1].id, eventId: event.id, successStatus: 200, reviewedVersion: 3))
+        let selected = try Reproduction.fixSelection(observation: item, captureId: capture.id, eventId: event.id, successStatus: 200, reviewedVersion: 3)
+        XCTAssertEqual(selected.markdown, item.markdown)
+        XCTAssertEqual(selected.captures.map(\.id), [capture.id])
+        XCTAssertTrue(selected.findings.isEmpty)
+        XCTAssertNil(selected.captures[0].context["diagnosticArtifacts"])
+        XCTAssertNil(selected.captures[0].context["videoPath"])
+        XCTAssertEqual(item.captures.count, 2)
+    }
     func testUnreviewedVerificationDoesNotCopyUnknownPayloadFieldsIntoPortableEvidence() throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: root) }
@@ -29,6 +50,11 @@ final class DiagnosticTests: XCTestCase {
         XCTAssertTrue(metadata.contains("observedStatus"))
         XCTAssertEqual(Reproduction.summary(capture: item.captures[0])["status"]?.stringValue, "needs-before-and-after")
         XCTAssertEqual(try Data(contentsOf: file), try Data(contentsOf: URL(fileURLWithPath: DiagnosticArtifacts.records(item.captures[0])[0]["path"]!.stringValue!)))
+        result["testOrigin"] = .string("https://unrelated.test")
+        XCTAssertThrowsError(try DiagnosticArtifacts.validateResult(.object(result), observationId: item.id, capture: item.captures[0]))
+        result["testOrigin"] = .string("http://127.0.0.1:43123")
+        XCTAssertNoThrow(try DiagnosticArtifacts.validateResult(.object(result), observationId: item.id, capture: item.captures[0]))
+        result.removeValue(forKey: "testOrigin")
         var unsafe = condition.objectValue!; unsafe["debugBody"] = .string("private-condition-body")
         result["condition"] = .object(unsafe)
         let unsafeContract = JSONValue.object(Dictionary(uniqueKeysWithValues: ["observationId", "captureId", "failureEventId", "condition"].map { ($0, result[$0]!) }))

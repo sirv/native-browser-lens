@@ -12,6 +12,7 @@ Checked against `Sources/NativeLens` on 2026-10-17. GTK replaces the macOS UI an
 | Rectangle, arrow, pen, mask and undo | Frozen-image geometry, private originals, burned masks, shared source binding | Annotation/core tests, GTK masked export |
 | Evidence and findings navigation | Filterable console, request timelines and details, explicit missing timing, coverage, raw JSON, typed findings and source links | Helper tests and GTK structured-evidence workflow |
 | Local and reviewed Codex investigation | Shared bounded tools, managed ChatGPT login, reviewed text/capture IDs and edit version, tools disabled, raw store denied, separate report suggestion | Live subscription text/image report; core Codex failure/isolation tests; stale-review rejection and GTK draft workflow |
+| Agent evidence and autonomous fix | Local stdio MCP over reviewed exports; reviewed subscription repair in private worktrees with frozen before/baseline/after checks | Actual Codex MCP client and collector-to-source decimal-price repair; fresh patch application, dirty source/manual-note preservation and sandbox canaries |
 | Dictation | Bundled offline English Whisper, bounded in-memory 16 kHz PCM, explicit microphone start, original-observation routing and retained failed insertion | Real synthetic speech recognition, GStreamer PCM fixture, cancellation/stale completion and GTK routing tests |
 | Bounded rolling video | User-approved window, 30 s / 48 MiB / 150 frames in memory, H.264 MP4, review before export/filing | Real GStreamer frames, FFmpeg/ffprobe, reviewed/unreviewed export |
 | Tray status and controls | Separate GTK 3 helper, open/capture/pause/settings/quit, truthful connection state | Live StatusNotifier + DBusMenu registration, state, action and shutdown |
@@ -21,7 +22,11 @@ Checked against `Sources/NativeLens` on 2026-10-17. GTK replaces the macOS UI an
 | Portable export | Sanitized Markdown/JSON, reviewed PNG derivatives and reviewed video | Core export tests and GTK workflow |
 | Secret storage | Secret Service, explicit removal, no plaintext fallback | Real isolated keyring store/read/remove in filing smoke |
 
-## Current delivery verification
+## Agent workflow 0.11.0
+
+[The current agent acceptance record](ACCEPTANCE.md#linux-0110-agent-acceptance) covers the bundled Codex runtime, hoisted dependencies, fresh patch application and private-network verification. MCP reads explicit exports; it does not expose the notebook or browser controls. Automatic fix verification currently covers same-origin HTTP conditions in a fresh local browser.
+
+## Historical 0.10.4 delivery verification
 
 Installed 0.10.4 passes 52 Swift, 45 Linux and 15 collector tests, clean final review, full GTK setup and fresh Ubuntu/Fedora delivery checks. Native Firefox and Firefox 158 Flatpak/NativeMessagingProxy complete actual native-host captures; proxy modes 1 and 2 both pass. The setup wizard detects Firefox Flatpak and prepares one complete private XPI, with explicit host/permission/preference instructions. The clean collector source rebuild matches all fifteen files in each frozen output tree. Version 0.10.4 is installed and running. All 141 installed files verify; the current observation and twelve artifacts match their pre-install hashes exactly. The actual Chrome profile reports one active/selected deep project tab. Proof is `.build/flatpak-v0104-install-verification.json` and `live-status.json` under that prefix. Reload the unpacked collector in `chrome://extensions` after the app update; this session has no enabled browser automation surface for that UI action.
 

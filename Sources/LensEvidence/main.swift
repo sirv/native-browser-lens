@@ -10,7 +10,7 @@ let args = Array(CommandLine.arguments.dropFirst())
 do {
     let result: JSONValue
     if args.isEmpty || args == ["--help"] {
-        print("Usage: lens-evidence REPORT_FOLDER inspect|timeline|requests|event|finding|stack|image|verification [ID]\n       lens-evidence REPORT_FOLDER compare OTHER_REPORT_FOLDER\n       lens-evidence REPORT_FOLDER handoff EVENT_ID SUCCESS_STATUS NEW_FOLDER\n       lens-evidence list EXPORTS_DIRECTORY\nReads explicit portable exports only. Handoff writes files; no notebook, network or shell actions.")
+        print("Usage: lens-evidence REPORT_FOLDER inspect|selection|timeline|requests|event|finding|stack|image|verification [ID]\n       lens-evidence REPORT_FOLDER compare OTHER_REPORT_FOLDER\n       lens-evidence REPORT_FOLDER handoff EVENT_ID SUCCESS_STATUS NEW_FOLDER\n       lens-evidence list EXPORTS_DIRECTORY\nReads explicit portable exports only. Handoff writes files; no notebook, network or shell actions.")
         exit(0)
     }
     guard args.count >= 2 else { throw LensError.invalid("Specify a portable report folder and command; use --help") }

@@ -32,6 +32,16 @@ func edited(_ item: inout NotebookObservation) {
         data.append(10); try? FileHandle.standardOutput.write(contentsOf: data)
     }
     switch request["action"]?.stringValue {
+    case "prepareFix":
+        let item = try observation(request)
+        guard request["reviewed"]?.boolValue == true, let version = request["reviewedVersion"]?.intValue, let capture = request["captureId"]?.stringValue, let event = request["eventId"]?.stringValue, let status = request["successStatus"]?.intValue, let path = request["destination"]?.stringValue, path.hasPrefix("/") else { throw LensError.invalid("Review the current capture and authorize the local fix session") }
+        let selected = try Reproduction.fixSelection(observation: item, captureId: capture, eventId: event, successStatus: status, reviewedVersion: version)
+        let profile = try project(item.projectId)
+        guard !profile.repositoryPath.isEmpty else { throw LensError.invalid("Choose this project's repository in Settings") }
+        let destination = URL(fileURLWithPath: path)
+        let exported = try store.export(observation: selected, to: destination)
+        let handoff = try Reproduction.handoff(observation: selected, eventId: event, successStatus: status, destination: destination.appendingPathComponent("handoff"), runner: LensPaths.executableDirectory.appendingPathComponent("reproduce.mjs"))
+        return .object(["exportPath": .string(exported.path), "handoffPath": .string(handoff.path), "repositoryPath": .string(profile.repositoryPath)])
     case "handoff":
         let item = try observation(request)
         guard item.editVersion == request["reviewedVersion"]?.intValue, let event = request["eventId"]?.stringValue, let status = request["successStatus"]?.intValue, let path = request["destination"]?.stringValue, path.hasPrefix("/" ) else { throw LensError.invalid("Review the saved failure and expected success status") }

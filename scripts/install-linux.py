@@ -19,7 +19,7 @@ import time
 sys.path.insert(0,str(Path(__file__).resolve().parent if (Path(__file__).resolve().parent/'video_codecs.py').exists() else Path(__file__).resolve().parent.parent/'linux'))
 import video_codecs
 
-APP_FILES=('lens-host','lens-service','lens-evidence','reproduce.mjs','notebook.py','media.py','speech.py','tray.py','theme.py','shortcuts.py','maintenance.py','evidence.py','onboarding.py','updates.py','video_codecs.py','install.py','extension/manifest.json')
+APP_FILES=('lens-host','lens-service','lens-evidence','reproduce.mjs','mcp_server.py','autofix.py','fix_verify.py','notebook.py','media.py','speech.py','tray.py','theme.py','shortcuts.py','maintenance.py','evidence.py','onboarding.py','updates.py','video_codecs.py','install.py','extension/manifest.json')
 
 
 def file_hash(path):
@@ -141,7 +141,7 @@ def main(source=None,launch=False,check=True):
     stamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')
     staged = root / ('app-staging-' + stamp)
     launcher = home / '.local/bin/native-browser-lens'
-    launcher_text='#!/bin/sh\nif [ "${1-}" = evidence ]; then\n    shift\n    exec ' + shlex.quote(str(installed / 'lens-evidence')) + ' "$@"\nfi\nexec ' + shlex.quote(sys.executable) + ' ' + shlex.quote(str(installed / 'notebook.py')) + ' "$@"\n'
+    launcher_text='#!/bin/sh\ncase "${1-}" in\n evidence) shift; exec '+shlex.quote(str(installed/'lens-evidence'))+' "$@" ;;\n mcp) shift; exec '+shlex.quote(sys.executable)+' '+shlex.quote(str(installed/'mcp_server.py'))+' "$@" ;;\n fix) shift; exec '+shlex.quote(sys.executable)+' '+shlex.quote(str(installed/'autofix.py'))+' "$@" ;;\nesac\nexec '+shlex.quote(sys.executable)+' '+shlex.quote(str(installed/'notebook.py'))+' "$@"\n'
     host = {'name': 'studio.sirv.native_browser_lens', 'description': 'Private local evidence bridge for Native Browser Lens', 'path': str(installed / 'lens-host'), 'type': 'stdio', 'allowed_origins': ['chrome-extension://' + extension_id + '/']}
     executable = str(launcher).replace('\\', '\\\\').replace('"', '\\"').replace('`', '\\`').replace('$', '\\$').replace('%', '%%')
     desktop = '[Desktop Entry]\nType=Application\nName=Native Browser Lens\nComment=Capture browser defects in a private notebook\nExec="' + executable + '"\nIcon=camera-photo\nTerminal=false\nCategories=Development;\nStartupWMClass=studio.sirv.NativeBrowserLens\n'

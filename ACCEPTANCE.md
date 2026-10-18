@@ -2,7 +2,19 @@
 
 Linux implementation and verification were added on 2026-10-17. See [Linux feature parity](LINUX_PARITY.md) for the complete port mapping, theme checks, installed Chrome capture, real local keyring/HTTP recovery proof and external-service boundaries. The historical macOS evidence below is retained separately; it is not proof of current Linux behavior or a production VibeQ deployment.
 
-## Linux 0.10.4 delivery acceptance
+## Linux 0.11.0 agent acceptance
+
+The release adds a local stdio MCP server and **Diagnostics → Fix with Codex**. MCP queries only explicitly exported portable reports. The reviewed fix action uses the existing subscription, frozen reproduction steps, isolated source/dependency snapshots, an independent unchanged baseline, and a fresh checkout with the retained patch applied. Neither action commits, pushes, deploys or files a task. The server and browser run in separate filesystem/PID sandboxes with a private loopback network; the server cannot read notebook data, raw diagnostics, the frozen check, runner output or original Git credentials.
+
+The bundled Codex runtime and execution companion passed a real collector → source repair → independent verification check in a controlled monorepo with hoisted dependencies. Decimal price `12.50` and quantity `2` produced HTTP 500 before the repair and HTTP 200 with total `25.00` after it. The unchanged baseline still failed; manual notes and dirty original source stayed byte-identical, imported diagnostics stayed unreviewed, and the after result retained local-origin/build uncertainty. Proof is `.build/agent-autofix-release/result.json`. This is a controlled local application defect, not a private production repair. Authenticated/external-service, visual and non-HTTP failures still need a suitable isolated test setup.
+
+The frozen 145-file, 307.3 MiB installer passes fresh Ubuntu 24.04/Fedora 44 install/update/rollback, service, GTK/video, offline recognition and MCP/fix launcher checks without system Swift or Node.js. Manifest SHA-256 is `725da7e68433a34169a08eadc41318db585b833fd0677d4fae0656be758186a1`. Proof is `.build/agent-v011-reviewed-{ubuntu24,fedora44}.log`. The actual Codex client completes MCP initialize/discovery plus list/inspect/verification calls against the exported repaired fixture (`.build/agent-mcp-client-final/result.json`).
+
+All 54 Swift, 61 Linux and 15 collector tests pass. GTK checks cover evidence review, MCP setup, nonmodal fix progress and serialized notebook mutations. A real Chromium sandbox probe confirms host read/write/network isolation, hidden raw/frozen/output files, original absolute-launcher remapping and a hidden Git credential canary. Dependency-freezing, descendant-link, ignored-cache, Git-filter and stale-reply regressions pass. The sandbox probe also covers Python/Node aliases and split-hoisted Playwright dependencies. Proof uses `.build/agent-{swift-all,python-latest,extension-tests,gtk-smoke-3,sandbox-latest}.log`. The previous 0.10.4 soak and device/publication limits remain historical and unchanged.
+
+The final structured source review (`autoreview --mode local --engine codex --no-web-search`) is clean, with no accepted/actionable findings. Review-driven fixes cover host Git filters and metadata, dependency links, executable paths, independent patch verification and notebook reply ordering. Private review proof is `.build/agent-review-6.{json,log}`.
+
+## Historical Linux 0.10.4 delivery acceptance
 
 The frozen 141-file release adds explicit Firefox Flatpak setup, a private complete XPI for the sandbox file chooser, and argument-vector browser launching. It changes no persistent browser preference or permission. All 52 Swift, 45 Linux and 15 collector tests pass. The full GTK setup workflow and fresh Ubuntu 24.04/Fedora 44 install/update/rollback, service, video and offline recognition pass. Native Firefox and Firefox 158 Flatpak complete actual native-host captures through NativeMessagingProxy; enabled and auto-detect proxy modes both pass. The final source review has no actionable findings after the test runner gained `--die-with-parent` cleanup.
 

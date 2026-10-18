@@ -335,6 +335,28 @@ with tempfile.TemporaryDirectory(prefix='lens-linux-ui-') as directory:
     wait_for(lambda:app.jobs==0 and app.current()['markdown']=='Other project autosaved note','debounced autosave')
     app.project_picker.set_selected(0)
     assert app.current()['projectId']==profile['id']
+    app.selected_id=observation_id;app.render()
+    app.show_fix_review(app.selected_id)
+    wait_for(lambda:app.jobs==0,'fix evidence preview')
+    fix_window=next(window for window in app.get_windows() if window.get_title()=='Fix with Codex')
+    assert button_with_label(fix_window,'Reproduce, fix and verify').get_sensitive()
+    assert not button_with_label(fix_window,'Open fix files').get_sensitive()
+    screenshot('linux-agent-fix-review.png')
+    entries=[widget for widget in descendants(fix_window) if isinstance(widget,notebook.Gtk.Entry)]
+    entries[0].set_text('200');entries[1].set_text('python3 app.py')
+    with patch.object(app,'send') as start_fix:
+        button_with_label(fix_window,'Reproduce, fix and verify').emit('clicked')
+        assert not fix_window.get_modal(),'An active fix must allow main-notebook interaction.'
+        assert start_fix.call_args.args[0]=='autofix'
+        start_fix.call_args.kwargs['callback']({'error':'Stopped controlled UI check'})
+    fix_window.close()
+    app.agent_setup()
+    agent_window=next(window for window in app.get_windows() if window.get_title()=='Agent / MCP setup')
+    assert not button_with_label(agent_window,'Copy MCP configuration').get_sensitive()
+    with patch.object(app,'choose_folder',side_effect=lambda title,callback:callback(str(export))):button_with_label(agent_window,'Choose reviewed exports folder').emit('clicked')
+    assert button_with_label(agent_window,'Copy MCP configuration').get_sensitive()
+    assert button_with_label(agent_window,'Copy Codex command').get_sensitive()
+    screenshot('linux-agent-mcp-setup.png');agent_window.close()
     app.cloud_review()
     app.filing_review()
     wait_for(lambda: app.jobs == 0, 'review windows')

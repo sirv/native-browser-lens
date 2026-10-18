@@ -19,6 +19,8 @@ import sqlite3
 from evidence import EvidenceBrowser
 import onboarding
 import updates
+import autofix
+import shlex
 
 from media import DesktopCapture, save_png, save_video, tab_key
 from speech import SpeechCapture
@@ -125,6 +127,7 @@ class Notebook(Gtk.Application):
         self.add_main_option('setup',0,GLib.OptionFlags.NONE,GLib.OptionArg.NONE,'Connect Chrome and choose a project',None)
         self.initial_setup=False;self.setup_window=None;self.setup_update=None
         self.executor = ThreadPoolExecutor(max_workers=1)
+        self.agent_executor = ThreadPoolExecutor(max_workers=1)
         self.service = Path(os.environ.get('LENS_SERVICE_PATH', Path(__file__).with_name('lens-service')))
         self.state = {'projects': [], 'observations': [], 'settings': {}}
         self.clients, self.tabs = {}, []
@@ -192,7 +195,7 @@ class Notebook(Gtk.Application):
         notebook_menu=Gtk.MenuButton(label='Notebook')
         notebook_popover=Gtk.Popover();notebook_menu.set_popover(notebook_popover)
         notebook_actions=margins(box(spacing=6),10)
-        for label,callback in [('Archive / unarchive',lambda:self.change_lifecycle('archive')),('Move to Trash',lambda:self.change_lifecycle('trash')),('Restore from Trash',lambda:self.change_lifecycle('restoreObservation')),('Storage and backups',self.storage_settings),('Import portable report',self.import_report),('App updates',lambda:updates.show(self))]:
+        for label,callback in [('Archive / unarchive',lambda:self.change_lifecycle('archive')),('Move to Trash',lambda:self.change_lifecycle('trash')),('Restore from Trash',lambda:self.change_lifecycle('restoreObservation')),('Storage and backups',self.storage_settings),('Import portable report',self.import_report),('Agent / MCP setup',self.agent_setup),('App updates',lambda:updates.show(self))]:
             notebook_actions.append(self.button(label,lambda callback=callback:(notebook_popover.popdown(),callback())))
         notebook_popover.set_child(notebook_actions);header.pack_end(notebook_menu)
         self.pause_button = self.button('Pause', self.pause)
@@ -309,6 +312,7 @@ class Notebook(Gtk.Application):
         diagnostic_tools.append(self.diagnostic_type);diagnostic_tools.append(self.button('Import file',self.import_diagnostic))
         diagnostics.append(diagnostic_tools)
         diagnostics.append(self.button('Create reproduction handoff',self.reproduction_handoff))
+        diagnostics.append(self.button('Fix with Codex',self.fix_review))
         diagnostics.append(self.button('Compare before / after runs',self.verification_summary))
         self.diagnostic_list=box(spacing=6);diagnostics.append(self.diagnostic_list)
         self.verification_text=text_view(False);diagnostics.append(scrolled(self.verification_text))
@@ -350,6 +354,19 @@ class Notebook(Gtk.Application):
 
     def request(self, action, payload, progress=None):
         try:
+            if action=='autofix':
+                def serial(action, data):return self.executor.submit(self.request,action,data).result()
+                job=autofix.create_job(payload['repository'])
+                prepared=serial('prepareFix',{key:payload[key] for key in ('observationId','reviewedVersion','captureId','eventId','successStatus')} | {'reviewed':True,'destination':str(Path(job['directory'])/'evidence')})
+                if 'error' in prepared:return {**prepared,'fixDirectory':job['directory']}
+                if Path(prepared['repositoryPath']).resolve()!=Path(payload['repository']).resolve():return {'error':'The project repository changed. Review the fix target again.','fixDirectory':job['directory']}
+                try:
+                    result=autofix.run(job,prepared['exportPath'],prepared['handoffPath'],payload['serverCommand'],payload['cancel'],progress=lambda detail:GLib.idle_add(progress,{'detail':detail}) if progress else None,model=self.state['settings'].get('codexModel',''))
+                except (OSError,ValueError,subprocess.SubprocessError) as error:return {'error':str(error),'fixDirectory':job['directory']}
+                for path in (result['before'],result['after']):
+                    imported=serial('importVerification',{'observationId':payload['observationId'],'captureId':payload['captureId'],'source':path})
+                    if 'error' in imported:return {**imported,'fixDirectory':job['directory'],'fixResult':result}
+                return {'fixResult':result}
             if action=='codexLogin':
                 binary=onboarding.codex_binary()
                 if not binary:return {'error':'Codex was not found. Install the Lens release bundle, which includes Codex.'}
@@ -400,10 +417,11 @@ class Notebook(Gtk.Application):
         self.jobs += 1; self.spinner.start()
         def work():
             GLib.idle_add(self.completed, self.request(action, payload,lambda event:self.progress(action,payload,event)), callback)
-        self.executor.submit(work)
+        (self.agent_executor if action=='autofix' else self.executor).submit(work)
 
     def completed(self, response, callback):
         self.jobs -= 1
+        if 'fixResult' in response:self.send('bootstrap')
         if not self.jobs:
             self.spinner.stop()
         if 'error' in response:
@@ -897,6 +915,74 @@ class Notebook(Gtk.Application):
             self.choose_folder('Choose a parent folder for the reproduction handoff',chosen)
         content.append(self.button('Export reviewed handoff',choose));content.append(self.button('Cancel',window.close));window.present()
 
+    def agent_setup(self):
+        window,content=self.review_window('Agent / MCP setup','Choose the folder where you export reviewed reports. MCP can read only those portable exports. It cannot open your private notebook, run commands or file tasks.')
+        output=text_view(False);content.append(scrolled(output))
+        configuration=[None];command=[None]
+        def chosen(folder):
+            launcher=str(Path.home()/'.local/bin/native-browser-lens')
+            configuration[0]=json.dumps({'mcpServers':{'native-browser-lens':{'command':launcher,'args':['mcp',folder]}}},indent=2)
+            notebook_command='codex mcp add native-browser-lens -- '+shlex.join([launcher,'mcp',folder])
+            command[0]=notebook_command;copy_config.set_sensitive(True);copy_command.set_sensitive(True)
+            output.get_buffer().set_text(configuration[0]+'\n\nOr connect Codex CLI:\n'+notebook_command+'\n\nExport reviewed observations into this folder, then ask the agent to use lens_list_reports.')
+        content.append(self.button('Choose reviewed exports folder',lambda:self.choose_folder('Select portable exports folder',chosen)))
+        copy_config=self.button('Copy MCP configuration',lambda:Gdk.Display.get_default().get_clipboard().set(configuration[0]));copy_config.set_sensitive(False);content.append(copy_config)
+        copy_command=self.button('Copy Codex command',lambda:Gdk.Display.get_default().get_clipboard().set(command[0]));copy_command.set_sensitive(False);content.append(copy_command)
+        content.append(self.button('Close',window.close));window.present()
+
+    def fix_review(self):
+        identity=self.selected_id
+        self.save(callback=lambda response:self.show_fix_review(identity) if 'error' not in response else None)
+
+    def show_fix_review(self, identity):
+        if self.selected_id!=identity:return
+        item=self.current();capture=self.current_capture()
+        if not item or not capture:return
+        profile=next((project for project in self.state['projects'] if project['id']==item['projectId']),{})
+        repository=profile.get('repositoryPath','')
+        if not repository:self.status.set_text('Choose this project’s repository in Settings before starting a fix.');return
+        failures=[event for event in capture['events'] if event['kind'] in ('response','devtools-network') and type(event.get('data',{}).get('status')) in (int,float) and 400<=event['data']['status']<=599]
+        if not failures:self.status.set_text('Select a captured HTTP failure for automatic verification.');return
+        window,content=self.review_window('Fix with Codex','Sends this saved note and selected capture’s technical evidence to Codex using your subscription. Codex can read the saved repository snapshot and edit a separate worktree. Current uncommitted files are excluded. The local reproduction runs in a new browser without your logged-in session. A passing result leaves a patch for review.')
+        content.append(Gtk.Label(label='Repository: '+repository,xalign=0,wrap=True,selectable=True))
+        content.append(Gtk.Label(label=item['title'],xalign=0,wrap=True,selectable=True))
+        failure=Gtk.DropDown.new_from_strings([str(event['data']['status'])+' '+event['data'].get('url',event['id']) for event in failures]);content.append(failure)
+        expected=Gtk.Entry(placeholder_text='Expected HTTP success status, for example 200');content.append(expected)
+        server=Gtk.Entry(placeholder_text='Local server command, e.g. npm run dev -- --host 127.0.0.1 --port {port}');content.append(server)
+        content.append(Gtk.Label(label='Requires Git, Node.js, Playwright and Bubblewrap. The server and browser run in private sandboxes without your home folder, desktop session or external network; {port} and PORT select their local port.',xalign=0,wrap=True))
+        preview=text_view(False);content.append(scrolled(preview))
+        def preview_ready(response):
+            preview.get_buffer().set_text(json.dumps(response.get('selection',response),indent=2))
+            confirm.set_sensitive('selection' in response and 'error' not in response)
+        self.send('cloudPreview',callback=preview_ready,observationId=item['id'],reviewedVersion=item['editVersion'],captureIds=[capture['id']])
+        status=Gtk.Label(xalign=0,wrap=True,selectable=True);content.append(status)
+        cancel=threading.Event();busy=False
+        location=[None]
+        open_result=self.button('Open fix files',lambda:Gtk.show_uri(window,Path(location[0]).as_uri(),Gdk.CURRENT_TIME) if location[0] else None);open_result.set_sensitive(False);content.append(open_result)
+        def finished(response):
+            nonlocal busy
+            busy=False;close.set_label('Close');confirm.set_sensitive(False)
+            result=response.get('fixResult',{})
+            location[0]=result.get('directory') or response.get('fixDirectory')
+            open_result.set_sensitive(bool(location[0]))
+            message=response.get('error') or 'Same HTTP condition passed locally. Review the isolated source and fix.patch; this does not establish a production fix.'
+            status.set_text(message+('\nFiles: '+location[0] if location[0] else ''))
+            self.status.set_text(message)
+        def start():
+            nonlocal busy
+            if busy:return
+            try:success=int(expected.get_text())
+            except ValueError:status.set_text('Enter the explicit expected HTTP success status.');return
+            if not 200<=success<=399 or not server.get_text().strip():status.set_text('Enter a success status from 200–399 and the local server command.');return
+            busy=True;window.set_modal(False);confirm.set_sensitive(False);failure.set_sensitive(False);expected.set_sensitive(False);server.set_sensitive(False);close.set_label('Stop fix')
+            self.send('autofix',callback=finished,observationId=item['id'],reviewedVersion=item['editVersion'],captureId=capture['id'],eventId=failures[failure.get_selected()]['id'],successStatus=success,repository=repository,serverCommand=server.get_text(),cancel=cancel)
+        confirm=self.button('Reproduce, fix and verify',start);confirm.set_sensitive(False);confirm.add_css_class('suggested-action');content.append(confirm)
+        close=self.button('Cancel',lambda:cancel.set() if busy else window.close());content.append(close)
+        def closing(*_):
+            if busy:cancel.set();status.set_text('Stopping owned processes. Files will be retained.');return True
+            return False
+        window.connect('close-request',closing);window.present()
+
     def filing_review(self):
         self.save()
         if self.current():
@@ -1298,6 +1384,7 @@ class Notebook(Gtk.Application):
             except (BrokenPipeError, OSError):
                 pass
         self.executor.shutdown(wait=False)
+        self.agent_executor.shutdown(wait=False)
 
     def project_changed(self,*_):
         if self.loading:return

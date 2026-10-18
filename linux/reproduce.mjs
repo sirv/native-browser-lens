@@ -19,13 +19,19 @@ const condition = config.contract.condition;
 if (condition.type !== 'http-status' || !Number.isInteger(condition.failureStatus) || !Number.isInteger(condition.successStatus)) throw Error('Invalid HTTP condition');
 const validURL = value => { const url = new URL(value); if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) throw Error('Only HTTP(S) page URLs without embedded credentials are allowed'); return url; };
 const expected = validURL(condition.url);
+const localOrigin = process.env.LENS_REPRO_ORIGIN ? validURL(process.env.LENS_REPRO_ORIGIN) : null;
+if (localOrigin && (localOrigin.protocol !== 'http:' || localOrigin.hostname !== '127.0.0.1' || localOrigin.pathname !== '/' || localOrigin.search || localOrigin.hash)) throw Error('Local reproduction origin must be an HTTP 127.0.0.1 origin');
+const localURL = address => { const result = new URL(localOrigin); result.pathname = address.pathname; result.search = address.search; result.hash = address.hash; if (result.origin !== localOrigin.origin) throw Error('Local origin changed'); return result; };
+const target = localOrigin ? localURL(expected) : expected;
+const pageOrigin = localOrigin ? validURL(config.pageURL).origin : expected.origin;
+if (localOrigin && expected.origin !== pageOrigin) throw Error('Automatic local verification requires a same-origin captured failure');
 for (const step of config.steps) {
   if (!['goto', 'click', 'fill', 'expectVisible'].includes(step.op)) throw Error('Unsupported step operation');
-  if (step.op === 'goto') validURL(step.url);
+  if (step.op === 'goto') { const address = validURL(step.url); if (localOrigin && address.origin !== pageOrigin) throw Error('Local verification steps cannot navigate to another origin'); }
   else if (typeof step.selector !== 'string' || step.selector.length > 2048) throw Error('Invalid step selector');
   if (step.op === 'fill' && typeof step.value !== 'string') throw Error('Fill value must be explicit text');
 }
-const output = path.join(folder, `${phase}-${Date.now()}`);
+const output = path.join(process.env.LENS_REPRO_OUTPUT_DIR || folder, `${phase}-${Date.now()}`);
 await mkdir(output, { mode: 0o700 });
 const startedAt = Date.now();
 const browser = await chromium.launch({ executablePath: process.env.LENS_REPRO_BROWSER || undefined, headless: true });
@@ -39,11 +45,11 @@ let observedStatus = null, executionComplete = false, failure = null, profile;
 const statuses = [];
 page.on('response', response => {
   const url = new URL(response.url());
-  if (url.origin === expected.origin && url.pathname === expected.pathname && response.request().method() === condition.method) statuses.push(response.status());
+  if (url.origin === target.origin && url.pathname === target.pathname && response.request().method() === condition.method) statuses.push(response.status());
 });
 try {
   for (const step of config.steps) {
-    if (step.op === 'goto') await page.goto(step.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    if (step.op === 'goto') { const address = validURL(step.url); await page.goto(localOrigin ? localURL(address).href : step.url, { waitUntil: 'domcontentloaded', timeout: 30000 }); }
     if (step.op === 'click') await page.locator(step.selector).click({ timeout: 15000 });
     if (step.op === 'fill') await page.locator(step.selector).fill(step.value, { timeout: 15000 });
     if (step.op === 'expectVisible') await page.locator(step.selector).waitFor({ state: 'visible', timeout: 15000 });
@@ -66,7 +72,7 @@ for (const [type, file] of [['har', 'network.har'], ['trace', 'trace.zip'], ['pr
   const data = await readFile(path.join(output, file));
   artifacts.push({ type, file, sha256: hash(data), bytes: data.length });
 }
-const result = { formatVersion: 1, ...config.contract, phase, contractSHA256: config.contractSHA256, stepsSHA256: hash(JSON.stringify(stable(config.steps))), scriptSHA256: hash(await readFile(fileURLToPath(import.meta.url))), buildId: process.env.LENS_REPRO_BUILD || null, startedAt, finishedAt: Date.now(), observedStatus, matchingResponseCount: statuses.length, executionComplete, failure, tool: 'playwright', artifacts };
+const result = { formatVersion: 1, ...config.contract, phase, contractSHA256: config.contractSHA256, stepsSHA256: hash(JSON.stringify(stable(config.steps))), scriptSHA256: hash(await readFile(fileURLToPath(import.meta.url))), buildId: process.env.LENS_REPRO_BUILD || null, testOrigin: localOrigin?.origin || null, startedAt, finishedAt: Date.now(), observedStatus, matchingResponseCount: statuses.length, executionComplete, failure, tool: 'playwright', artifacts };
 await writeFile(path.join(output, 'result.json'), JSON.stringify(result, null, 2));
 console.log(JSON.stringify({ result: path.join(output, 'result.json'), executionComplete, observedStatus, expectedStatus: phase === 'before' ? condition.failureStatus : condition.successStatus }));
 if (!executionComplete || observedStatus !== (phase === 'before' ? condition.failureStatus : condition.successStatus)) process.exitCode = 1;

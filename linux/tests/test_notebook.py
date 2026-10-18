@@ -13,6 +13,33 @@ spec.loader.exec_module(notebook)
 
 
 class AnnotationTests(unittest.TestCase):
+    def test_fix_request_imports_results_into_the_reviewed_observation(self):
+        app=Mock();app.state={'settings':{'codexModel':'chosen-model'}}
+        def submit(function,*args):
+            from concurrent.futures import Future
+            future=Future();future.set_result(function(*args));return future
+        app.executor.submit.side_effect=submit
+        app.request.side_effect=[{'exportPath':'/job/evidence/report','handoffPath':'/job/evidence/handoff','repositoryPath':'/project'},{},{}]
+        payload=dict(repository='/project',observationId='reviewed-observation',reviewedVersion=4,captureId='reviewed-capture',eventId='failure',successStatus=200,serverCommand='npm run dev',cancel=notebook.threading.Event())
+        result=dict(directory='/job',before='/job/before/result.json',after='/job/after/result.json')
+        with patch.object(notebook.autofix,'create_job',return_value={'directory':'/job'}),patch.object(notebook.autofix,'run',return_value=result) as run:
+            response=notebook.Notebook.request(app,'autofix',payload)
+        self.assertEqual(response['fixResult'],result)
+        self.assertEqual(set(response),{'fixResult'},'Agent completion must not deliver a stale notebook snapshot.')
+        self.assertEqual(app.request.call_count,3)
+        self.assertEqual(run.call_args.kwargs['model'],'chosen-model')
+        for call in app.request.call_args_list[1:3]:
+            self.assertEqual(call.args[0],'importVerification')
+            self.assertEqual(call.args[1]['observationId'],'reviewed-observation')
+            self.assertEqual(call.args[1]['captureId'],'reviewed-capture')
+        self.assertEqual(app.request.call_args_list[0].args[1]['reviewedVersion'],4)
+
+    def test_fix_completion_refreshes_on_the_main_worker_even_after_partial_import(self):
+        app=Mock();app.jobs=1
+        response={'fixResult':{'directory':'/job'},'error':'Second import failed'}
+        notebook.Notebook.completed(app,response,None)
+        app.send.assert_called_once_with('bootstrap')
+
     def test_browser_launcher_keeps_flatpak_arguments_and_url_separate(self):
         app=Mock()
         with patch.object(notebook.subprocess,'Popen') as launch:

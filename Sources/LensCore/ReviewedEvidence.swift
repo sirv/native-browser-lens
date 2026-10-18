@@ -33,6 +33,7 @@ public struct ReviewedEvidence {
             return c
         }
         switch command {
+        case "selection": return try IncidentEvidence.select(observation: observation)
         case "verification": return Reproduction.summary(capture: try capture())
         case "finding":
             guard let finding = observation.findings.first(where: { $0.id == id || "finding:" + $0.id == id }) else { throw LensError.invalid("Unknown finding ID") }

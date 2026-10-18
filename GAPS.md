@@ -11,6 +11,8 @@ The continuing goal covers implementation, installation and acceptance. Local fi
 - [ ] Public Linux release, Chrome Web Store install and permanently signed Firefox distribution
 - [x] Firefox Flatpak via NativeMessagingProxy with explicit host/browser setup
 - [x] Firefox Snap through Ubuntu's WebExtensions portal and current Zen Flatpak through NativeMessagingProxy
+- [x] Local MCP server for explicitly exported reviewed evidence
+- [x] Reviewed autonomous Codex source repair with frozen before/baseline/after checks
 - [x] Filterable console, request waterfall, details and explicit coverage
 - [x] Hyprland capture binding with explicit OS window/tab identity limits
 - [x] Codex subscription reports with reviewed text/images and preserved manual notes
@@ -22,7 +24,11 @@ The continuing goal covers implementation, installation and acceptance. Local fi
 - [x] Production VibeQ backend ingestion, migration and Worker release
 - [x] Authenticated reviewed native-client production filing, idempotent retry and amendment
 
-## Current installed release 0.10.4 — Flatpak setup
+## Agent workflow 0.11.0
+
+MCP and the reviewed autonomous fix workflow pass actual subscription-client checks and a controlled decimal-price source repair. The patch is reapplied to a fresh saved-HEAD snapshot for independent verification; original dirty source and notebook notes are preserved. [Acceptance](ACCEPTANCE.md#linux-0110-agent-acceptance) records the exact proof and local-test limits. Public/store, physical device and authenticated project acceptance remain separate.
+
+## Historical installed release 0.10.4 — Flatpak setup
 
 The reviewed follow-up detects Firefox Flatpak, launches it with an argument vector, and prepares one complete private XPI for the sandbox file chooser. It does not change persistent permissions or browser preferences. Source tests cover discovery timeouts, complete archive contents, symlink rejection with the previous cache retained, native/Flatpak launch arguments and the real GTK setup screen. All 52 Swift, 45 Linux and 15 collector tests pass.
 
